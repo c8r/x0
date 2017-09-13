@@ -58,15 +58,18 @@ To do:
 - [ ] render css (yikes)
 - [x] render json
 - [x] rehydrate from json
-- [ ] out-dir option
 - [ ] render bundle
 - [ ] rehydrate from json
+- [ ] out-dir option
 
 - [x] configurable (props) html render
 - [x] default html render
 - [x] merge options with package.json
 - [ ] render multiple routes
-- [ ] react router
+  - [ ] react router?
+  - [ ] router components
+  - [ ] readdir
+  - [ ] configuration
 - [ ] update-notifier
 
 ---
@@ -81,3 +84,27 @@ pages: [
 ]
 ```
 
+```jsx
+const IndexPage = props => (
+  <Route path='/'>
+    <Main />
+  </Route>
+)
+const AboutPage = props => (
+  <Route path='/about'>
+    <About />
+  </Route>
+)
+```
+
+```sh
+rx0 src/pages/
+```
+
+```sh
+io
+iox
+ion
+r0
+rex
+```

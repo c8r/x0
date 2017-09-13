@@ -1,5 +1,5 @@
 import React from 'react'
-import Html from '../lib/Html'
+import { Html } from '../lib'
 import cxs from 'cxs'
 
 const Root = props => {

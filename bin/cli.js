@@ -26,8 +26,8 @@ const root  = absolute(rootpath)
 
 switch (cmd) {
   case 'dev':
-    const server = require('../lib/server')
-    server(filename, options, (err, port) => {
+    const dev = require('../lib/dev')
+    dev(filename, options, (err, port) => {
       console.log(port)
     })
     break
