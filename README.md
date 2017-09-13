@@ -1,7 +1,7 @@
 
 # x0
 
-React dev environment, static-site generator, and bundler
+Zero-config React renderer and CLI
 
 ```sh
 npm install rx0
@@ -117,6 +117,8 @@ field named `x0`.
 
 ## Rendering Multiple Pages
 
+**NOTE: routing is not currently supported. This is a proposed API**
+
 To render multiple pages and use routing, add a `routes` array to the `package.json` configuration object.
 
 ```json
@@ -166,7 +168,4 @@ MIT License
 
 To do:
 
-- [ ] render multiple routes
-  - [ ] readdir
-  - [ ] configuration `options.pages`
-  - User configures routing in App – ssr/static props for current pathname hydration
+- [ ] handle multiple routes
