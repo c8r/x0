@@ -1,6 +1,6 @@
 {
   "name": "rx0",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React dev environment, static-site generator, and bundler",
   "main": "index.js",
   "bin": {
