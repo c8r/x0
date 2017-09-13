@@ -17,8 +17,24 @@ npm install rx0
 
 * Components should not rely on bundler features like webpack loaders
 
+### Isolated development environment
+
+```sh
+rx0 dev src/Component.js
+```
+
+### Static Render
+
+```sh
+rx0 static src/App.js
+```
+
+
+MIT License
 
 ---
+
+To do:
 
 - [x] pass component
 - [x] CLI
