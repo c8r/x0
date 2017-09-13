@@ -2,15 +2,14 @@ import React from 'react'
 import Html from '../lib/Html'
 import cxs from 'cxs'
 
-const Root = ({
-  children
-}) => {
+const Root = props => {
   const css = cxs.css()
 
   return (
-    <Html css={css}>
-      {children}
-    </Html>
+    <Html
+      {...props}
+      css={css}
+    />
   )
 }
 

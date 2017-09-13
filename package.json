@@ -7,7 +7,8 @@
     "rx0": "bin/cli.js"
   },
   "scripts": {
-    "_test": "./bin/cli.js dev docs/App.js",
+    "start": "./bin/cli.js dev docs/App.js",
+    "build": "./bin/cli.js static docs/App.js",
     "test": "./bin/cli.js static docs/App.js docs/Root.js"
   },
   "keywords": [],
@@ -32,6 +33,7 @@
     "cxs": "^6.0.0"
   },
   "rx0": {
-    "title": "RX0"
+    "title": "RX0",
+    "pages": []
   }
 }

@@ -37,6 +37,9 @@ rx0 static src/App.js src/Html.js
 
 Options
 - css lib?
+- out-dir
+- client-bundle
+- json props
 
 
 MIT License
@@ -53,16 +56,28 @@ To do:
 - [x] render static callback
 
 - [ ] render css (yikes)
-- [ ] render json
-- [ ] rehydrate from json
+- [x] render json
+- [x] rehydrate from json
+- [ ] out-dir option
 - [ ] render bundle
 - [ ] rehydrate from json
 
-- [ ] configurable (props) html render
+- [x] configurable (props) html render
 - [x] default html render
-- [ ] merge options with package.json
+- [x] merge options with package.json
 - [ ] render multiple routes
 - [ ] react router
 - [ ] update-notifier
 
+---
+
+```js
+pages: [
+  {
+    path: '/',
+    component: 'docs/App.js',
+    props: {}
+  }
+]
+```
 
