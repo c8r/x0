@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "React dev environment, static-site generator, and bundler",
   "main": "index.js",
+  "bin": {
+    "rx0": "bin/cli.js"
+  },
   "scripts": {
     "_test": "./bin/cli.js dev docs/Root.js",
     "test": "./bin/cli.js dev ../avatar/src/Avatar.js"
