@@ -1,6 +1,7 @@
 {
-  "name": "@compositor/x0",
-  "version": "1.0.0-60",
+  "name": "rx0",
+  "_name": "@compositor/x0",
+  "version": "1.0.3",
   "description": "React dev environment, static-site generator, and bundler",
   "main": "index.js",
   "bin": {
