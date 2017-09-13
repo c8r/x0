@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-
-const fs = require('fs')
 const path = require('path')
 const meow = require('meow')
 const { pkg } = require('read-pkg-up').sync()
@@ -34,7 +32,6 @@ const absolute = f => f
   : null
 
 const filename = absolute(file)
-const dir = fs.statSync(filename).isDirectory()
 const root  = absolute(rootpath)
 
 switch (cmd) {
@@ -46,17 +43,13 @@ switch (cmd) {
     break
   case 'static':
     const static = require('../lib/static')
-    if (dir) {
-      console.log('todo: render multiple pages')
-    } else {
-      static(filename, root, options, (err, html) => {
-        if (!options.outDir) {
-          console.log(html)
-        } else {
-          console.log('Static page built')
-        }
-      })
-    }
+    static(filename, root, options, (err, html) => {
+      if (!options.outDir) {
+        console.log(html)
+      } else {
+        console.log('Static page built')
+      }
+    })
     break
   default:
     process.exit(0)

@@ -1,10 +1,6 @@
 import React from 'react'
-import cxs from 'cxs/component'
 import { createProvider } from 'refunk'
-
-const Title = cxs('h1')({
-  color: 'tomato'
-})
+import Title from './Title'
 
 const dec = state => ({ count: state.count - 1 })
 const inc = state => ({ count: state.count + 1 })
