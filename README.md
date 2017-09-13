@@ -32,15 +32,31 @@ Options:
 
 ```sh
 rx0 static src/App.js
+```
+
+Render with a custom root HTML component to control CSS, routing, etc.
+
+```
 rx0 static src/App.js src/Html.js
 ```
 
 Options
-- css lib?
 - out-dir
 - client-bundle
-- json props
 
+
+### Configuration
+
+In `package.json`
+
+```json
+"rx0": {
+  "title": "Hello",
+  "props": {
+    "count": 0
+  }
+}
+```
 
 MIT License
 
@@ -55,22 +71,21 @@ To do:
 - [x] render static
 - [x] render static callback
 
-- [ ] render css (yikes)
 - [x] render json
 - [x] rehydrate from json
-- [ ] render bundle
-- [ ] rehydrate from json
-- [ ] out-dir option
+- [x] render bundle
+- [x] rehydrate from json
+- [x] out-dir option
+- [ ] render css (yikes)
 
 - [x] configurable (props) html render
 - [x] default html render
 - [x] merge options with package.json
+- [x] update-notifier
 - [ ] render multiple routes
-  - [ ] react router?
-  - [ ] router components
   - [ ] readdir
-  - [ ] configuration
-- [ ] update-notifier
+  - [ ] configuration `options.pages`
+  - User configures routing in App – ssr/static props for current pathname hydration
 
 ---
 
@@ -82,23 +97,6 @@ pages: [
     props: {}
   }
 ]
-```
-
-```jsx
-const IndexPage = props => (
-  <Route path='/'>
-    <Main />
-  </Route>
-)
-const AboutPage = props => (
-  <Route path='/about'>
-    <About />
-  </Route>
-)
-```
-
-```sh
-rx0 src/pages/
 ```
 
 ```sh

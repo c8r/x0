@@ -9,7 +9,7 @@
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js",
     "build": "./bin/cli.js static docs/App.js",
-    "test": "./bin/cli.js static docs/App.js docs/Root.js"
+    "test": "./bin/cli.js static docs/App.js docs/Root.js -d docs"
   },
   "keywords": [],
   "author": "Brent Jackson",
@@ -26,14 +26,19 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "read-pkg-up": "^2.0.0",
+    "update-notifier": "^2.2.0",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"
   },
   "devDependencies": {
-    "cxs": "^6.0.0"
+    "cxs": "^6.0.0",
+    "refunk": "^1.0.0-2"
   },
   "rx0": {
     "title": "RX0",
+    "props": {
+      "count": 2
+    },
     "pages": []
   }
 }
