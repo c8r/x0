@@ -1,15 +1,15 @@
 {
-  "name": "rx0",
-  "version": "1.0.3",
+  "name": "@compositor/x0",
+  "version": "1.0.0-60",
   "description": "React dev environment, static-site generator, and bundler",
   "main": "index.js",
   "bin": {
-    "rx0": "bin/cli.js"
+    "x0": "bin/cli.js"
   },
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js",
-    "build": "./bin/cli.js static docs/App.js",
-    "test": "./bin/cli.js static docs/App.js docs/Root.js -d docs"
+    "build": "./bin/cli.js build docs/App.js",
+    "test": "./bin/cli.js build docs/App.js --html docs/Root.js -d docs"
   },
   "keywords": [],
   "author": "Brent Jackson",
@@ -34,8 +34,8 @@
     "cxs": "^6.0.0",
     "refunk": "^1.0.0-2"
   },
-  "rx0": {
-    "title": "RX0",
+  "x0": {
+    "title": "X0",
     "props": {
       "count": 2
     },

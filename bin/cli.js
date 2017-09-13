@@ -10,13 +10,21 @@ require('update-notifier')({
 const cli = meow(`
   Usage:
 
-    $ rx0 dev src/Component.js
+    $ x0 dev src/App.js
 
-    $ rx0 static src/Component.js
+    $ x0 build src/App.js
 
   Options:
 
+    -h --html     Root HTML component for wrapping the app component
+
     -d --out-dir  Output directory for static build
+
+    -s --static   Render static HTML without client-side JS
+
+    -p --port     Port for dev server
+
+    -o --open     Open dev server in default browser
 
 `, {
   alias: {
@@ -24,15 +32,14 @@ const cli = meow(`
   }
 })
 
-const [ cmd, file, rootpath ] = cli.input
-const options = Object.assign({}, pkg.rx0, cli.flags)
+const [ cmd, file ] = cli.input
+const options = Object.assign({}, pkg.x0, cli.flags)
 
 const absolute = f => f
   ? path.isAbsolute(f) ? f : path.join(process.cwd(), f)
   : null
 
 const filename = absolute(file)
-const root  = absolute(rootpath)
 
 switch (cmd) {
   case 'dev':
@@ -41,9 +48,9 @@ switch (cmd) {
       console.log(port)
     })
     break
-  case 'static':
-    const static = require('../lib/static')
-    static(filename, root, options, (err, html) => {
+  case 'build':
+    const build = require('../lib/static')
+    build(filename, options, (err, html) => {
       if (!options.outDir) {
         console.log(html)
       } else {
