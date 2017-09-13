@@ -1,7 +1,9 @@
 
-# x0
+# x0 *
 
 Zero-config React renderer and CLI
+
+* other libs to be renamed
 
 ```sh
 npm install rx0
