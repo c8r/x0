@@ -40,7 +40,7 @@ To do:
 - [x] CLI
 - [x] test hot loading
 - [x] test outside dir
-- [ ] render static
+- [x] render static
 - [ ] render static callback
 - [ ] returns html/css/json/bundle
 - [ ] render bundle
@@ -51,4 +51,13 @@ To do:
 - [ ] render multiple routes
 - [ ] react router
 - [ ] update-notifier
+
+---
+
+
+Render static with css lib
+
+```sh
+rx0 static src/App.js src/Html.js
+```
 
