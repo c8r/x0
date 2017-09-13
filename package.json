@@ -36,9 +36,7 @@
   },
   "x0": {
     "title": "X0",
-    "props": {
-      "count": 2
-    },
-    "pages": []
+    "count": 2,
+    "routes": []
   }
 }

@@ -54,7 +54,7 @@ switch (cmd) {
       if (!options.outDir) {
         console.log(html)
       } else {
-        console.log('Static page built')
+        console.log(`Static page rendered to ${options.outDir}`)
       }
     })
     break

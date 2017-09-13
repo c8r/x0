@@ -38,10 +38,16 @@ x0 dev src/App.js -op 8080
 
 ## Static Render
 
-Render a static HTML page with client-side JS bundle
+Render a static HTML page
 
 ```sh
-x0 build src/App.js
+x0 build src/App.js > docs/index.html
+```
+
+Render a static page with client-side bundle
+
+```sh
+x0 build src/App.js --out-dir docs
 ```
 
 Render with a custom root HTML component to control CSS, routing, etc.
@@ -53,27 +59,21 @@ x0 build src/App.js --html src/Html.js
 Options
 
 ```
+  -h --html       Root HTML component
   -d --out-dir    Directory to save index.html and bundle.js to
   -s --static     Only render static HTML (no client-side JS)
 ```
 
 
-## Render Multiple Pages
+## Configuration
 
-```sh
-x0 build src/pages/ --out-dir docs/
-```
-
-### Configuration
-
-In `package.json`
+Other configuration options can be passed to x0 in a `package.json`
+field named `x0`.
 
 ```json
 "x0": {
   "title": "Hello",
-  "props": {
-    "count": 0
-  }
+  "count": 0
 }
 ```
 
