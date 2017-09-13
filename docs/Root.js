@@ -1,4 +1,5 @@
 import React from 'react'
+import Html from '../lib/Html'
 import cxs from 'cxs'
 
 const Root = ({
@@ -7,19 +8,9 @@ const Root = ({
   const css = cxs.css()
 
   return (
-    <html>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: css
-        }}
-      />
-      <div
-        id='app'
-        dangerouslySetInnerHTML={{
-          __html: children
-        }}
-      />
-    </html>
+    <Html css={css}>
+      {children}
+    </Html>
   )
 }
 

@@ -23,11 +23,20 @@ npm install rx0
 rx0 dev src/Component.js
 ```
 
+Options:
+- open
+- port
+
+
 ### Static Render
 
 ```sh
 rx0 static src/App.js
+rx0 static src/App.js src/Html.js
 ```
+
+Options
+- css lib?
 
 
 MIT License
@@ -41,23 +50,19 @@ To do:
 - [x] test hot loading
 - [x] test outside dir
 - [x] render static
-- [ ] render static callback
-- [ ] returns html/css/json/bundle
+- [x] render static callback
+
+- [ ] render css (yikes)
+- [ ] render json
+- [ ] rehydrate from json
 - [ ] render bundle
 - [ ] rehydrate from json
-- [ ] configurable html render
-- [ ] default html render
-- [ ] merge with package.json
+
+- [ ] configurable (props) html render
+- [x] default html render
+- [ ] merge options with package.json
 - [ ] render multiple routes
 - [ ] react router
 - [ ] update-notifier
 
----
-
-
-Render static with css lib
-
-```sh
-rx0 static src/App.js src/Html.js
-```
 
