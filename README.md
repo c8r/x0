@@ -15,7 +15,7 @@ npm install rx0
 - Use any CSS-in-JS library
 - Works with any React component *
 
-* Components should not rely on bundler features like webpack loaders
+* Components cannot rely on bundler features like webpack loaders
 
 
 ## Isolated development environment
