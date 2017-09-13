@@ -34,4 +34,5 @@ npm install rx0
 - [ ] merge with package.json
 - [ ] render multiple routes
 - [ ] react router
+- [ ] update-notifier
 
