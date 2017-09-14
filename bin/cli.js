@@ -2,6 +2,7 @@
 const path = require('path')
 const meow = require('meow')
 const { pkg } = require('read-pkg-up').sync()
+const open = require('opn')
 
 require('update-notifier')({
   pkg: require('../package.json')
@@ -28,6 +29,8 @@ const cli = meow(`
 
 `, {
   alias: {
+    o: 'open',
+    p: 'port',
     d: 'outDir'
   }
 })
@@ -45,7 +48,10 @@ switch (cmd) {
   case 'dev':
     const dev = require('../lib/dev')
     dev(filename, options, (err, port) => {
-      console.log(port)
+      console.log(`Development server listening at http://localhost:${port}`)
+      if (options.open) {
+        open(`http://localhost:${port}`)
+      }
     })
     break
   case 'build':
