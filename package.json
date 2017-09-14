@@ -1,7 +1,7 @@
 {
   "name": "rx0",
   "_name": "@compositor/x0",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Zero-config React renderer and CLI",
   "main": "index.js",
   "bin": {
