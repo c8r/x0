@@ -12,7 +12,6 @@ const App = props => (
     <Title>
       Hello {props.count}
     </Title>
-    <Debug {...props} />
     <button
       onClick={e => props.update(dec)}
       children='-'
@@ -21,6 +20,7 @@ const App = props => (
       onClick={e => props.update(inc)}
       children='+'
     />
+    <Debug {...props} />
   </div>
 )
 

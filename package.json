@@ -38,6 +38,9 @@
   "x0": {
     "title": "X0",
     "count": 2,
-    "routes": []
+    "routes": [
+      "/",
+      "/about"
+    ]
   }
 }
