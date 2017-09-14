@@ -29,9 +29,11 @@ const cli = meow(`
 
 `, {
   alias: {
-    o: 'open',
+    h: 'html',
+    d: 'outDir',
+    s: 'static',
     p: 'port',
-    d: 'outDir'
+    o: 'open',
   }
 })
 
