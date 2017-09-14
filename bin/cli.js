@@ -46,11 +46,13 @@ const filename = absolute(file)
 
 switch (cmd) {
   case 'dev':
+    let opened = false
     const dev = require('../lib/dev')
     dev(filename, options, (err, port) => {
       console.log(`Development server listening at http://localhost:${port}`)
-      if (options.open) {
+      if (!opened && options.open) {
         open(`http://localhost:${port}`)
+        opened = true
       }
     })
     break
