@@ -170,4 +170,5 @@ MIT License
 
 To do:
 
+- [ ] static flag
 - [ ] handle multiple routes
