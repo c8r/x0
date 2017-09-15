@@ -1,9 +1,7 @@
 
-# x0 *
+# x0
 
 Zero-config React renderer and CLI
-
-* other libs to be renamed
 
 ```sh
 npm install rx0
@@ -119,8 +117,6 @@ field named `x0`.
 
 ## Rendering Multiple Pages
 
-**NOTE: routing is not currently supported. This is a proposed API**
-
 To render multiple pages and use routing, add a `routes` array to the `package.json` configuration object.
 
 ```json
@@ -166,9 +162,3 @@ x0 static src/App.js --html src/Root.js --out-dir site
 
 MIT License
 
----
-
-To do:
-
-- [ ] static flag
-- [ ] handle multiple routes
