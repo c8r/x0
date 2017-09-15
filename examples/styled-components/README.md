@@ -1,5 +1,5 @@
 
-# x0 CXS example
+# x0 styled-components example
 
 ```sh
 npm install
@@ -17,4 +17,3 @@ npm start
 npm run build
 ```
 
-When building static, CSS will be added to a `<style>` tag in the head.
