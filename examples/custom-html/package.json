@@ -1,0 +1,18 @@
+{
+  "name": "x0-html-example",
+  "private": true,
+  "scripts": {
+    "start": "x0 dev App.js -o",
+    "build": "x0 build App.js --html Root.js --out-dir ./site",
+    "test": "x0 build App.js --html Root.js"
+  },
+  "dependencies": {
+    "refunk": "^1.0.0-2",
+    "rx0": "^1.0.6"
+  },
+  "x0": {
+    "title": "x0 HTML Example",
+    "description": "Just a simple example",
+    "count": 16
+  }
+}

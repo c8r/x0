@@ -1,5 +1,5 @@
 
-# x0 basic example
+# x0 custom HTML example
 
 ```sh
 npm install
@@ -11,10 +11,9 @@ npm install
 npm start
 ```
 
-Editing `App.js` will live update in the development server.
-
 ## Static Build
 
 ```sh
 npm run build
 ```
+

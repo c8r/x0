@@ -2,7 +2,13 @@
 # x0 bundle example
 
 ```sh
-npm install && npm start
+npm install
+```
+
+## Dev Server
+
+```sh
+npm start
 ```
 
 Editing `App.js` will live update in the development server.
