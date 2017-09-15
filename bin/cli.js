@@ -4,9 +4,9 @@ const meow = require('meow')
 const { pkg } = require('read-pkg-up').sync()
 const open = require('opn')
 
-require('update-notifier')({
-  pkg: require('../package.json')
-}).notify()
+const x0Pkg = require('../package.json')
+
+require('update-notifier')({ pkg: x0Pkg }).notify()
 
 const cli = meow(`
   Usage:
