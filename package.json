@@ -29,7 +29,7 @@
     "read-pkg-up": "^2.0.0",
     "update-notifier": "^2.2.0",
     "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "2.7.1"
   },
   "devDependencies": {
     "cxs": "^6.0.0",
