@@ -23,6 +23,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "meow": "^3.7.0",
+    "opn": "^5.1.0",
     "pkg-up": "^2.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
