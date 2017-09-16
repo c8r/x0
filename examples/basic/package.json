@@ -1,0 +1,12 @@
+{
+  "name": "x0-basic-example",
+  "private": true,
+  "scripts": {
+    "start": "x0 dev App.js -o",
+    "build": "x0 build App.js > index.html",
+    "test": "x0 build App.js"
+  },
+  "dependencies": {
+    "rx0": "^1.0.6"
+  }
+}

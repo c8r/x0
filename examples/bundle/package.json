@@ -1,0 +1,19 @@
+{
+  "name": "x0-bundle-example",
+  "private": true,
+  "scripts": {
+    "start": "x0 dev App.js -o",
+    "build": "x0 build App.js --out-dir ./site",
+    "test": "x0 build App.js"
+  },
+  "dependencies": {
+    "refunk": "^1.0.0-2",
+    "rx0": "^1.0.6"
+  },
+  "x0": {
+    "title": "x0 Bundle Example",
+    "description": "Just a simple example",
+    "css": "*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0}",
+    "count": 16
+  }
+}
