@@ -1,5 +1,5 @@
 import React from 'react'
-import { Html } from 'rx0'
+import { Html } from '@compositor/x0'
 import { ServerStyleSheet } from 'styled-components'
 
 // Used for styled-components rerendering

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Html } from 'rx0'
+import { Html } from '@compositor/x0'
 
 const css = `*{box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0}`

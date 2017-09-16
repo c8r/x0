@@ -4,7 +4,7 @@
 Zero-config React renderer and CLI
 
 ```sh
-npm install rx0
+npm install @compositor/x0
 ```
 
 ## Features
@@ -147,7 +147,7 @@ const App = props => (
 // root component
 import React from 'react'
 import { StaticRouter } from 'react-router'
-import { Html } from 'rx0'
+import { Html } from '@compositor/x0'
 
 const Root = props => (
   <StaticRouter location={props.pathname}>

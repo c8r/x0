@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "refunk": "^1.0.0-2",
-    "rx0": "^1.0.6"
+    "@compositor/x0": "^1.0.9"
   },
   "x0": {
     "title": "x0 HTML Example",

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Html } from 'rx0'
+import { Html } from '@compositor/x0'
 import cxs from 'cxs'
 
 const basecss = `*{box-sizing:border-box}
