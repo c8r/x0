@@ -1,7 +1,7 @@
 import React from 'react'
 import { createProvider } from 'refunk'
 import Title from './Title'
-// import { Head } from '../lib'
+import cxs from 'cxs/component'
 
 const dec = state => ({ count: state.count - 1 })
 const inc = state => ({ count: state.count + 1 })
@@ -24,11 +24,11 @@ const Style = ({ css }) => (
   />
 )
 
-const App = props => (
+const App = createProvider()(props => (
   <div>
     <title>Hi x0</title>
     <meta charSet='utf-8' />
-    <Style css={css} />
+    <Style css={css + (props.css || '')} />
 
     <Title>Hello {props.count}</Title>
     <button
@@ -41,6 +41,11 @@ const App = props => (
     />
     <Debug {...props} />
   </div>
-)
+))
 
-export default createProvider({})(App)
+App.renderStatic = ({ Component, html, props }) => {
+  const css = cxs.css()
+  return { hello: 'hi', css }
+}
+
+export default App
