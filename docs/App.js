@@ -30,7 +30,7 @@ const App = createProvider()(props => (
     <meta charSet='utf-8' />
     <Style css={css + (props.css || '')} />
 
-    <Title>Hello {props.count}</Title>
+    <Title>Hello async {props.count}</Title>
     <button
       onClick={e => props.update(dec)}
       children='-'
@@ -43,9 +43,14 @@ const App = createProvider()(props => (
   </div>
 ))
 
-App.renderStatic = ({ Component, html, props }) => {
+App.getInitialProps = async ({ Component, html, pathname }) => {
+  const fetch = require('isomorphic-fetch')
+  const endpoint = 'https://microbeats.now.sh/tracks'
+  const microbeats = await fetch(endpoint)
+  const tracks = await microbeats.json()
   const css = cxs.css()
-  return { hello: 'hi', css }
+
+  return { hello: 'hi', css, tracks }
 }
 
 export default App

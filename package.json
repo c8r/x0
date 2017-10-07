@@ -9,8 +9,8 @@
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js -op 8888",
     "build": "./bin/cli.js build docs/App.js",
-    "_test": "./bin/cli.js build docs/App.js --html docs/Root.js -d docs",
-    "test": "./bin/cli.js build docs/App.js -d docs"
+    "test": "./bin/cli.js build docs/App.js -d docs",
+    "_test": "./bin/cli.js build docs/App.js "
   },
   "keywords": [],
   "author": "Brent Jackson",
@@ -18,6 +18,7 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -34,6 +35,9 @@
   },
   "devDependencies": {
     "cxs": "^6.0.0",
+    "got": "^7.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^1.7.3",
     "refunk": "^1.0.0-2"
   },
   "x0": {

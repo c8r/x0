@@ -13,9 +13,9 @@ npm install @compositor/x0
 - Renders static HTML
 - Renders JS bundles
 - Use any CSS-in-JS library
-- Works with any React component *
+- Works with any React component\*
 
-* Components cannot rely on bundler features like webpack loaders
+\* Components cannot rely on bundler features like webpack loaders
 
 
 ## Isolated development environment
@@ -50,20 +50,14 @@ Render a static page with client-side bundle
 x0 build src/App.js --out-dir site
 ```
 
-Render with a custom root HTML component to control CSS, routing, etc.
-
-```
-x0 build src/App.js --html src/Html.js
-```
-
 Options
 
 ```
-  -h --html       Root HTML component
   -d --out-dir    Directory to save index.html and bundle.js to
   -s --static     Only render static HTML (no client-side JS)
 ```
 
+<!--
 ## Custom Root HTML Component
 
 To handle things like routing and CSS-in-JS libraries, use a custom HTML component.
@@ -159,6 +153,7 @@ const Root = props => (
 ```sh
 x0 static src/App.js --html src/Root.js --out-dir site
 ```
+-->
 
 MIT License
 

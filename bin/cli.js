@@ -17,8 +17,6 @@ const cli = meow(`
 
   Options:
 
-    -h --html     Root HTML component for wrapping the app component
-
     -d --out-dir  Output directory for static build
 
     -s --static   Render static HTML without client-side JS
@@ -29,7 +27,6 @@ const cli = meow(`
 
 `, {
   alias: {
-    h: 'html',
     d: 'outDir',
     s: 'static',
     p: 'port',
@@ -61,6 +58,11 @@ switch (cmd) {
   case 'build':
     const build = require('../lib/static')
     build(filename, options, (err, html) => {
+      if (err) {
+        console.log('Error')
+        console.log(err)
+        process.exit(1)
+      }
       if (!options.outDir) {
         console.log(html)
       } else {
