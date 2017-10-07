@@ -88,32 +88,6 @@ App.getInitialProps = async ({
 Use the `getInitialProps` static method to precompile CSS from css-in-js libraries such as [styled-components][sc]
 
 ```jsx
-// CXS
-import React from 'react'
-import cxs from 'cxs/component'
-
-const Heading = cxs('h1')({
-  color: 'tomato'
-})
-
-const App = props => (
-  <div>
-    <style
-      dangerouslySetInnerHTML={{
-        __html: props.css
-      }}
-    />
-    <Heading>Hello</Heading>
-  </div>
-)
-
-App.getInitialProps = async () => {
-  const css = cxs.css()
-  return { css }
-}
-```
-
-```jsx
 // styled-components
 import React from 'react'
 import styled from 'styled-components'
@@ -147,12 +121,37 @@ App.getInitialProps = async ({
 }
 ```
 
-## Routing
+```jsx
+// CXS
+import React from 'react'
+import cxs from 'cxs/component'
+
+const Heading = cxs('h1')({
+  color: 'tomato'
+})
+
+const App = props => (
+  <div>
+    <style
+      dangerouslySetInnerHTML={{
+        __html: props.css
+      }}
+    />
+    <Heading>Hello</Heading>
+  </div>
+)
+
+App.getInitialProps = async () => {
+  const css = cxs.css()
+  return { css }
+}
+```
+
 
 ## Head content
 
 Head elements such as `<title>`, `<meta>`, and `<style>` can be rendered at the beginning of a component.
-Browsers will handle this correctly since the `<head>` and `<body>` elements are optional in HTML 5.
+Browsers should handle this correctly since the `<head>` and `<body>` elements are optional in HTML 5.
 
 ```jsx
 const App = props => (
@@ -166,6 +165,16 @@ const App = props => (
 )
 ```
 
+Returning an array of elements also works.
+
+```jsx
+const App = props => [
+  <title>Hello</title>,
+  <div>
+    <h1>Hello</h1>
+  </div>
+]
+```
 
 
 ## Configuration
@@ -179,7 +188,7 @@ Default props can be passed to x0 in a `package.json` field named `x0`.
 }
 ```
 
-## Rendering Multiple Pages
+## Routing
 
 To render multiple pages and use routing, add a `routes` array to the `package.json` configuration object.
 
@@ -194,6 +203,36 @@ To render multiple pages and use routing, add a `routes` array to the `package.j
 
 ```sh
 x0 static src/App.js --out-dir site
+```
+
+For easier integration with [react-router][react-router], use the x0 Router component, which handles universal rendering.
+
+```jsx
+import React from 'react'
+import Router from '@compositor/x0/Router'
+import { Route, Link } from 'react-router-dom'
+import Home from './Home'
+import About from './About'
+
+const App = props => (
+  <Router
+    basename={props.basename}
+    location={props.pathname}>
+    <nav>
+      <Link to='/'>Home</Link>
+      <Link to='/about'>About</Link>
+    </nav>
+    <Route
+      exact
+      path='/'
+      render={() => <Home {...props} />}
+    />
+    <Route
+      path='/about'
+      render={() => <About {...props} />}
+    />
+  </Router>
+)
 ```
 
 MIT License

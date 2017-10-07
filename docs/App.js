@@ -49,7 +49,6 @@ const App = connect(props => (
       children='+'
     />
     <Router
-      context={{}}
       basename={props.basename}
       location={props.pathname}>
       <nav>
