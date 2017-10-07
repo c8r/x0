@@ -1,5 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { ServerStyleSheet } from 'styled-components'
+import connect from 'refunk'
+
+const css = `*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0}`
 
 const Root = styled('div')([], {
   padding: '48px'
@@ -29,13 +34,32 @@ Button.defaultProps = {
   color: '#07c'
 }
 
-const App = props => (
+const dec = state => ({ count: state.count - 1 })
+const inc = state => ({ count: state.count + 1 })
+
+const App = connect(props => (
   <Root>
-    <Heading>Hello styled-components</Heading>
-    <Button>
-      Beep
-    </Button>
+    {props.styles}
+    <div id='app'>
+      <title>x0 styled-components {props.count}</title>
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <Heading>Hello x0 styled-components</Heading>
+      <Button onClick={e => props.update(inc)}>
+        Beep {props.count}
+      </Button>
+    </div>
   </Root>
-)
+))
+
+App.defaultProps = {
+  count: 0
+}
+
+App.renderStatic = ({ Component, props }) => {
+  const sheet = new ServerStyleSheet()
+  sheet.collectStyles(<Component {...props} />)
+  const styles = sheet.getStyleElement()
+  return { styles }
+}
 
 export default App
