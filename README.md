@@ -57,6 +57,14 @@ Options
   -s --static     Only render static HTML (no client-side JS)
 ```
 
+## Fetching Data
+
+## CSS-in-JS
+
+## Routing
+
+## Head content
+
 <!--
 ## Custom Root HTML Component
 
