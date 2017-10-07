@@ -8,11 +8,11 @@ const Style = ({ css = '' }) => (
   />
 )
 
+  // font-family: 'Roboto Mono', Menlo, monospace;
 const base = `
 *{box-sizing:border-box}
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-family: 'Roboto Mono', Menlo, monospace;
   line-height: 1.5;
   color: white;
   background-color: black;

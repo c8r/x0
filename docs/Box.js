@@ -1,4 +1,4 @@
-import styled from 'cxs/component'
+import styled from 'cxs/x'
 import {
   space,
   width,
@@ -15,5 +15,7 @@ Box.propTypes = {
   ...propTypes.fontSize,
   ...propTypes.color
 }
+
+Box.displayName = 'Box'
 
 export default Box

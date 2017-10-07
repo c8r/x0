@@ -1,20 +1,23 @@
-import styled from 'cxs/component'
+import styled from 'cxs/x'
 import {
   alignItems,
   justifyContent,
-  wrap,
+  flexWrap,
   propTypes
 } from 'styled-system'
 import Box from './Box'
 
 const Flex = styled(Box)({
   display: 'flex'
-}, alignItems, justifyContent, wrap)
+}, alignItems, justifyContent, flexWrap)
+
 
 Flex.propTypes = {
   ...propTypes.alignItems,
   ...propTypes.justifyContent,
-  ...propTypes.wrap
+  ...propTypes.flexWrap
 }
+
+Flex.displayName = 'Flex'
 
 export default Flex
