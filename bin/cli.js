@@ -3,6 +3,8 @@ const path = require('path')
 const meow = require('meow')
 const { pkg } = require('read-pkg-up').sync()
 const open = require('opn')
+const ora = require('ora')
+const chalk = require('chalk')
 
 const x0Pkg = require('../package.json')
 
@@ -43,12 +45,16 @@ const absolute = f => f
 
 const filename = absolute(file)
 
+console.log(chalk.black.bgCyan(' x0 '), chalk.cyan('@compositor/x0'), '\n')
+const spinner = ora().start()
+
 switch (cmd) {
   case 'dev':
+    spinner.start('starting dev server')
     let opened = false
     const dev = require('../lib/dev')
     dev(filename, options, (err, port) => {
-      console.log(`Development server listening at http://localhost:${port}`)
+      spinner.succeed(`dev server listening at http://localhost:${port}`)
       if (!opened && options.open) {
         open(`http://localhost:${port}`)
         opened = true
@@ -56,20 +62,22 @@ switch (cmd) {
     })
     break
   case 'build':
+    spinner.start('building static site')
     const build = require('../lib/static')
     build(filename, options, (err, html) => {
       if (err) {
-        console.log('Error')
+        spinner.fail('Error')
         console.log(err)
         process.exit(1)
       }
       if (!options.outDir) {
         console.log(html)
       } else {
-        console.log(`Static page rendered to ${options.outDir}`)
+        spinner.succeed(`static site saved to ${options.outDir}`)
       }
     })
     break
   default:
+    spinner.fail('no argument provided')
     process.exit(0)
 }

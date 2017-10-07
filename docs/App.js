@@ -33,7 +33,6 @@ const Style = ({ css }) => (
   />
 )
 
-
 const App = connect(props => (
   <div>
     <title>Hi x0</title>
