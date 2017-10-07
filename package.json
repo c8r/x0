@@ -1,7 +1,7 @@
 {
   "name": "@compositor/x0",
   "version": "2.0.0-0",
-  "description": "Zero-config React renderer and CLI",
+  "description": "Zero-config React development environment and static site generator",
   "main": "index.js",
   "bin": {
     "x0": "bin/cli.js"
@@ -38,18 +38,16 @@
   },
   "devDependencies": {
     "ava": "^0.22.0",
-    "cxs": "^6.0.0",
+    "cxs": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
     "nyc": "^11.2.1",
     "refunk": "^2.0.0-1"
   },
   "x0": {
-    "title": "X0",
-    "count": 32,
-    "basename": "/docs",
+    "title": "Compositor x0",
+    "basename": "/x0",
     "routes": [
-      "/",
-      "debug"
+      "/"
     ]
   },
   "ava": {
@@ -58,7 +56,9 @@
       "!test/components",
       "!test/output"
     ],
-    "require": [ "babel-register" ],
+    "require": [
+      "babel-register"
+    ],
     "babel": {
       "presets": [
         "env",
