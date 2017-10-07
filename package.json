@@ -34,14 +34,16 @@
     "read-pkg-up": "^2.0.0",
     "update-notifier": "^2.2.0",
     "webpack": "^3.5.6",
-    "webpack-dev-server": "2.7.1"
+    "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
+    "@compositor/logo": "^1.2.2",
     "ava": "^0.22.0",
     "cxs": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
     "nyc": "^11.2.1",
-    "refunk": "^2.0.0-1"
+    "refunk": "^2.0.0-1",
+    "styled-system": "^1.0.7"
   },
   "x0": {
     "title": "Compositor x0",
