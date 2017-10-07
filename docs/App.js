@@ -1,12 +1,21 @@
 import React from 'react'
-import { createProvider } from 'refunk'
+import connect from 'refunk'
 import Title from './Title'
 import cxs from 'cxs/component'
+import Router from '../lib/Router'
+
+const { Route, Link } = Router
 
 const dec = state => ({ count: state.count - 1 })
 const inc = state => ({ count: state.count + 1 })
 
 const Debug = props => <pre children={JSON.stringify(props, null, 2)} />
+
+const Home = props => (
+  <div>
+    <h2>Home</h2>
+  </div>
+)
 
 const css = `
 *{box-sizing:border-box}
@@ -24,7 +33,8 @@ const Style = ({ css }) => (
   />
 )
 
-const App = createProvider()(props => (
+
+const App = connect(props => (
   <div>
     <title>Hi x0</title>
     <meta charSet='utf-8' />
@@ -39,7 +49,21 @@ const App = createProvider()(props => (
       onClick={e => props.update(inc)}
       children='+'
     />
-    <Debug {...props} />
+    <Router
+      context={{}}
+      basename={props.basename}
+      location={props.pathname}>
+      <nav>
+        <Link to='/'>Home</Link>
+        <Link to='/debug'>Debug</Link>
+      </nav>
+      <Route exact path='/'
+        component={Home}
+      />
+      <Route path='/debug'
+        render={() => <Debug {...props} />}
+      />
+    </Router>
   </div>
 ))
 
