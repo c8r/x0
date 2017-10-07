@@ -9,7 +9,8 @@
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js -op 8888",
     "build": "./bin/cli.js build docs/App.js",
-    "test": "./bin/cli.js build docs/App.js --html docs/Root.js -d docs"
+    "_test": "./bin/cli.js build docs/App.js --html docs/Root.js -d docs",
+    "test": "./bin/cli.js build docs/App.js -d docs"
   },
   "keywords": [],
   "author": "Brent Jackson",
@@ -37,11 +38,7 @@
   },
   "x0": {
     "title": "X0",
-    "count": 2,
-    "baseurl": "/docs",
-    "_routes": [
-      "/",
-      "/about"
-    ]
+    "count": 32,
+    "baseurl": "/docs"
   }
 }

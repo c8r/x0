@@ -8,14 +8,29 @@ const inc = state => ({ count: state.count + 1 })
 
 const Debug = props => <pre children={JSON.stringify(props, null, 2)} />
 
+const css = `
+*{box-sizing:border-box}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+}
+`
+
+const Style = ({ css }) => (
+  <style
+    dangerouslySetInnerHTML={{
+      __html: css
+    }}
+  />
+)
+
 const App = props => (
   <div>
-    <title>Hello x0</title>
+    <title>Hi x0</title>
     <meta charSet='utf-8' />
-    <style>{`body{background-color:gray}`}</style>
-    <Title>
-      Hello {props.count}
-    </Title>
+    <Style css={css} />
+
+    <Title>Hello {props.count}</Title>
     <button
       onClick={e => props.update(dec)}
       children='-'
