@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js -op 8888",
-    "build": "./bin/cli.js build docs/App.js",
-    "test": "./bin/cli.js build docs/App.js -d docs",
-    "_test": "./bin/cli.js build docs/App.js "
+    "build": "./bin/cli.js build docs/App.js -d docs",
+    "test": "nyc ava",
+    "cover": "nyc report --reporter=html --reporter=lcov"
   },
   "keywords": [],
   "author": "Brent Jackson",
@@ -37,10 +37,10 @@
     "webpack-dev-server": "2.7.1"
   },
   "devDependencies": {
+    "ava": "^0.22.0",
     "cxs": "^6.0.0",
-    "got": "^7.1.0",
     "isomorphic-fetch": "^2.2.1",
-    "node-fetch": "^1.7.3",
+    "nyc": "^11.2.1",
     "refunk": "^2.0.0-1"
   },
   "x0": {
@@ -51,5 +51,23 @@
       "/",
       "debug"
     ]
+  },
+  "ava": {
+    "files": [
+      "test/*",
+      "!test/components",
+      "!test/output"
+    ],
+    "require": [ "babel-register" ],
+    "babel": {
+      "presets": [
+        "env",
+        "stage-0",
+        "react"
+      ],
+      "plugins": [
+        "transform-runtime"
+      ]
+    }
   }
 }
