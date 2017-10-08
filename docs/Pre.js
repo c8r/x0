@@ -1,13 +1,18 @@
 import styled from 'cxs/x'
-import { color, propTypes } from 'styled-system'
+import { fontSize, color, propTypes } from 'styled-system'
 
 const Pre = styled('pre')({
   fontFamily: '"Roboto Mono", Menlo, monospace',
-  fontSize: 'inherit',
   margin: 0,
-}, color)
+  padding: 0,
+}, fontSize, color)
+
+Pre.defaultProps = {
+  f: 'inherit'
+}
 
 Pre.propTypes = {
+  ...propTypes.fontSize,
   ...propTypes.color
 }
 

@@ -1,4 +1,4 @@
-import cxs from 'cxs/component'
+import cxs from 'cxs/x'
 import { space } from 'styled-system'
 
 const Title = cxs('h1')({
@@ -8,7 +8,8 @@ const Title = cxs('h1')({
   fontWeight: 400,
   display: 'inline-block',
   color: 'black',
-  backgroundColor: 'cyan'
+  backgroundColor: 'cyan',
+  borderRadius: '8px'
 }, space)
 
 Title.defaultProps = {

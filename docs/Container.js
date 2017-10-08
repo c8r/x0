@@ -2,11 +2,11 @@ import styled from 'cxs/x'
 import Box from './Box'
 
 const Container = styled(Box)({
-  maxWidth: '1024px'
+  maxWidth: '768px'
 })
 
 Container.defaultProps = {
-  px: 3,
+  px: [ 2, 3 ],
   mx: 'auto'
 }
 
