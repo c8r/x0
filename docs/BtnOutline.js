@@ -3,8 +3,8 @@ import Btn from './Btn'
 
 const BtnOutline = styled(Btn)({
   boxShadow: 'inset 0 0 0 2px',
-  color: 'inherit',
-  backgroundColor: 'transparent',
+  color: 'inherit !important',
+  backgroundColor: 'transparent !important',
 })
 
 export default BtnOutline

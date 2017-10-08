@@ -12,7 +12,7 @@ npm install @compositor/x0
 ## Features
 
 - Hot-loading development environment
-- Works with any React component\*
+- Works with virtually any React component\*
 - No convoluted APIs
 - Renders static HTML
 - Renders JS bundles

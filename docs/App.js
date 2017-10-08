@@ -39,7 +39,7 @@ const App = (props => [
               color='white'
               backgroundColor='black'
             />
-            <Caps f='10px' fontWeight='bold'>
+            <Caps f='10px' fontWeight='600'>
               Compositor
             </Caps>
           </Flex>
@@ -56,12 +56,12 @@ const App = (props => [
     <header>
       <Box pt={4} pb={3}>
         <Title>x0</Title>
-        <Text f={3} mb={2}>{pkg.description}</Text>
+        <Text fontWeight='600' f={3} mb={2}>{pkg.description}</Text>
         <Mono f={0}>v{pkg.version}</Mono>
       </Box>
     </header>
     <main>
-      <Box bg='rgba(255,255,255,.125)'>
+      <Box>
         <Video
           loop
           autoPlay
@@ -73,7 +73,7 @@ const App = (props => [
       </Box>
       <section id='features'>
         <Box py={4}>
-          <Text f={4} mb={2} fontWeight='bold'>Features</Text>
+          <Text f={4} mb={2} fontWeight='600'>Features</Text>
           <Flex wrap mx={-2}>
             {props.features.map(feat => (
               <Box
@@ -81,7 +81,7 @@ const App = (props => [
                 w={[ 1, 1/2, 1/2 ]}
                 px={2}
                 py={1}>
-                <Text>
+                <Text fontWeight='600'>
                   {feat}
                 </Text>
               </Box>
@@ -91,7 +91,7 @@ const App = (props => [
       </section>
       <section id='get-started'>
         <Box py={4}>
-          <Text f={4} fontWeight='bold'>Get Started</Text>
+          <Text f={4} fontWeight='600'>Get Started</Text>
           <Text mb={3}>Read the docs and get started on GitHub or sign up for updates.</Text>
           <Btn mr={2} href='https://github.com/c8r/x0'>
             Documentation
@@ -102,7 +102,7 @@ const App = (props => [
         </Box>
       </section>
       <footer>
-        <Flex py={3}>
+        <Flex pt={4} pb={3}>
           <Text f={0}>© 2017 Compositor, Inc.</Text>
         </Flex>
       </footer>

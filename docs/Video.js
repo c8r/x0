@@ -4,8 +4,7 @@ const Video = styled('video')({
   display: 'block',
   width: '100%',
   height: 'auto',
-  margin: 0,
-  borderRadius: '8px'
+  margin: 0
 })
 
 export default Video
