@@ -16,6 +16,7 @@ import NavLink from './NavLink'
 import Title from './Title'
 import Video from './Video'
 import Btn from './Btn'
+import BtnOutline from './BtnOutline'
 import Tweet from './Tweet'
 
 const App = (props => [
@@ -38,7 +39,7 @@ const App = (props => [
               color='white'
               backgroundColor='black'
             />
-            <Caps f={0} fontWeight='bold'>
+            <Caps f='10px' fontWeight='bold'>
               Compositor
             </Caps>
           </Flex>
@@ -91,10 +92,13 @@ const App = (props => [
       <section id='get-started'>
         <Box py={4}>
           <Text f={4} fontWeight='bold'>Get Started</Text>
-          <Text mb={3}>Read the docs and get started on</Text>
-          <Btn href='https://github.com/c8r/x0'>
-            GitHub
+          <Text mb={3}>Read the docs and get started on GitHub or sign up for updates.</Text>
+          <Btn mr={2} href='https://github.com/c8r/x0'>
+            Documentation
           </Btn>
+          <BtnOutline href='https://compositor.io/#sign-up'>
+            Sign Up
+          </BtnOutline>
         </Box>
       </section>
       <footer>

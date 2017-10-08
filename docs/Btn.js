@@ -1,4 +1,5 @@
 import styled from 'cxs/x'
+import { space, propTypes } from 'styled-system'
 
 const Btn = styled('a')({
   display: 'inline-block',
@@ -15,6 +16,10 @@ const Btn = styled('a')({
   backgroundColor: 'white',
   border: 0,
   borderRadius: '8px'
-})
+}, space)
+
+Btn.propTypes = {
+  ...propTypes.space
+}
 
 export default Btn
