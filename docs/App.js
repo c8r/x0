@@ -58,6 +58,9 @@ const App = (props => [
         <Title>x0</Title>
         <Text fontWeight='600' f={3} mb={2}>{pkg.description}</Text>
         <Mono f={0}>v{pkg.version}</Mono>
+        {props.tracks && (
+          <pre children={JSON.stringify(props.tracks)}/>
+        )}
       </Box>
     </header>
     <main>
@@ -130,16 +133,18 @@ App.defaultProps = {
 }
 
 App.getInitialProps = async ({ Component, html, pathname }) => {
-  // const fetch = require('isomorphic-fetch')
-  // const endpoint = 'https://microbeats.now.sh/tracks'
-  // const microbeats = await fetch(endpoint)
-  // const tracks = await microbeats.json()
+  const fetch = require('isomorphic-fetch')
+  const endpoint = 'https://microbeats.now.sh/tracks'
+  const microbeats = await fetch(endpoint)
+  const tracks = await microbeats.json()
+
   const css = cxs.css()
   cxs.reset()
 
   return {
+    hello: 'hi',
     css,
-    // tracks
+    tracks
   }
 }
 
