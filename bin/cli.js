@@ -54,6 +54,10 @@ switch (cmd) {
     let opened = false
     const dev = require('../lib/dev')
     dev(filename, options, (err, port) => {
+      if (err) {
+        spinner.fail(err)
+        process.exit(1)
+      }
       spinner.succeed(`dev server listening at http://localhost:${port}`)
       if (!opened && options.open) {
         open(`http://localhost:${port}`)
@@ -69,8 +73,7 @@ switch (cmd) {
         spinner.fail('Error')
         console.log(err)
         process.exit(1)
-      }
-      if (!options.outDir) {
+      } else if (!options.outDir) {
         console.log(html)
       } else {
         spinner.succeed(`static site saved to ${options.outDir}`)
