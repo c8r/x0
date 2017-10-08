@@ -133,10 +133,10 @@ App.defaultProps = {
 }
 
 App.getInitialProps = async ({ Component, html, pathname }) => {
-  const fetch = require('isomorphic-fetch')
-  const endpoint = 'https://microbeats.now.sh/tracks'
-  const microbeats = await fetch(endpoint)
-  const tracks = await microbeats.json()
+  // const fetch = require('isomorphic-fetch')
+  // const endpoint = 'https://microbeats.now.sh/tracks'
+  // const microbeats = await fetch(endpoint)
+  // const tracks = await microbeats.json()
 
   const css = cxs.css()
   cxs.reset()
@@ -144,7 +144,7 @@ App.getInitialProps = async ({ Component, html, pathname }) => {
   return {
     hello: 'hi',
     css,
-    tracks
+    // tracks
   }
 }
 
