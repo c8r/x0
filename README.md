@@ -1,7 +1,9 @@
 
 # x0
 
-Zero-config React renderer and CLI
+Zero-config React development environment and static site generator
+
+https://compositor.io/x0
 
 ```sh
 npm install @compositor/x0
@@ -10,12 +12,15 @@ npm install @compositor/x0
 ## Features
 
 - Hot-loading development environment
+- Works with virtually any React component\*
+- No convoluted APIs
 - Renders static HTML
 - Renders JS bundles
 - Use any CSS-in-JS library
-- Works with any React component *
+- Routing with [react-router][react-router]
+- Async data fetching
 
-* Components cannot rely on bundler features like webpack loaders
+\* Components cannot rely on bundler features like webpack loaders
 
 
 ## Isolated development environment
@@ -38,75 +43,145 @@ x0 dev src/App.js -op 8080
 
 ## Static Render
 
-Render a static HTML page
-
-```sh
-x0 build src/App.js > site/index.html
-```
-
-Render a static page with client-side bundle
+Render static HTML and client-side bundle
 
 ```sh
 x0 build src/App.js --out-dir site
 ```
 
-Render with a custom root HTML component to control CSS, routing, etc.
+Render static HTML without bundle
 
-```
-x0 build src/App.js --html src/Html.js
+```sh
+x0 build src/App.js --out-dir site --static
 ```
 
 Options
 
 ```
-  -h --html       Root HTML component
   -d --out-dir    Directory to save index.html and bundle.js to
   -s --static     Only render static HTML (no client-side JS)
 ```
 
-## Custom Root HTML Component
+## Fetching Data
 
-To handle things like routing and CSS-in-JS libraries, use a custom HTML component.
-When an HTML component isn't specified as an option, X0 uses a default HTML component.
-This same component can be imported and customized via props.
+Use the `getInitialProps` static method to fetch data for static rendering.
+This method was inspired by [Next.js][nextjs] but only works for static rendering.
 
 ```jsx
-// custom root HTML component
-import React from 'react'
-import { Html } from 'x0'
-import cxs from 'cxs'
+const App = props => (
+  <h1>Hello {props.data}</h1>
+)
 
-const Root = props => {
-  // get static CSS string from rendered app
-  const css = cxs.css()
+App.getInitialProps = async ({
+  Component,
+  html,
+  pathname
+}) => {
+  const fetch = require('isomorphic-fetch')
+  const res = await fetch('http://example.com/data')
+  const data = await res.json()
 
-  return (
-    <Html
-      {...props}
-      css={css}
-    />
-  )
+  return { data }
 }
-
-export default Root
 ```
 
-The `Html` component accepts the following props.
+## CSS-in-JS
 
-- `title`
-- `description`
-- `image`
-- `css`
-- `js`
-- `stylesheets` (array)
-- `scripts` (array)
-- `initialProps` (object)
-- `children`
+Use the `getInitialProps` static method to precompile CSS from css-in-js libraries such as [styled-components][sc]
+
+```jsx
+// styled-components
+import React from 'react'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+  color: tomato;
+`
+
+const App = props => [
+  props.styles && (
+    <head
+      dangerouslySetInnerHTML={{
+        __html: props.styles
+      }}
+    />
+  ),
+  <div>
+    <Heading>Hello</Heading>
+  </div>
+]
+
+App.getInitialProps = async ({
+  Component,
+  props
+}) => {
+  const { ServerStyleSheet } = require('styled-components')
+  const sheet = new ServerStyleSheet()
+  sheet.collectStyles(<Component {...props} />)
+  const styles = sheet.getStyleTags()
+  return { styles }
+}
+```
+
+```jsx
+// CXS
+import React from 'react'
+import cxs from 'cxs/component'
+
+const Heading = cxs('h1')({
+  color: 'tomato'
+})
+
+const App = props => (
+  <div>
+    <style
+      dangerouslySetInnerHTML={{
+        __html: props.css
+      }}
+    />
+    <Heading>Hello</Heading>
+  </div>
+)
+
+App.getInitialProps = async () => {
+  const css = cxs.css()
+  return { css }
+}
+```
+
+
+## Head content
+
+Head elements such as `<title>`, `<meta>`, and `<style>` can be rendered at the beginning of a component.
+Browsers should handle this correctly since the `<head>` and `<body>` elements are optional in HTML 5.
+
+```jsx
+const App = props => (
+  <div>
+    <title>Hello x0</title>
+    <style dangerouslySetInnerHTML={{
+      __html: 'body{font-family:-apple-system,BlinkMacSystemFont,sans-serif}'
+    }} />
+    <h1>Hello x0</h1>
+  </div>
+)
+```
+
+Returning an array of elements also works.
+
+```jsx
+const App = props => [
+  <title>Hello</title>,
+  <div>
+    <h1>Hello</h1>
+  </div>
+]
+```
+
 
 ## Configuration
 
-Other configuration options can be passed to x0 in a `package.json`
-field named `x0`.
+Default props can be passed to x0 in a `package.json` field named `x0`.
 
 ```json
 "x0": {
@@ -115,7 +190,7 @@ field named `x0`.
 }
 ```
 
-## Rendering Multiple Pages
+## Routing
 
 To render multiple pages and use routing, add a `routes` array to the `package.json` configuration object.
 
@@ -128,37 +203,42 @@ To render multiple pages and use routing, add a `routes` array to the `package.j
 }
 ```
 
-In your main app component, use a library like react-router to handle the routes.
-When rendering statically, the path will be passed to both the app component and the root HTML component as the `pathname` prop.
+```sh
+x0 static src/App.js --out-dir site
+```
+
+For easier integration with [react-router][react-router], use the x0 Router component, which handles universal rendering.
 
 ```jsx
-// main app component
 import React from 'react'
-import { BrowserRouter } from 'react-router'
+import Router from '@compositor/x0/Router'
+import { Route, Link } from 'react-router-dom'
+import Home from './Home'
+import About from './About'
 
 const App = props => (
-  <BrowserRouter>
-    {/* ...handle child routes */}
-  </BrowserRouter>
+  <Router
+    basename={props.basename}
+    location={props.pathname}>
+    <nav>
+      <Link to='/'>Home</Link>
+      <Link to='/about'>About</Link>
+    </nav>
+    <Route
+      exact
+      path='/'
+      render={() => <Home {...props} />}
+    />
+    <Route
+      path='/about'
+      render={() => <About {...props} />}
+    />
+  </Router>
 )
-```
-
-```jsx
-// root component
-import React from 'react'
-import { StaticRouter } from 'react-router'
-import { Html } from '@compositor/x0'
-
-const Root = props => (
-  <StaticRouter location={props.pathname}>
-    <Html {...props} />
-  </StaticRouter>
-)
-```
-
-```sh
-x0 static src/App.js --html src/Root.js --out-dir site
 ```
 
 MIT License
 
+[nextjs]: https://github.com/zeit/next.js
+[react-router]: https://github.com/ReactTraining/react-router
+[sc]: https://github.com/styled-components/styled-components
