@@ -33,6 +33,7 @@ const cli = meow(`
     s: 'static',
     p: 'port',
     o: 'open',
+    h: 'help'
   }
 })
 
