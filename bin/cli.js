@@ -36,8 +36,7 @@ const cli = meow(`
     p: 'port',
     o: 'open',
     h: 'help',
-    v: 'version',
-    px: 'proxy'
+    v: 'version'
   }
 })
 
