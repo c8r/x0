@@ -27,7 +27,7 @@ const cli = meow(`
 
     -o --open     Open dev server in default browser
 
-    -px --proxy   Proxy requests to another server (only for dev)
+    -x --proxy   Proxy requests to another server (only for dev)
 
 `, {
   alias: {
