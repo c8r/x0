@@ -64,7 +64,10 @@ test.cb('static picks up routes config', t => {
 })
 
 test.cb('static makes a directory', t => {
-  fs.rmdirSync(output)
+  if (fs.existsSync(output)) {
+    fs.rmdirSync(output)
+  }
+
   x0Static(hello, {
     outDir: 'test/output'
   }, (err, result) => {
