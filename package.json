@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js -op 8888",
-    "_build": "./bin/cli.js build docs/App.js -d docs",
     "build": "./bin/cli.js build docs/App.js --static -d docs",
     "test": "nyc ava",
     "cover": "nyc report --reporter=html --reporter=lcov"
