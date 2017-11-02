@@ -6,6 +6,8 @@ const open = require('opn')
 const ora = require('ora')
 const chalk = require('chalk')
 
+const publish = require('@compositor/publish')
+
 const x0Pkg = require('../package.json')
 
 require('update-notifier')({ pkg: x0Pkg }).notify()
@@ -27,12 +29,21 @@ const cli = meow(`
 
     -o --open     Open dev server in default browser
 
+    -u --publish  Publish site to a unique url
+
+    --proxy       Proxy requests to another server (only for dev)
+
+    --proxy-path  Path to proxy, default: /api
+
 `, {
   alias: {
     d: 'outDir',
     s: 'static',
     p: 'port',
     o: 'open',
+    h: 'help',
+    v: 'version',
+    u: 'publish'
   }
 })
 
@@ -68,7 +79,7 @@ switch (cmd) {
   case 'build':
     spinner.start('building static site')
     const build = require('../lib/static')
-    build(filename, options, (err, html) => {
+    build(filename, options, async (err, html) => {
       if (err) {
         spinner.fail('Error')
         console.log(err)
@@ -77,6 +88,23 @@ switch (cmd) {
         console.log(html)
       } else {
         spinner.succeed(`static site saved to ${options.outDir}`)
+
+        if (options.publish && !options.outDir) {
+          spinner.fail('--out-dir option must be specified for publish')
+        } else if (options.publish) {
+          spinner.start('publishing')
+
+          try {
+            const { uploads, url }  = await publish.dir(options.outDir)
+            await uploads // Eventually we probably want to loop and post status
+
+            spinner.succeed(`published to ${url}`)
+          } catch (e) {
+            spinner.fail('Error')
+            console.log(err)
+            process.exit(1)
+          }
+        }
       }
     })
     break
