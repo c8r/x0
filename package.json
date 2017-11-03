@@ -6,6 +6,9 @@
   "bin": {
     "x0": "bin/cli.js"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js -op 8888",
     "build": "./bin/cli.js build docs/App.js --static -d docs",
