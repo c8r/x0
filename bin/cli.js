@@ -3,6 +3,10 @@ const path = require('path')
 const meow = require('meow')
 const { pkg } = require('read-pkg-up').sync()
 const open = require('opn')
+const ora = require('ora')
+const chalk = require('chalk')
+
+const publish = require('@compositor/publish')
 
 const x0Pkg = require('../package.json')
 
@@ -18,8 +22,6 @@ Hello
 
   Options:
 
-    -h --html     Root HTML component for wrapping the app component
-
     -d --out-dir  Output directory for static build
 
     -s --static   Render static HTML without client-side JS
@@ -28,13 +30,21 @@ Hello
 
     -o --open     Open dev server in default browser
 
+    -u --publish  Publish site to a unique url
+
+    --proxy       Proxy requests to another server (only for dev)
+
+    --proxy-path  Path to proxy, default: /api
+
 `, {
   alias: {
-    h: 'html',
     d: 'outDir',
     s: 'static',
     p: 'port',
     o: 'open',
+    h: 'help',
+    v: 'version',
+    u: 'publish'
   }
 })
 
@@ -47,12 +57,20 @@ const absolute = f => f
 
 const filename = absolute(file)
 
+console.log(chalk.black.bgCyan(' x0 '), chalk.cyan('@compositor/x0'), '\n')
+const spinner = ora().start()
+
 switch (cmd) {
   case 'dev':
+    spinner.start('starting dev server')
     let opened = false
     const dev = require('../lib/dev')
     dev(filename, options, (err, port) => {
-      console.log(`Development server listening at http://localhost:${port}`)
+      if (err) {
+        spinner.fail(err)
+        process.exit(1)
+      }
+      spinner.succeed(`dev server listening at http://localhost:${port}`)
       if (!opened && options.open) {
         open(`http://localhost:${port}`)
         opened = true
@@ -60,15 +78,38 @@ switch (cmd) {
     })
     break
   case 'build':
+    spinner.start('building static site')
     const build = require('../lib/static')
-    build(filename, options, (err, html) => {
-      if (!options.outDir) {
+    build(filename, options, async (err, html) => {
+      if (err) {
+        spinner.fail('Error')
+        console.log(err)
+        process.exit(1)
+      } else if (!options.outDir) {
         console.log(html)
       } else {
-        console.log(`Static page rendered to ${options.outDir}`)
+        spinner.succeed(`static site saved to ${options.outDir}`)
+
+        if (options.publish && !options.outDir) {
+          spinner.fail('--out-dir option must be specified for publish')
+        } else if (options.publish) {
+          spinner.start('publishing')
+
+          try {
+            const { uploads, url }  = await publish.dir(options.outDir)
+            await uploads // Eventually we probably want to loop and post status
+
+            spinner.succeed(`published to ${url}`)
+          } catch (e) {
+            spinner.fail('Error')
+            console.log(err)
+            process.exit(1)
+          }
+        }
       }
     })
     break
   default:
+    spinner.fail('no argument provided')
     process.exit(0)
 }
