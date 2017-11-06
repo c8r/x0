@@ -49,10 +49,7 @@
   },
   "x0": {
     "title": "Compositor x0",
-    "_basename": "/x0",
-    "routes": [
-      "/"
-    ]
+    "_basename": "/x0"
   },
   "ava": {
     "files": [
