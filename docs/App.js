@@ -138,7 +138,7 @@ App.getInitialProps = async ({ Component, html, pathname }) => {
 
   return {
     hello: 'hi',
-    css,
+    css
   }
 }
 
