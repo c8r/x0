@@ -129,8 +129,7 @@ App.defaultProps = {
     'Routing with react-router',
     'Works with CSS-in-JS libraries like styled-components',
     'Support for async data fetching',
-  ],
-  // routes: [ '/', '/hello', '/hi' ]
+  ]
 }
 
 App.getInitialProps = async ({ Component, html, pathname }) => {
