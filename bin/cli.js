@@ -13,6 +13,7 @@ const x0Pkg = require('../package.json')
 require('update-notifier')({ pkg: x0Pkg }).notify()
 
 const cli = meow(`
+
   Usage:
 
     $ x0 dev src/App.js
