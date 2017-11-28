@@ -64,11 +64,12 @@ switch (cmd) {
     spinner.start('starting dev server')
     let opened = false
     const dev = require('../lib/dev')
-    dev(filename, options, (err, port) => {
+    dev(filename, options, (err, server) => {
       if (err) {
         spinner.fail(err)
         process.exit(1)
       }
+      const { port } = server.listeningApp.address()
       spinner.succeed(`dev server listening at http://localhost:${port}`)
       if (!opened && options.open) {
         open(`http://localhost:${port}`)
