@@ -64,50 +64,54 @@ switch (cmd) {
     spinner.start('starting dev server')
     let opened = false
     const dev = require('../lib/dev')
-    dev(filename, options, (err, server) => {
-      if (err) {
+    dev(filename, options)
+      .then(server => {
+        const { port } = server.listeningApp.address()
+        spinner.succeed(`dev server listening at http://localhost:${port}`)
+        if (!opened && options.open) {
+          open(`http://localhost:${port}`)
+          opened = true
+        }
+      })
+      .catch(err => {
         spinner.fail(err)
         process.exit(1)
-      }
-      const { port } = server.listeningApp.address()
-      spinner.succeed(`dev server listening at http://localhost:${port}`)
-      if (!opened && options.open) {
-        open(`http://localhost:${port}`)
-        opened = true
-      }
-    })
+      })
     break
   case 'build':
     spinner.start('building static site')
     const build = require('../lib/static')
-    build(filename, options, async (err, html) => {
-      if (err) {
+    build(filename, options)
+      .then(async html => {
+        if (!options.outDir) {
+          console.log(html)
+        } else {
+          spinner.succeed(`static site saved to ${options.outDir}`)
+
+          if (options.publish && !options.outDir) {
+            spinner.fail('--out-dir option must be specified for publish')
+          } else if (options.publish) {
+            spinner.start('publishing')
+
+            try {
+              const { uploads, url }  = await publish.dir(options.outDir)
+              await uploads // Eventually we probably want to loop and post status
+
+              spinner.succeed(`published to ${url}`)
+            } catch (e) {
+              spinner.fail('Error')
+              console.log(err)
+              process.exit(1)
+            }
+          }
+        }
+      })
+      .catch(err => {
         spinner.fail('Error')
         console.log(err)
         process.exit(1)
-      } else if (!options.outDir) {
-        console.log(html)
-      } else {
-        spinner.succeed(`static site saved to ${options.outDir}`)
+      })
 
-        if (options.publish && !options.outDir) {
-          spinner.fail('--out-dir option must be specified for publish')
-        } else if (options.publish) {
-          spinner.start('publishing')
-
-          try {
-            const { uploads, url }  = await publish.dir(options.outDir)
-            await uploads // Eventually we probably want to loop and post status
-
-            spinner.succeed(`published to ${url}`)
-          } catch (e) {
-            spinner.fail('Error')
-            console.log(err)
-            process.exit(1)
-          }
-        }
-      }
-    })
     break
   default:
     spinner.fail('no argument provided')
