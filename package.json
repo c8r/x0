@@ -67,12 +67,12 @@
     ],
     "babel": {
       "presets": [
-        "env",
-        "stage-0",
-        "react"
+        "@babel/preset-env",
+        "@babel/preset-stage-0",
+        "@babel/preset-react"
       ],
       "plugins": [
-        "transform-runtime"
+        "@babel/plugin-transform-runtime"
       ]
     }
   }
