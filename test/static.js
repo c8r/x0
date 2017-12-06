@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import test from 'ava'
 import x0Static from '../lib/static'
+import test from 'ava'
 
 const hello = path.join(__dirname, './components/Hello.js')
 const withprops = path.join(__dirname, './components/Props.js')

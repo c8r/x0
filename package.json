@@ -10,15 +10,13 @@
     "start": "./bin/cli.js dev docs/App.js -op 8888",
     "build": "./bin/cli.js build docs/App.js --static -d docs",
     "client": "./bin/cli.js build docs/App.js -d docs",
-    "test": "nyc ava",
+    "_test": "nyc ava",
+    "test": "jest",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },
   "keywords": [],
   "author": "Brent Jackson",
   "license": "MIT",
-  "backup": {
-    "babel-minify-webpack-plugin": "^0.2.0"
-  },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.34",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.34",
@@ -28,8 +26,10 @@
     "@babel/register": "^7.0.0-beta.34",
     "@babel/runtime": "^7.0.0-beta.34",
     "@compositor/publish": "0.0.9",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.0-beta.0",
     "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-preset-minify": "^0.2.0",
     "chalk": "^2.1.0",
     "meow": "^3.7.0",
     "opn": "^5.1.0",
@@ -39,16 +39,19 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "read-pkg-up": "^2.0.0",
+    "regenerator-runtime": "^0.11.0",
     "update-notifier": "^2.2.0",
     "webpack": "^4.0.0-alpha.0",
     "webpack-dev-server": "^2.9.5"
   },
   "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "jest": "^21.2.1",
     "@compositor/logo": "^1.2.2",
-    "ava": "^0.22.0",
+    "ava": "^0.24.0",
     "cxs": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
-    "nyc": "^11.2.1",
+    "nyc": "^11.3.0",
     "refunk": "^2.0.0-1",
     "styled-system": "^1.0.7"
   },
