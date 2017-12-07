@@ -19,7 +19,6 @@ import BtnOutline from './BtnOutline'
 import Tweet from './Tweet'
 
 const App = connect(props => <React.Fragment>
-  <head>
     <title>{props.title}</title>
     <meta name='description' content={props.description} />
     <meta name='twitter:card' content='summary' />
@@ -28,8 +27,6 @@ const App = connect(props => <React.Fragment>
     <meta name='twitter:title' content={props.description} />
     <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
     <Style />
-  </head>
-  <body>
     <Container>
       <nav>
         <Flex wrap align='center'>
@@ -118,12 +115,13 @@ const App = connect(props => <React.Fragment>
         </footer>
       </main>
     </Container>
+    {/*
     <script
       dangerouslySetInnerHTML={{
         __html: scripts
       }}
     />
-  </body>
+    */}
 </React.Fragment>)
 
 App.defaultProps = {

@@ -10,7 +10,7 @@ const Style = ({ css = '' }) => (
 
 const base = `
 *{box-sizing:border-box}
-body {
+:root {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
