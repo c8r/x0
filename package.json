@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@compositor/logo": "^1.2.2",
-    "ava": "^0.22.0",
+    "ava": "^0.24.0",
     "cxs": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
     "nyc": "^11.2.1",
