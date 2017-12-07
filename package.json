@@ -52,6 +52,7 @@
   },
   "x0": {
     "title": "Compositor x0",
+    "cssLibrary": "styled-components",
     "_basename": "/x0"
   },
   "ava": {
