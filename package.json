@@ -1,6 +1,6 @@
 {
   "name": "@compositor/x0",
-  "version": "3.0.0-3",
+  "version": "3.0.0-4",
   "description": "Zero-config React development environment and static site generator",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "./bin/cli.js dev docs/App.js -op 8888",
     "build": "./bin/cli.js build docs/App.js --static -d docs",
-    "client": "./bin/cli.js build docs/App.js -d docs",
+    "client": "./bin/cli.js build docs/Root.js -d docs",
     "test": "nyc ava",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },

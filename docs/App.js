@@ -19,107 +19,111 @@ import BtnOutline from './BtnOutline'
 import Tweet from './Tweet'
 
 const App = connect(props => <React.Fragment>
-  <title>{props.title}</title>
-  <meta name='description' content={props.description} />
-  <meta name='twitter:card' content='summary' />
-  <meta name='twitter:site' content='@getcompositor' />
-  <meta name='twitter:title' content='Compositor x0' />
-  <meta name='twitter:title' content={props.description} />
-  <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
-  <Style />
-  <Container>
-    <nav>
-      <Flex wrap align='center'>
-        <BlockLink href='https://compositor.io'>
-          <Flex ml={-1} align='center'>
-            <Logo
-              size={32}
-              color='white'
-              backgroundColor='black'
-            />
-            <Caps f='10px' fontWeight='600'>
-              Compositor
-            </Caps>
-          </Flex>
-        </BlockLink>
-        <Box mx='auto' />
-        <NavLink
-          mr={1}
-          href='https://github.com/c8r/x0'>
-          GitHub
-        </NavLink>
-        <Tweet />
-      </Flex>
-    </nav>
-    <header>
-      <Box pt={4} pb={3}>
-        <Title>x0 {props.count}</Title>
-        <button
-          children='+'
-          onClick={e => {
-            props.update(s => ({ count: s.count + 1 }))
-          }}
-        />
-        <Text fontWeight='600' f={3} mb={2}>{pkg.description}</Text>
-        <Mono f={0}>v{pkg.version}</Mono>
-        {props.tracks && (
-          <pre children={JSON.stringify(props.tracks)}/>
-        )}
-      </Box>
-    </header>
-    <main>
-      <Box>
-        <Video
-          loop
-          autoPlay
-          src='demo.mp4'
-        />
-      </Box>
-      <Box py={3}>
-        <Pre f={1} color='cyan'>npm install @compositor/x0</Pre>
-      </Box>
-      <section id='features'>
-        <Box py={4}>
-          <Text f={4} mb={2} fontWeight='600'>Features</Text>
-          <Flex wrap mx={-2}>
-            {props.features.map(feat => (
-              <Box
-                key={feat}
-                w={[ 1, 1/2, 1/2 ]}
-                px={2}
-                py={1}>
-                <Text fontWeight='600'>
-                  {feat}
-                </Text>
-              </Box>
-            ))}
-          </Flex>
-        </Box>
-      </section>
-      <section id='get-started'>
-        <Box py={4}>
-          <Text f={4} fontWeight='600'>Get Started</Text>
-          <Text mb={3}>Read the docs and get started on GitHub or sign up for updates.</Text>
-          <Btn mr={2} href='https://github.com/c8r/x0'>
-            Documentation
-          </Btn>
-          <BtnOutline href='https://compositor.io/#sign-up'>
-            Sign Up
-          </BtnOutline>
-        </Box>
-      </section>
-      <footer>
-        <Flex pt={4} pb={3}>
-          <Text f={0}>© 2017 Compositor, Inc.</Text>
+  <head>
+    <title>{props.title}</title>
+    <meta name='description' content={props.description} />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@getcompositor' />
+    <meta name='twitter:title' content='Compositor x0' />
+    <meta name='twitter:title' content={props.description} />
+    <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
+    <Style />
+  </head>
+  <body>
+    <Container>
+      <nav>
+        <Flex wrap align='center'>
+          <BlockLink href='https://compositor.io'>
+            <Flex ml={-1} align='center'>
+              <Logo
+                size={32}
+                color='white'
+                backgroundColor='black'
+              />
+              <Caps f='10px' fontWeight='600'>
+                Compositor
+              </Caps>
+            </Flex>
+          </BlockLink>
+          <Box mx='auto' />
+          <NavLink
+            mr={1}
+            href='https://github.com/c8r/x0'>
+            GitHub
+          </NavLink>
+          <Tweet />
         </Flex>
-      </footer>
-    </main>
-  </Container>
-  <script
-    dangerouslySetInnerHTML={{
-      __html: scripts
-    }}
-  />
+      </nav>
+      <header>
+        <Box pt={4} pb={3}>
+          <Title>x0 {props.count}</Title>
+          <button
+            children='+'
+            onClick={e => {
+              props.update(s => ({ count: s.count + 1 }))
+            }}
+          />
+          <Text fontWeight='600' f={3} mb={2}>{pkg.description}</Text>
+          <Mono f={0}>v{pkg.version}</Mono>
+          {props.tracks && (
+            <pre children={JSON.stringify(props.tracks)}/>
+          )}
+        </Box>
+      </header>
+      <main>
+        <Box>
+          <Video
+            loop
+            autoPlay
+            src='demo.mp4'
+          />
+        </Box>
+        <Box py={3}>
+          <Pre f={1} color='cyan'>npm install @compositor/x0</Pre>
+        </Box>
+        <section id='features'>
+          <Box py={4}>
+            <Text f={4} mb={2} fontWeight='600'>Features</Text>
+            <Flex wrap mx={-2}>
+              {props.features.map(feat => (
+                <Box
+                  key={feat}
+                  w={[ 1, 1/2, 1/2 ]}
+                  px={2}
+                  py={1}>
+                  <Text fontWeight='600'>
+                    {feat}
+                  </Text>
+                </Box>
+              ))}
+            </Flex>
+          </Box>
+        </section>
+        <section id='get-started'>
+          <Box py={4}>
+            <Text f={4} fontWeight='600'>Get Started</Text>
+            <Text mb={3}>Read the docs and get started on GitHub or sign up for updates.</Text>
+            <Btn mr={2} href='https://github.com/c8r/x0'>
+              Documentation
+            </Btn>
+            <BtnOutline href='https://compositor.io/#sign-up'>
+              Sign Up
+            </BtnOutline>
+          </Box>
+        </section>
+        <footer>
+          <Flex pt={4} pb={3}>
+            <Text f={0}>© 2017 Compositor, Inc.</Text>
+          </Flex>
+        </footer>
+      </main>
+    </Container>
+    <script
+      dangerouslySetInnerHTML={{
+        __html: scripts
+      }}
+    />
+  </body>
 </React.Fragment>)
 
 App.defaultProps = {
