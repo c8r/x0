@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import { space, propTypes } from 'styled-system'
 
-const BlockLink = styled('a')({
+const BlockLink = nano('a')({
   display: 'block',
   color: 'inherit',
   textDecoration: 'none'

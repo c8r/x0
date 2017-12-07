@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import Text from './Text'
 
-const Mono = styled(Text)({
+const Mono = nano(Text)({
   fontFamily: '"Roboto Mono", Menlo, monospace',
 })
 

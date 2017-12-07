@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import { space } from 'styled-system'
 
-const MonoTitle = styled('h1')({
+const MonoTitle = nano('h1')({
   fontFamily: '"Roboto Mono", Menlo, monospace',
   fontSize: '32px',
   fontWeight: 600,
@@ -18,7 +18,7 @@ MonoTitle.defaultProps = {
   px: 2,
 }
 
-const Title = styled('h1')({
+const Title = nano('h1')({
   fontSize: '64px',
   fontWeight: 600,
   lineHeight: 1.25,

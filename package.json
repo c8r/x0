@@ -1,6 +1,6 @@
 {
   "name": "@compositor/x0",
-  "version": "3.0.0-2",
+  "version": "3.0.0-3",
   "description": "Zero-config React development environment and static site generator",
   "main": "index.js",
   "bin": {
@@ -44,6 +44,7 @@
     "ava": "^0.24.0",
     "cxs": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
+    "nano-style": "^1.0.0-20",
     "nyc": "^11.2.1",
     "refunk": "^2.0.0-1",
     "styled-system": "^1.0.7"

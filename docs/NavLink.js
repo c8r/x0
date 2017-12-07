@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import { fontSize, space, propTypes } from 'styled-system'
 
-const NavLink = styled('a')({
+const NavLink = nano('a')({
   textDecoration: 'none',
   display: 'inline-block',
   fontWeight: 'bold',

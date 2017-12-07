@@ -1,6 +1,5 @@
 import React from 'react'
 import connect from 'refunk'
-import cxs from 'cxs/x'
 import { Logo } from '@compositor/logo'
 import pkg from '../package.json'
 import Style from './Style'
@@ -27,7 +26,7 @@ const App = connect(props => <React.Fragment>
   <meta name='twitter:title' content='Compositor x0' />
   <meta name='twitter:title' content={props.description} />
   <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
-  <Style css={props.css} />
+  <Style />
   <Container>
     <nav>
       <Flex wrap align='center'>
@@ -139,12 +138,13 @@ App.defaultProps = {
 }
 
 App.getInitialProps = async ({ Component, html, pathname }) => {
-  const css = cxs.css()
-  cxs.reset()
+  // const css = cxs.css()
+  // cxs.reset()
+  // const head = `<meta name='test'><style>${css}</style>`
 
   return {
     hello: 'hi',
-    css
+    // head
   }
 }
 

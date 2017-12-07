@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import { space, propTypes } from 'styled-system'
 
-const Btn = styled('a')({
+const Btn = nano('a')({
   display: 'inline-block',
   textDecoration: 'none',
   fontSize: '12px',

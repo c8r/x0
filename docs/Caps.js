@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import Text from './Text'
 
-const Caps = styled(Text)({
+const Caps = nano(Text)({
   textTransform: 'uppercase',
   letterSpacing: '.2em'
 })
