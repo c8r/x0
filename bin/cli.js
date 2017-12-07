@@ -64,31 +64,32 @@ switch (cmd) {
     spinner.start('starting dev server')
     let opened = false
     const dev = require('../lib/dev')
-    dev(filename, options, (err, port) => {
-      if (err) {
+    dev(filename, options)
+      .then(server => {
+        const { port } = server.listeningApp.address()
+        spinner.succeed(`dev server listening at http://localhost:${port}`)
+        if (!opened && options.open) {
+          open(`http://localhost:${port}`)
+          opened = true
+        }
+      })
+      .catch(err => {
         spinner.fail(err)
         process.exit(1)
-      }
-      spinner.succeed(`dev server listening at http://localhost:${port}`)
-      if (!opened && options.open) {
-        open(`http://localhost:${port}`)
-        opened = true
-      }
-    })
+      })
     break
   case 'build':
     spinner.start('building static site')
     const build = require('../lib/static')
-    build(filename, options, async (err, html) => {
-      if (err) {
-        spinner.fail('Error')
-        console.log(err)
-        process.exit(1)
-      } else if (!options.outDir) {
-        console.log(html)
-      } else {
+    build(filename, options)
+      .then(async html => {
+        if (!options.outDir) {
+          return console.log(html)
+        }
+
         spinner.succeed(`static site saved to ${options.outDir}`)
 
+        // this never will be met?
         if (options.publish && !options.outDir) {
           spinner.fail('--out-dir option must be specified for publish')
         } else if (options.publish) {
@@ -99,14 +100,17 @@ switch (cmd) {
             await uploads // Eventually we probably want to loop and post status
 
             spinner.succeed(`published to ${url}`)
-          } catch (e) {
-            spinner.fail('Error')
-            console.log(err)
+          } catch (err) {
+            spinner.fail(err)
             process.exit(1)
           }
         }
-      }
-    })
+      })
+      .catch(err => {
+        spinner.fail('Error')
+        console.log(err)
+        process.exit(1)
+      })
     break
   default:
     spinner.fail('no argument provided')

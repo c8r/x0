@@ -19,16 +19,15 @@ import Btn from './Btn'
 import BtnOutline from './BtnOutline'
 import Tweet from './Tweet'
 
-const App = (props => [
-  <meta charSet='utf-8' />,
-  <title>{props.title}</title>,
-  <meta name='description' content={props.description} />,
-  <meta name='twitter:card' content='summary' />,
-  <meta name='twitter:site' content='@getcompositor' />,
-  <meta name='twitter:title' content='Compositor x0' />,
-  <meta name='twitter:title' content={props.description} />,
-  <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />,
-  <Style css={props.css} />,
+const App = connect(props => <React.Fragment>
+  <title>{props.title}</title>
+  <meta name='description' content={props.description} />
+  <meta name='twitter:card' content='summary' />
+  <meta name='twitter:site' content='@getcompositor' />
+  <meta name='twitter:title' content='Compositor x0' />
+  <meta name='twitter:title' content={props.description} />
+  <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
+  <Style css={props.css} />
   <Container>
     <nav>
       <Flex wrap align='center'>
@@ -55,7 +54,13 @@ const App = (props => [
     </nav>
     <header>
       <Box pt={4} pb={3}>
-        <Title>x0</Title>
+        <Title>x0 {props.count}</Title>
+        <button
+          children='+'
+          onClick={e => {
+            props.update(s => ({ count: s.count + 1 }))
+          }}
+        />
         <Text fontWeight='600' f={3} mb={2}>{pkg.description}</Text>
         <Mono f={0}>v{pkg.version}</Mono>
         {props.tracks && (
@@ -110,15 +115,16 @@ const App = (props => [
         </Flex>
       </footer>
     </main>
-  </Container>,
+  </Container>
   <script
     dangerouslySetInnerHTML={{
       __html: scripts
     }}
   />
-])
+</React.Fragment>)
 
 App.defaultProps = {
+  count: 32,
   features: [
     'Isolated development environment',
     'Static site generator',
