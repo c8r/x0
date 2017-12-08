@@ -1,8 +1,15 @@
 import React from 'react'
 import connect from 'refunk'
 import styled from 'styled-components'
+import glamorous from 'glamorous'
+import { color } from 'styled-system'
 
-const Heading = styled('h1')([], {
+const SCHeading = styled('h1')([], {
+  fontFamily: 'sans-serif',
+  fontSize: 48
+}, color)
+
+const GHeading = glamorous('h1')({
   fontFamily: 'sans-serif',
   fontSize: 48,
   color: 'tomato'
@@ -15,7 +22,7 @@ const Root = connect(props => (
     <title key='title'>Hello {props.count}</title>
     <meta name='viewport' content='width=device-width,initial-scale=1' />
     <meta name='description' content='Description for this page' />
-    <Heading>Hello {props.count}</Heading>
+    <SCHeading color='tomato'>Hello {props.count}</SCHeading>
     <button
       onClick={e => props.update(inc)}
       children='+'
