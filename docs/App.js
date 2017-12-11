@@ -18,15 +18,21 @@ import Btn from './Btn'
 import BtnOutline from './BtnOutline'
 import Tweet from './Tweet'
 
+// testing
+import styled from 'styled-components'
+const Hello = styled.h2`color:tomato;`
+
 const App = connect(props => <React.Fragment>
-  <title>{props.title}</title>
-  <meta name='description' content={props.description} />
-  <meta name='twitter:card' content='summary' />
-  <meta name='twitter:site' content='@getcompositor' />
-  <meta name='twitter:title' content='Compositor x0' />
-  <meta name='twitter:title' content={props.description} />
-  <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
-  <Style />
+  <head>
+    <title>{props.title}</title>
+    <meta name='description' content={props.description} />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@getcompositor' />
+    <meta name='twitter:title' content='Compositor x0' />
+    <meta name='twitter:title' content={props.description} />
+    <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
+    <Style />
+  </head>
   <Container>
     <nav>
       <Flex wrap align='center'>
@@ -51,6 +57,9 @@ const App = connect(props => <React.Fragment>
         <Tweet />
       </Flex>
     </nav>
+
+    <Hello>Hello styled-components</Hello>
+
     <header>
       <Box pt={4} pb={3}>
         <Title>x0 {props.count}</Title>
@@ -132,7 +141,7 @@ App.defaultProps = {
   ]
 }
 
-App.getInitialProps = async ({ Component, html, pathname }) => {
+App.getInitialProps = async (props) => {
   return {
     hello: 'hi',
   }
