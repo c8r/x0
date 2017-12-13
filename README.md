@@ -87,68 +87,8 @@ App.getInitialProps = async ({
 
 ## CSS-in-JS
 
-Use the `getInitialProps` static method to precompile CSS from css-in-js libraries such as [styled-components][sc]
-
-```jsx
-// styled-components
-import React from 'react'
-import styled from 'styled-components'
-
-const Heading = styled.h1`
-  color: tomato;
-`
-
-const App = props => [
-  props.styles && (
-    <head
-      dangerouslySetInnerHTML={{
-        __html: props.styles
-      }}
-    />
-  ),
-  <div>
-    <Heading>Hello</Heading>
-  </div>
-]
-
-App.getInitialProps = async ({
-  Component,
-  props
-}) => {
-  const { ServerStyleSheet } = require('styled-components')
-  const sheet = new ServerStyleSheet()
-  sheet.collectStyles(<Component {...props} />)
-  const styles = sheet.getStyleTags()
-  return { styles }
-}
-```
-
-```jsx
-// CXS
-import React from 'react'
-import cxs from 'cxs/component'
-
-const Heading = cxs('h1')({
-  color: 'tomato'
-})
-
-const App = props => (
-  <div>
-    <style
-      dangerouslySetInnerHTML={{
-        __html: props.css
-      }}
-    />
-    <Heading>Hello</Heading>
-  </div>
-)
-
-App.getInitialProps = async () => {
-  const css = cxs.css()
-  return { css }
-}
-```
-
+x0 supports server-side rendering for styled-components, glamor, and glamorous.
+To enable CSS rendering for static output, use the `cssLibrary` option
 
 ## Head content
 
@@ -157,25 +97,14 @@ Browsers should handle this correctly since the `<head>` and `<body>` elements a
 
 ```jsx
 const App = props => (
-  <div>
+  <React.Fragment>
     <title>Hello x0</title>
     <style dangerouslySetInnerHTML={{
       __html: 'body{font-family:-apple-system,BlinkMacSystemFont,sans-serif}'
     }} />
     <h1>Hello x0</h1>
-  </div>
+  </React.Fragment>
 )
-```
-
-Returning an array of elements also works.
-
-```jsx
-const App = props => [
-  <title>Hello</title>,
-  <div>
-    <h1>Hello</h1>
-  </div>
-]
 ```
 
 
@@ -207,6 +136,7 @@ To render multiple pages and use routing, add a `routes` array to the `package.j
 x0 static src/App.js --out-dir site
 ```
 
+<!--
 For easier integration with [react-router][react-router], use the x0 Router component, which handles universal rendering.
 
 ```jsx
@@ -237,7 +167,11 @@ const App = props => (
 )
 ```
 
-MIT License
+-->
+
+[Made by Compositor](https://compositor.io/)
+|
+[MIT License](LICENSE.md)
 
 [nextjs]: https://github.com/zeit/next.js
 [react-router]: https://github.com/ReactTraining/react-router

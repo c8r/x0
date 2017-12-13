@@ -18,10 +18,6 @@ import Btn from './Btn'
 import BtnOutline from './BtnOutline'
 import Tweet from './Tweet'
 
-// testing
-import styled from 'styled-components'
-const Hello = styled.h2`color:tomato;`
-
 const App = connect(props => <React.Fragment>
   <head>
     <title>{props.title}</title>
@@ -29,7 +25,7 @@ const App = connect(props => <React.Fragment>
     <meta name='twitter:card' content='summary' />
     <meta name='twitter:site' content='@getcompositor' />
     <meta name='twitter:title' content='Compositor x0' />
-    <meta name='twitter:title' content={props.description} />
+    <meta name='twitter:description' content={props.description} />
     <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
     <Style />
   </head>
@@ -57,23 +53,11 @@ const App = connect(props => <React.Fragment>
         <Tweet />
       </Flex>
     </nav>
-
-    <Hello>Hello styled-components</Hello>
-
     <header>
       <Box pt={4} pb={3}>
-        <Title>x0 {props.count}</Title>
-        <button
-          children='+'
-          onClick={e => {
-            props.update(s => ({ count: s.count + 1 }))
-          }}
-        />
+        <Title>x0</Title>
         <Text fontWeight='600' f={3} mb={2}>{pkg.description}</Text>
         <Mono f={0}>v{pkg.version}</Mono>
-        {props.tracks && (
-          <pre children={JSON.stringify(props.tracks)}/>
-        )}
       </Box>
     </header>
     <main>
@@ -112,9 +96,6 @@ const App = connect(props => <React.Fragment>
           <Btn mr={2} href='https://github.com/c8r/x0'>
             Documentation
           </Btn>
-          <BtnOutline href='https://compositor.io/#sign-up'>
-            Sign Up
-          </BtnOutline>
         </Box>
       </section>
       <footer>
