@@ -11,14 +11,15 @@ npm install @compositor/x0
 
 ## Features
 
+- Zero-config
 - Hot-loading development environment
 - Works with virtually any React component\*
-- No convoluted APIs
+- No confusing APIs
 - Renders static HTML
 - Renders JS bundles
 - Use any CSS-in-JS library
-- Routing with [react-router][react-router]
-- Async data fetching
+- Support for routing with [react-router][react-router]
+- Support for async data fetching
 
 \* Components cannot rely on bundler features like webpack loaders
 
@@ -136,15 +137,26 @@ To render multiple pages and use routing, add a `routes` array to the `package.j
 x0 static src/App.js --out-dir site
 ```
 
-<!--
-For easier integration with [react-router][react-router], use the x0 Router component, which handles universal rendering.
+The current route will be passed to the component as `props.pathname`.
+This can be used with [react-router][react-router]'s StaticRouter and BrowserRouter components.
+
 
 ```jsx
+// Example with react-router
 import React from 'react'
-import Router from '@compositor/x0/Router'
-import { Route, Link } from 'react-router-dom'
+import {
+  StaticRouter,
+  BrowserRouter,
+  Route,
+  Link
+} from 'react-router-dom'
 import Home from './Home'
 import About from './About'
+
+// universal router component
+const Router = typeof document !== 'undefined'
+  ? BrowserRouter
+  : StaticRouter
 
 const App = props => (
   <Router
@@ -166,8 +178,6 @@ const App = props => (
   </Router>
 )
 ```
-
--->
 
 [Made by Compositor](https://compositor.io/)
 |
