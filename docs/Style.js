@@ -14,8 +14,8 @@ const base = `
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
-  color: white;
-  background-color: black;
+  color: #000;
+  background-color: #f6f6f6;
   -webkit-font-smoothing: antialiased;
 }
 `

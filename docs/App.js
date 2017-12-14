@@ -34,11 +34,7 @@ const App = connect(props => <React.Fragment>
       <Flex wrap align='center'>
         <BlockLink href='https://compositor.io'>
           <Flex ml={-1} align='center'>
-            <Logo
-              size={32}
-              color='white'
-              backgroundColor='black'
-            />
+            <Logo size={32} />
             <Caps f='10px' fontWeight='600'>
               Compositor
             </Caps>
@@ -114,9 +110,9 @@ App.defaultProps = {
     'Static site generator',
     'Hot reloading',
     'Works with virtually any React component',
-    'No convoluted APIs to learn',
-    'No boilerplate required',
-    'Routing with react-router',
+    'No confusing APIs',
+    'No boilerplate generators',
+    'Supports routing with react-router',
     'Works with CSS-in-JS libraries like styled-components',
     'Support for async data fetching',
   ]

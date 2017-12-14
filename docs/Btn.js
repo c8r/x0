@@ -12,8 +12,8 @@ const Btn = nano('a')({
   paddingBottom: '12px',
   paddingLeft: '24px',
   paddingRight: '24px',
-  color: 'black',
-  backgroundColor: 'white',
+  color: 'white',
+  backgroundColor: 'black',
   border: 0,
   borderRadius: '8px'
 }, space)

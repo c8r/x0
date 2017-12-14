@@ -17,7 +17,7 @@ npm install @compositor/x0
 - No confusing APIs
 - Renders static HTML
 - Renders JS bundles
-- Use any CSS-in-JS library
+- Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
 - Support for routing with [react-router][react-router]
 - Support for async data fetching
 
@@ -88,8 +88,19 @@ App.getInitialProps = async ({
 
 ## CSS-in-JS
 
-x0 supports server-side rendering for styled-components, glamor, and glamorous.
+x0 supports server-side rendering for [styled-components][sc], [glamor][glamor], [glamorous][glamorous], and [fela][fela].
 To enable CSS rendering for static output, use the `cssLibrary` option
+
+```sh
+x0 build src/App.js --cssLibrary="styled-components"
+```
+
+Available options:
+
+- [`styled-components`][sc]
+- [`glamorous`][glamorous]
+- [`glamor`][glamor]
+- [`fela`][fela]
 
 ## Head content
 
@@ -119,6 +130,10 @@ Default props can be passed to x0 in a `package.json` field named `x0`.
   "count": 0
 }
 ```
+
+<!--
+Custom .babelrc
+-->
 
 ## Routing
 
@@ -186,3 +201,6 @@ const App = props => (
 [nextjs]: https://github.com/zeit/next.js
 [react-router]: https://github.com/ReactTraining/react-router
 [sc]: https://github.com/styled-components/styled-components
+[glamorous]: https://github.com/paypal/glamorous
+[glamor]: https://github.com/threepointone/glamor
+[fela]: https://github.com/rofrischmann/fela
