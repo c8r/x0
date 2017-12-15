@@ -9,6 +9,8 @@ https://compositor.io/x0
 npm install @compositor/x0
 ```
 
+![screen-demo](docs/demo.gif)
+
 ## Features
 
 - Zero-config
