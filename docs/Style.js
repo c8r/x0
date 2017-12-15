@@ -15,7 +15,7 @@ const base = `
   line-height: 1.5;
   min-height: 100vh;
   color: #000;
-  background-color: #f6f6f6;
+  background-color: #fff;
   -webkit-font-smoothing: antialiased;
 }
 `
