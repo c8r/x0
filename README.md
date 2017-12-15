@@ -3,8 +3,6 @@
 
 Zero-config React development environment and static site generator
 
-https://compositor.io/x0
-
 ```sh
 npm install @compositor/x0
 ```
