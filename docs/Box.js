@@ -1,4 +1,4 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import {
   space,
   width,
@@ -7,7 +7,7 @@ import {
   propTypes
 } from 'styled-system'
 
-const Box = styled('div')(space, width, fontSize, color)
+const Box = nano('div')(space, width, fontSize, color)
 
 Box.propTypes = {
   ...propTypes.space,

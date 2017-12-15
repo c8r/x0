@@ -9,16 +9,19 @@ https://compositor.io/x0
 npm install @compositor/x0
 ```
 
+![screen-demo](docs/demo.gif)
+
 ## Features
 
+- Zero-config
 - Hot-loading development environment
 - Works with virtually any React component\*
-- No convoluted APIs
+- No confusing APIs
 - Renders static HTML
 - Renders JS bundles
-- Use any CSS-in-JS library
-- Routing with [react-router][react-router]
-- Async data fetching
+- Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
+- Support for routing with [react-router][react-router]
+- Support for async data fetching
 
 \* Components cannot rely on bundler features like webpack loaders
 
@@ -74,7 +77,6 @@ const App = props => (
 
 App.getInitialProps = async ({
   Component,
-  html,
   pathname
 }) => {
   const fetch = require('isomorphic-fetch')
@@ -87,68 +89,19 @@ App.getInitialProps = async ({
 
 ## CSS-in-JS
 
-Use the `getInitialProps` static method to precompile CSS from css-in-js libraries such as [styled-components][sc]
+x0 supports server-side rendering for [styled-components][sc], [glamor][glamor], [glamorous][glamorous], and [fela][fela].
+To enable CSS rendering for static output, use the `cssLibrary` option
 
-```jsx
-// styled-components
-import React from 'react'
-import styled from 'styled-components'
-
-const Heading = styled.h1`
-  color: tomato;
-`
-
-const App = props => [
-  props.styles && (
-    <head
-      dangerouslySetInnerHTML={{
-        __html: props.styles
-      }}
-    />
-  ),
-  <div>
-    <Heading>Hello</Heading>
-  </div>
-]
-
-App.getInitialProps = async ({
-  Component,
-  props
-}) => {
-  const { ServerStyleSheet } = require('styled-components')
-  const sheet = new ServerStyleSheet()
-  sheet.collectStyles(<Component {...props} />)
-  const styles = sheet.getStyleTags()
-  return { styles }
-}
+```sh
+x0 build src/App.js --cssLibrary="styled-components"
 ```
 
-```jsx
-// CXS
-import React from 'react'
-import cxs from 'cxs/component'
+Available options:
 
-const Heading = cxs('h1')({
-  color: 'tomato'
-})
-
-const App = props => (
-  <div>
-    <style
-      dangerouslySetInnerHTML={{
-        __html: props.css
-      }}
-    />
-    <Heading>Hello</Heading>
-  </div>
-)
-
-App.getInitialProps = async () => {
-  const css = cxs.css()
-  return { css }
-}
-```
-
+- [`styled-components`][sc]
+- [`glamorous`][glamorous]
+- [`glamor`][glamor]
+- [`fela`][fela]
 
 ## Head content
 
@@ -157,25 +110,14 @@ Browsers should handle this correctly since the `<head>` and `<body>` elements a
 
 ```jsx
 const App = props => (
-  <div>
+  <React.Fragment>
     <title>Hello x0</title>
     <style dangerouslySetInnerHTML={{
       __html: 'body{font-family:-apple-system,BlinkMacSystemFont,sans-serif}'
     }} />
     <h1>Hello x0</h1>
-  </div>
+  </React.Fragment>
 )
-```
-
-Returning an array of elements also works.
-
-```jsx
-const App = props => [
-  <title>Hello</title>,
-  <div>
-    <h1>Hello</h1>
-  </div>
-]
 ```
 
 
@@ -207,14 +149,26 @@ To render multiple pages and use routing, add a `routes` array to the `package.j
 x0 static src/App.js --out-dir site
 ```
 
-For easier integration with [react-router][react-router], use the x0 Router component, which handles universal rendering.
+The current route will be passed to the component as `props.pathname`.
+This can be used with [react-router][react-router]'s StaticRouter and BrowserRouter components.
+
 
 ```jsx
+// Example with react-router
 import React from 'react'
-import Router from '@compositor/x0/Router'
-import { Route, Link } from 'react-router-dom'
+import {
+  StaticRouter,
+  BrowserRouter,
+  Route,
+  Link
+} from 'react-router-dom'
 import Home from './Home'
 import About from './About'
+
+// universal router component
+const Router = typeof document !== 'undefined'
+  ? BrowserRouter
+  : StaticRouter
 
 const App = props => (
   <Router
@@ -237,8 +191,13 @@ const App = props => (
 )
 ```
 
-MIT License
+[Made by Compositor](https://compositor.io/)
+|
+[MIT License](LICENSE.md)
 
 [nextjs]: https://github.com/zeit/next.js
 [react-router]: https://github.com/ReactTraining/react-router
 [sc]: https://github.com/styled-components/styled-components
+[glamorous]: https://github.com/paypal/glamorous
+[glamor]: https://github.com/threepointone/glamor
+[fela]: https://github.com/rofrischmann/fela

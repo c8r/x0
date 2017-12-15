@@ -1,6 +1,6 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 
-const Video = styled('video')({
+const Video = nano('video')({
   display: 'block',
   width: '100%',
   height: 'auto',

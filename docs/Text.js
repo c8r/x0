@@ -1,4 +1,4 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import {
   fontSize,
   fontWeight,
@@ -8,7 +8,7 @@ import {
   propTypes
 } from 'styled-system'
 
-const Text = styled('div')({},
+const Text = nano('div')({},
   fontSize,
   fontWeight,
   textAlign,

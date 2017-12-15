@@ -22,32 +22,32 @@ test.before(clean)
 test.after(clean)
 
 test.cb('static renders', t => {
-  x0Static(hello, {}, (err, result) => {
-    t.is(err, null)
-    t.is(typeof result, 'object')
-    t.snapshot(result.html)
-    t.end()
-  })
+  x0Static(hello, {})
+    .then(result => {
+      t.is(typeof result, 'object')
+      t.snapshot(result.html)
+      t.end()
+    })
 })
 
 test.cb('static writes', t => {
   x0Static(hello, {
     outDir: 'test/output'
-  }, (err, result) => {
-    t.is(err, null)
-    t.is(typeof result, 'object')
-    t.snapshot(result.html)
-    t.end()
   })
+    .then(result => {
+      t.is(typeof result, 'object')
+      t.snapshot(result.html)
+      t.end()
+    })
 })
 
 test.cb('static uses getInitialProps method', t => {
-  x0Static(withprops, {}, (err, result) => {
-    t.is(err, null)
-    t.is(typeof result, 'object')
-    t.snapshot(result.html)
-    t.end()
-  })
+  x0Static(withprops, {})
+    .then(result => {
+      t.is(typeof result, 'object')
+      t.snapshot(result.html)
+      t.end()
+    })
 })
 
 test.cb('static picks up routes config', t => {
@@ -55,12 +55,12 @@ test.cb('static picks up routes config', t => {
     routes: [
       '/'
     ]
-  }, (err, result) => {
-    t.is(err, null)
-    t.is(typeof result, 'object')
-    t.snapshot(result.html)
-    t.end()
   })
+    .then(result => {
+      t.is(typeof result, 'object')
+      t.snapshot(result.html)
+      t.end()
+    })
 })
 
 test.cb('static makes a directory', t => {
@@ -70,8 +70,8 @@ test.cb('static makes a directory', t => {
 
   x0Static(hello, {
     outDir: 'test/output'
-  }, (err, result) => {
-    t.is(err, null)
-    t.end()
   })
+    .then(result => {
+      t.end()
+    })
 })

@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import Box from './Box'
 
-const Container = styled(Box)({
+const Container = nano(Box)({
   maxWidth: '768px'
 })
 

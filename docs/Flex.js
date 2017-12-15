@@ -1,4 +1,4 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import {
   alignItems,
   justifyContent,
@@ -7,7 +7,7 @@ import {
 } from 'styled-system'
 import Box from './Box'
 
-const Flex = styled(Box)({
+const Flex = nano(Box)({
   display: 'flex'
 }, alignItems, justifyContent, flexWrap)
 

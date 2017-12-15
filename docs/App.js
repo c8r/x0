@@ -1,6 +1,5 @@
 import React from 'react'
 import connect from 'refunk'
-import cxs from 'cxs/x'
 import { Logo } from '@compositor/logo'
 import pkg from '../package.json'
 import Style from './Style'
@@ -19,26 +18,23 @@ import Btn from './Btn'
 import BtnOutline from './BtnOutline'
 import Tweet from './Tweet'
 
-const App = (props => [
-  <meta charSet='utf-8' />,
-  <title>{props.title}</title>,
-  <meta name='description' content={props.description} />,
-  <meta name='twitter:card' content='summary' />,
-  <meta name='twitter:site' content='@getcompositor' />,
-  <meta name='twitter:title' content='Compositor x0' />,
-  <meta name='twitter:title' content={props.description} />,
-  <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />,
-  <Style css={props.css} />,
+const App = connect(props => <React.Fragment>
+  <head>
+    <title>{props.title}</title>
+    <meta name='description' content={props.description} />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@getcompositor' />
+    <meta name='twitter:title' content='Compositor x0' />
+    <meta name='twitter:description' content={props.description} />
+    <meta name='twitter:image' content='https://compositor.io/logo/dist/compositor-black.png' />
+    <Style />
+  </head>
   <Container>
     <nav>
       <Flex wrap align='center'>
         <BlockLink href='https://compositor.io'>
           <Flex ml={-1} align='center'>
-            <Logo
-              size={32}
-              color='white'
-              backgroundColor='black'
-            />
+            <Logo size={32} />
             <Caps f='10px' fontWeight='600'>
               Compositor
             </Caps>
@@ -58,9 +54,6 @@ const App = (props => [
         <Title>x0</Title>
         <Text fontWeight='600' f={3} mb={2}>{pkg.description}</Text>
         <Mono f={0}>v{pkg.version}</Mono>
-        {props.tracks && (
-          <pre children={JSON.stringify(props.tracks)}/>
-        )}
       </Box>
     </header>
     <main>
@@ -99,9 +92,6 @@ const App = (props => [
           <Btn mr={2} href='https://github.com/c8r/x0'>
             Documentation
           </Btn>
-          <BtnOutline href='https://compositor.io/#sign-up'>
-            Sign Up
-          </BtnOutline>
         </Box>
       </section>
       <footer>
@@ -110,35 +100,27 @@ const App = (props => [
         </Flex>
       </footer>
     </main>
-  </Container>,
-  <script
-    dangerouslySetInnerHTML={{
-      __html: scripts
-    }}
-  />
-])
+  </Container>
+</React.Fragment>)
 
 App.defaultProps = {
+  count: 32,
   features: [
     'Isolated development environment',
     'Static site generator',
     'Hot reloading',
     'Works with virtually any React component',
-    'No convoluted APIs to learn',
-    'No boilerplate required',
-    'Routing with react-router',
+    'No confusing APIs',
+    'No boilerplate generators',
+    'Supports routing with react-router',
     'Works with CSS-in-JS libraries like styled-components',
     'Support for async data fetching',
   ]
 }
 
-App.getInitialProps = async ({ Component, html, pathname }) => {
-  const css = cxs.css()
-  cxs.reset()
-
+App.getInitialProps = async (props) => {
   return {
     hello: 'hi',
-    css
   }
 }
 

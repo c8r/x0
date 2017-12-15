@@ -1,7 +1,7 @@
-import styled from 'cxs/x'
+import nano from 'nano-style'
 import { fontSize, color, propTypes } from 'styled-system'
 
-const Pre = styled('pre')({
+const Pre = nano('pre')({
   fontFamily: '"Roboto Mono", Menlo, monospace',
   margin: 0,
   padding: 0,
