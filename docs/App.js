@@ -1,6 +1,5 @@
 import React from 'react'
 import connect from 'refunk'
-import { Logo } from '@compositor/logo'
 import pkg from '../package.json'
 import Style from './Style'
 import Flex from './Flex'
@@ -33,7 +32,6 @@ const App = connect(props => <React.Fragment>
       <Flex wrap align='center'>
         <BlockLink href='https://compositor.io'>
           <Flex ml={-1} align='center'>
-            <Logo size={32} />
             <Caps f='10px' fontWeight='600'>
               Compositor
             </Caps>

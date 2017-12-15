@@ -42,7 +42,6 @@
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
-    "@compositor/logo": "^1.2.2",
     "ava": "^0.24.0",
     "isomorphic-fetch": "^2.2.1",
     "nano-style": "^1.0.0-20",
