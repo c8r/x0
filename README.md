@@ -75,7 +75,6 @@ const App = props => (
 
 App.getInitialProps = async ({
   Component,
-  html,
   pathname
 }) => {
   const fetch = require('isomorphic-fetch')
@@ -130,10 +129,6 @@ Default props can be passed to x0 in a `package.json` field named `x0`.
   "count": 0
 }
 ```
-
-<!--
-Custom .babelrc
--->
 
 ## Routing
 
