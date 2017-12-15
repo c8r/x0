@@ -6,8 +6,6 @@ const open = require('opn')
 const ora = require('ora')
 const chalk = require('chalk')
 
-const publish = require('@compositor/publish')
-
 const x0Pkg = require('../package.json')
 
 require('update-notifier')({ pkg: x0Pkg }).notify()
@@ -29,8 +27,6 @@ const cli = meow(`
 
     -o --open     Open dev server in default browser
 
-    -u --publish  Publish site to a unique url
-
     --proxy       Proxy requests to another server (only for dev)
 
     --proxy-path  Path to proxy, default: /api
@@ -43,7 +39,6 @@ const cli = meow(`
     o: 'open',
     h: 'help',
     v: 'version',
-    u: 'publish'
   }
 })
 
@@ -88,23 +83,6 @@ switch (cmd) {
         }
 
         spinner.succeed(`static site saved to ${options.outDir}`)
-
-        // this never will be met?
-        if (options.publish && !options.outDir) {
-          spinner.fail('--out-dir option must be specified for publish')
-        } else if (options.publish) {
-          spinner.start('publishing')
-
-          try {
-            const { uploads, url }  = await publish.dir(options.outDir)
-            await uploads // Eventually we probably want to loop and post status
-
-            spinner.succeed(`published to ${url}`)
-          } catch (err) {
-            spinner.fail(err)
-            process.exit(1)
-          }
-        }
       })
       .catch(err => {
         spinner.fail('Error')
