@@ -2,7 +2,7 @@
 const path = require('path')
 const meow = require('meow')
 const { pkg } = require('read-pkg-up').sync()
-const open = require('opn')
+const openBrowser = require('react-dev-utils/openBrowser')
 const ora = require('ora')
 const chalk = require('chalk')
 
@@ -57,15 +57,13 @@ const spinner = ora().start()
 switch (cmd) {
   case 'dev':
     spinner.start('starting dev server')
-    let opened = false
     const dev = require('../lib/dev')
     dev(filename, options)
       .then(server => {
         const { port } = server.listeningApp.address()
         spinner.succeed(`dev server listening at http://localhost:${port}`)
-        if (!opened && options.open) {
-          open(`http://localhost:${port}`)
-          opened = true
+        if (options.open) {
+          openBrowser(`http://localhost:${port}`)
         }
       })
       .catch(err => {
