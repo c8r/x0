@@ -197,7 +197,7 @@ const App = props => (
 
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - [Next.js][nextjs]
-- [Gatsby][gatbsy]
+- [Gatsby][gatsby]
 
 
 [Made by Compositor](https://compositor.io/)
