@@ -198,6 +198,7 @@ const App = props => (
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - [Next.js][nextjs]
 - [Gatsby][gatsby]
+- [React-Static][react-static]
 
 
 [Made by Compositor](https://compositor.io/)
@@ -211,3 +212,4 @@ const App = props => (
 [glamor]: https://github.com/threepointone/glamor
 [fela]: https://github.com/rofrischmann/fela
 [gatsby]: https://github.com/gatsbyjs/gatsby
+[react-static]: https://github.com/nozzle/react-static
