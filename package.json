@@ -75,5 +75,13 @@
         "transform-runtime"
       ]
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c8r/x0.git"
+  },
+  "bugs": {
+    "url": "https://github.com/c8r/x0/issues"
+  },
+  "homepage": "https://github.com/c8r/x0#readme"
 }
