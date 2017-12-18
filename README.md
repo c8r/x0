@@ -5,7 +5,7 @@ Zero-config React development environment and static site generator
 [![Build Status][build-badge]][build]
 
 ```sh
-npm install @compositor/x0
+npm install -g @compositor/x0
 ```
 
 [build-badge]: https://img.shields.io/travis/c8r/x0/master.svg?style=flat-square
