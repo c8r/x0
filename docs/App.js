@@ -12,9 +12,18 @@ import Pre from './Pre'
 import BlockLink from './BlockLink'
 import NavLink from './NavLink'
 import Title from './Title'
-import Video from './Video'
+// import Video from './Video'
 import Btn from './Btn'
 import BtnOutline from './BtnOutline'
+
+const getVideo = async () => {
+  const Video = await import(/* webpackChunkName: "video" */ './Video')
+  return Video
+}
+
+getVideo().then(Video => {
+  console.log('async import', Video)
+})
 
 const App = connect(props => <React.Fragment>
   <head>
@@ -54,11 +63,13 @@ const App = connect(props => <React.Fragment>
     </header>
     <main>
       <Box>
+        {/*
         <Video
           loop
           autoPlay
           src='demo.mp4'
         />
+        */}
       </Box>
       <Box py={3}>
         <Pre f={1}>npm install @compositor/x0</Pre>
