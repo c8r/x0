@@ -122,7 +122,6 @@ const App = props => (
 )
 ```
 
-
 ## Configuration
 
 Default props can be passed to x0 in a `package.json` field named `x0`.
@@ -134,7 +133,7 @@ Default props can be passed to x0 in a `package.json` field named `x0`.
 }
 ```
 
-## Routing
+### Routing
 
 To render multiple pages and use routing, add a `routes` array to the `package.json` configuration object.
 
@@ -193,6 +192,19 @@ const App = props => (
 )
 ```
 
+### Proxy
+
+If you want to proxy requests you can configure it using the `x0` key in your `package.json`.
+This can be useful when you're running a local api server during development.
+
+The following example proxies all `/api` requests to `http://localhost:3000`.
+
+```json
+"x0": {
+  "/api": "http://localhost:3000"
+}
+```
+
 #### Related
 
 - [Create React App](https://github.com/facebookincubator/create-react-app)
@@ -200,6 +212,7 @@ const App = props => (
 - [Gatsby][gatsby]
 - [React-Static][react-static]
 
+***
 
 [Made by Compositor](https://compositor.io/)
 |
