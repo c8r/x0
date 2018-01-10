@@ -24,6 +24,7 @@ npm install -g @compositor/x0
 - Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
 - Support for routing with [react-router][react-router]
 - Support for async data fetching
+- Support for code splitting with [React Loadable][react-loadable]
 
 \* Components cannot rely on bundler features like webpack loaders
 
@@ -192,6 +193,29 @@ const App = props => (
 )
 ```
 
+### Code Splitting
+
+To split client side bundles when rendering a static site,
+x0 supports [React Loadable][react-loadable] with no additional setup needed.
+
+```jsx
+// example of using React Loadable
+import React from 'react'
+import Loadable from 'react-loadable'
+
+const About = Loadable({
+  loading: () => <div>loading...</div>,
+  loader: () => import('./About')
+})
+
+const App = props => (
+  <div>
+    <h1>Hello</h1>
+    <About />
+  </div>
+)
+```
+
 ### Proxy
 
 If you want to proxy requests you can configure it using the `x0` key in your `package.json`.
@@ -212,7 +236,7 @@ The following example proxies all `/api` requests to `http://localhost:3000`.
 - [Gatsby][gatsby]
 - [React-Static][react-static]
 
-***
+---
 
 [Made by Compositor](https://compositor.io/)
 |
@@ -226,3 +250,4 @@ The following example proxies all `/api` requests to `http://localhost:3000`.
 [fela]: https://github.com/rofrischmann/fela
 [gatsby]: https://github.com/gatsbyjs/gatsby
 [react-static]: https://github.com/nozzle/react-static
+[react-loadable]: https://github.com/thejameskyle/react-loadable
