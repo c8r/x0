@@ -1,5 +1,7 @@
 import React from 'react'
 import connect from 'refunk'
+import Loadable from 'react-loadable'
+
 import pkg from '../package.json'
 import Style from './Style'
 import Flex from './Flex'
@@ -12,9 +14,15 @@ import Pre from './Pre'
 import BlockLink from './BlockLink'
 import NavLink from './NavLink'
 import Title from './Title'
-import Video from './Video'
 import Btn from './Btn'
 import BtnOutline from './BtnOutline'
+
+const loading = () => <pre>loading...</pre>
+
+const Video = Loadable({
+  loading,
+  loader: () => import('./Video')
+})
 
 const App = connect(props => <React.Fragment>
   <head>

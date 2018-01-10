@@ -1,0 +1,6 @@
+TMP
+coverage
+.nyc_output
+test/output
+docs
+examples
