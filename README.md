@@ -148,12 +148,11 @@ To render multiple pages and use routing, add a `routes` array to the `package.j
 ```
 
 ```sh
-x0 static src/App.js --out-dir site
+x0 build src/App.js --static --out-dir site
 ```
 
 The current route will be passed to the component as `props.pathname`.
 This can be used with [react-router][react-router]'s StaticRouter and BrowserRouter components.
-
 
 ```jsx
 // Example with react-router
