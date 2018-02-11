@@ -1,0 +1,14 @@
+{
+  "name": "x0-webpack-config-example",
+  "private": true,
+  "scripts": {
+    "start": "x0 dev App.js -oc webpack.config.js",
+    "build": "x0 build App.js -c webpack.config.js -d ./site",
+    "test": "x0 build App.js -c webpack.config.js"
+  },
+  "dependencies": {
+    "@compositor/x0": "^3.2.0-1",
+    "html-loader": "^0.5.5",
+    "markdown-loader": "^2.0.2"
+  }
+}
