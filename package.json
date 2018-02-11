@@ -43,7 +43,8 @@
     "read-pkg-up": "^2.0.0",
     "update-notifier": "^2.2.0",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.9.1",
+    "webpack-merge": "^4.1.1"
   },
   "devDependencies": {
     "ava": "^0.24.0",
