@@ -26,7 +26,7 @@ npm install -g @compositor/x0
 - Support for async data fetching
 - Support for code splitting with [React Loadable][react-loadable]
 
-\* Components cannot rely on bundler features like webpack loaders
+\* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
 
 
 ## Isolated development environment
@@ -228,6 +228,29 @@ The following example proxies all `/api` requests to `http://localhost:3000`.
 }
 ```
 
+### webpack
+
+Custom webpack loaders can be used by creating a partial `webpack.config.js` file and passing it to the `--config` option.
+
+```js
+// webpack.config.js example
+module.exports = {
+  module: {
+    rules: [
+      { test: /\.txt$/, loader: 'raw-loader' }
+    ]
+  }
+}
+```
+
+```sh
+x0 build App.js --config webpack.config.js
+```
+
+See the [example](examples/webpack-config).
+
+x0 uses [webpack-merge][webpack-merge], which means that other webpack features, such as plugins, should also work.
+
 #### Related
 
 - [Create React App](https://github.com/facebookincubator/create-react-app)
@@ -250,3 +273,4 @@ The following example proxies all `/api` requests to `http://localhost:3000`.
 [gatsby]: https://github.com/gatsbyjs/gatsby
 [react-static]: https://github.com/nozzle/react-static
 [react-loadable]: https://github.com/thejameskyle/react-loadable
+[webpack-merge]: https://github.com/survivejs/webpack-merge
