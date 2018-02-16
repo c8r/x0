@@ -7,6 +7,6 @@
     "test": "x0 build App.js"
   },
   "dependencies": {
-    "@compositor/x0": "^1.0.9"
+    "@compositor/x0": "^3.2.0"
   }
 }

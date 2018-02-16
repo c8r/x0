@@ -6,7 +6,7 @@
     "build": "x0 build App.js --out-dir ./site"
   },
   "dependencies": {
-    "@compositor/x0": "^1.0.9",
+    "@compositor/x0": "^3.2.0",
     "refunk": "^2.0.0-1",
     "styled-components": "^2.2.1"
   }

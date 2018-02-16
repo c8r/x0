@@ -7,8 +7,8 @@
     "test": "x0 build App.js"
   },
   "dependencies": {
-    "refunk": "^1.0.0-2",
-    "@compositor/x0": "^1.0.9"
+    "@compositor/x0": "^3.2.0",
+    "refunk": "^2.2.4"
   },
   "x0": {
     "title": "x0 Bundle Example",
