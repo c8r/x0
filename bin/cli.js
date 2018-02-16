@@ -27,6 +27,8 @@ const cli = meow(`
 
     -o --open     Open dev server in default browser
 
+    -c --config   Pass a custom weback config to merge with the default config
+
     --proxy       Proxy requests to another server (only for dev)
 
     --proxy-path  Path to proxy, default: /api
@@ -37,6 +39,7 @@ const cli = meow(`
     s: 'static',
     p: 'port',
     o: 'open',
+    c: 'config',
     h: 'help',
     v: 'version',
   }
