@@ -1,5 +1,5 @@
 {
-  "name": "x0-basic-example",
+  "name": "x0-images-example",
   "private": true,
   "scripts": {
     "start": "x0 dev App.js -o",

@@ -1,10 +1,10 @@
 import React from 'react'
-import { createProvider } from 'refunk'
+import connect from 'refunk'
 
 const dec = state => ({ count: state.count - 1 })
 const inc = state => ({ count: state.count + 1 })
 
-const App = props => (
+const App = connect(props => (
   <div>
     <h1>hi Hello {props.count}</h1>
     <button onClick={e => props.update(dec)}>
@@ -14,6 +14,6 @@ const App = props => (
       +
     </button>
   </div>
-)
+))
 
-export default createProvider()(App)
+export default App
