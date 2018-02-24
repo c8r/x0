@@ -32,7 +32,7 @@ npm install -g @compositor/x0
 ## Isolated development environment
 
 ```sh
-x0 dev src/App.js
+x0 src/App.js
 ```
 
 Options:
@@ -43,7 +43,7 @@ Options:
 ```
 
 ```sh
-x0 dev src/App.js -op 8080
+x0 src/App.js -op 8080
 ```
 
 

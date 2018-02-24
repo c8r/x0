@@ -7,7 +7,7 @@
     "x0": "bin/cli.js"
   },
   "scripts": {
-    "start": "./bin/cli.js dev docs/App.js -op 8888",
+    "start": "./bin/cli.js docs/App.js -op 8888",
     "static": "./bin/cli.js build docs/App.js --static -d docs",
     "build": "./bin/cli.js build docs/App.js -d docs -c docs/webpack.config.js",
     "test": "nyc ava",
