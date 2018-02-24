@@ -42,7 +42,7 @@
     "react-loadable": "^5.3.1",
     "read-pkg-up": "^2.0.0",
     "update-notifier": "^2.2.0",
-    "webpack": "^4.0.0-beta.1",
+    "webpack": "^4.0.0-beta.3",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
   },
