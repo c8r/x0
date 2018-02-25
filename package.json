@@ -44,7 +44,8 @@
     "update-notifier": "^2.2.0",
     "webpack": "^4.0.0",
     "webpack-dev-server": "^3.0.0",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "webpack-serve": "^0.1.4"
   },
   "devDependencies": {
     "ava": "^0.24.0",

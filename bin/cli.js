@@ -81,11 +81,13 @@ switch (cmd) {
     const dev = require('../lib/dev')
     dev(filename, options)
       .then(server => {
-        const { port } = server.listeningApp.address()
+        console.log(server)
+        const port = 'PORT'
+        // const { port } = server.listeningApp.address()
         spinner.succeed(`dev server listening at http://localhost:${port}`)
-        if (options.open) {
-          openBrowser(`http://localhost:${port}`)
-        }
+        // if (options.open) {
+        //   openBrowser(`http://localhost:${port}`)
+        // }
       })
       .catch(err => {
         spinner.fail(err)
