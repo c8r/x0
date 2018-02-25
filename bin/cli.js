@@ -54,6 +54,10 @@ const absolute = f => f
 
 const filename = absolute(file || cmd)
 
+if (options.config) {
+  options.config = absolute(options.config)
+}
+
 console.log(chalk.black.bgCyan(' x0 '), chalk.cyan('@compositor/x0'), '\n')
 const spinner = ora().start()
 
