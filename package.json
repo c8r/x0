@@ -1,13 +1,13 @@
 {
   "name": "@compositor/x0",
-  "version": "3.2.1",
+  "version": "4.0.0-0",
   "description": "Zero-config React development environment and static site generator",
   "main": "index.js",
   "bin": {
     "x0": "bin/cli.js"
   },
   "scripts": {
-    "start": "./bin/cli.js dev docs/App.js -op 8888",
+    "start": "./bin/cli.js docs/App.js -op 8888",
     "static": "./bin/cli.js build docs/App.js --static -d docs",
     "build": "./bin/cli.js build docs/App.js -d docs -c docs/webpack.config.js",
     "test": "nyc ava",
@@ -42,8 +42,8 @@
     "react-loadable": "^5.3.1",
     "read-pkg-up": "^2.0.0",
     "update-notifier": "^2.2.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack": "^4.0.0",
+    "webpack-dev-server": "^3.0.0",
     "webpack-merge": "^4.1.1"
   },
   "devDependencies": {

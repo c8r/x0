@@ -52,28 +52,12 @@ const absolute = f => f
   ? path.isAbsolute(f) ? f : path.join(process.cwd(), f)
   : null
 
-const filename = absolute(file)
+const filename = absolute(file || cmd)
 
 console.log(chalk.black.bgCyan(' x0 '), chalk.cyan('@compositor/x0'), '\n')
 const spinner = ora().start()
 
 switch (cmd) {
-  case 'dev':
-    spinner.start('starting dev server')
-    const dev = require('../lib/dev')
-    dev(filename, options)
-      .then(server => {
-        const { port } = server.listeningApp.address()
-        spinner.succeed(`dev server listening at http://localhost:${port}`)
-        if (options.open) {
-          openBrowser(`http://localhost:${port}`)
-        }
-      })
-      .catch(err => {
-        spinner.fail(err)
-        process.exit(1)
-      })
-    break
   case 'build':
     spinner.start('building static site')
     const build = require('../lib/static')
@@ -91,7 +75,21 @@ switch (cmd) {
         process.exit(1)
       })
     break
+  case 'dev':
   default:
-    spinner.fail('no argument provided')
-    process.exit(0)
+    spinner.start('starting dev server')
+    const dev = require('../lib/dev')
+    dev(filename, options)
+      .then(server => {
+        const { port } = server.listeningApp.address()
+        spinner.succeed(`dev server listening at http://localhost:${port}`)
+        if (options.open) {
+          openBrowser(`http://localhost:${port}`)
+        }
+      })
+      .catch(err => {
+        spinner.fail(err)
+        process.exit(1)
+      })
+    break
 }
