@@ -46,7 +46,7 @@ const cli = meow(`
 })
 
 const [ cmd, file ] = cli.input
-const options = Object.assign({}, pkg.x0, cli.flags)
+const options = Object.assign({}, pkg ? pkg.x0 : {}, cli.flags)
 
 const absolute = f => f
   ? path.isAbsolute(f) ? f : path.join(process.cwd(), f)
