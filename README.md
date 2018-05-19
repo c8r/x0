@@ -22,9 +22,8 @@ npm install -g @compositor/x0
 - Renders static HTML
 - Renders JS bundles
 - Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
-- Support for routing with [react-router][react-router]
+- Automatic file system based routing
 - Support for async data fetching
-- Support for code splitting with [React Loadable][react-loadable]
 
 \* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
 
@@ -32,18 +31,20 @@ npm install -g @compositor/x0
 ## Isolated development environment
 
 ```sh
-x0 src/App.js
+x0 components
 ```
 
 Options:
 
 ```
-  -o --open   Open dev server in default browser
-  -p --port   Set custom port for dev server
+-o --open       Open dev server in default browser
+-p --port       Custom port for dev server
+-t --template   Path to custom HTML template
+--webpack       Path to custom webpack configuration
 ```
 
 ```sh
-x0 src/App.js -op 8080
+x0 components -op 8080
 ```
 
 
@@ -52,36 +53,36 @@ x0 src/App.js -op 8080
 Render static HTML and client-side bundle
 
 ```sh
-x0 build src/App.js --out-dir site
+x0 build components
 ```
 
 Render static HTML without bundle
 
 ```sh
-x0 build src/App.js --out-dir site --static
+x0 build components --static
 ```
 
 Options
 
 ```
-  -d --out-dir    Directory to save index.html and bundle.js to
-  -s --static     Only render static HTML (no client-side JS)
+-d --out-dir    Output directory (default dist)
+-s --static     Output static HTML without JS bundle
+-t --template   Path to custom HTML template
+--webpack       Path to custom webpack configuration
 ```
+
 
 ## Fetching Data
 
-Use the `getInitialProps` static method to fetch data for static rendering.
-This method was inspired by [Next.js][nextjs] but only works for static rendering.
+Use the async `getInitialProps` static method to fetch data for static rendering.
+This method was inspired by [Next.js][nextjs].
 
 ```jsx
 const App = props => (
   <h1>Hello {props.data}</h1>
 )
 
-App.getInitialProps = async ({
-  Component,
-  pathname
-}) => {
+App.getInitialProps = async () => {
   const fetch = require('isomorphic-fetch')
   const res = await fetch('http://example.com/data')
   const data = await res.json()
@@ -92,145 +93,92 @@ App.getInitialProps = async ({
 
 ## CSS-in-JS
 
-x0 supports server-side rendering for [styled-components][sc], [glamor][glamor], [glamorous][glamorous], and [fela][fela].
-To enable CSS rendering for static output, use the `cssLibrary` option
+x0 supports server-side rendering for [styled-components][sc] with zero configuration.
+To enable CSS rendering for static output, ensure that `styled-components` is installed as a dependency in your `package.json`
 
-```sh
-x0 build src/App.js --cssLibrary="styled-components"
-```
-
-Available options:
-
-- [`styled-components`][sc]
-- [`glamorous`][glamorous]
-- [`glamor`][glamor]
-- [`fela`][fela]
-
-## Head content
-
-Head elements such as `<title>`, `<meta>`, and `<style>` can be rendered at the beginning of a component.
-Browsers should handle this correctly since the `<head>` and `<body>` elements are optional in HTML 5.
-
-```jsx
-const App = props => (
-  <React.Fragment>
-    <title>Hello x0</title>
-    <style dangerouslySetInnerHTML={{
-      __html: 'body{font-family:-apple-system,BlinkMacSystemFont,sans-serif}'
-    }} />
-    <h1>Hello x0</h1>
-  </React.Fragment>
-)
+```json
+"dependencies": {
+  "styled-components": "^3.2.6"
+}
 ```
 
 ## Configuration
 
-Default props can be passed to x0 in a `package.json` field named `x0`.
+Default options can be set in the `x0` field in `package.json`.
 
 ```json
 "x0": {
+  "static": true,
+  "outDir": "site",
   "title": "Hello",
-  "count": 0
 }
 ```
 
-### Routing
+## Head content
 
-To render multiple pages and use routing, add a `routes` array to the `package.json` configuration object.
+Head elements such as `<title>`, `<meta>`, and `<style>` can be configured with the `x0` field in `package.json`.
 
 ```json
 "x0": {
-  "routes": [
-    "/",
-    "/about"
+  "title": "My Site",
+  "meta": [
+    { "name": "twitter:card", "content": "summary" }
+    { "name": "twitter:image", "content": "kitten.png" }
+  ],
+  "links": [
+    {
+      "rel": "stylesheet",
+      "href": "https://fonts.googleapis.com/css?family=Roboto"
+    }
   ]
 }
 ```
 
-```sh
-x0 build src/App.js --static --out-dir site
-```
+## Custom HTML Template
 
-The current route will be passed to the component as `props.pathname`.
-This can be used with [react-router][react-router]'s StaticRouter and BrowserRouter components.
-
-```jsx
-// Example with react-router
-import React from 'react'
-import {
-  StaticRouter,
-  BrowserRouter,
-  Route,
-  Link
-} from 'react-router-dom'
-import Home from './Home'
-import About from './About'
-
-// universal router component
-const Router = typeof document !== 'undefined'
-  ? BrowserRouter
-  : StaticRouter
-
-const App = props => (
-  <Router
-    basename={props.basename}
-    location={props.pathname}>
-    <nav>
-      <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
-    </nav>
-    <Route
-      exact
-      path='/'
-      render={() => <Home {...props} />}
-    />
-    <Route
-      path='/about'
-      render={() => <About {...props} />}
-    />
-  </Router>
-)
-```
-
-### Code Splitting
-
-To split client side bundles when rendering a static site,
-x0 supports [React Loadable][react-loadable] with no additional setup needed.
-
-```jsx
-// example of using React Loadable
-import React from 'react'
-import Loadable from 'react-loadable'
-
-const About = Loadable({
-  loading: () => <div>loading...</div>,
-  loader: () => import('./About')
-})
-
-const App = props => (
-  <div>
-    <h1>Hello</h1>
-    <About />
-  </div>
-)
-```
-
-### Proxy
-
-If you want to proxy requests you can configure it using the `x0` key in your `package.json`.
-This can be useful when you're running a local api server during development.
-
-The following example proxies all `/api` requests to `http://localhost:3000`.
+A custom HTML template can be passed as the `template` option.
 
 ```json
 "x0": {
-  "/api": "http://localhost:3000"
+  "template": "./html.js"
+}
+```
+
+```js
+// example template
+module.exports = ({
+  html,
+  css,
+  scripts,
+  title,
+  meta = [],
+  links = [],
+  static: isStatic
+}) => `<!DOCTYPE html>
+<head>
+  <title>{title}</title>
+  ${css}
+</head>
+<div id=root>${html}</div>
+${scripts}
+`
+```
+
+### Routing
+
+x0 creates routes based on the file system, using [react-router][react-router].
+To set the base URL for static builds, use the `basename` option.
+
+```json
+"x0": {
+  "basename": "/my-site"
 }
 ```
 
 ### webpack
 
-Custom webpack loaders can be used by creating a partial `webpack.config.js` file and passing it to the `--config` option.
+Webpack configuration files named `webpack.config.js` will automatically be merged with the built-in configuration, using [webpack-merge][webpack-merge].
+To use a custom filename, pass the file path to the `--webpack` flag.
 
 ```js
 // webpack.config.js example
@@ -243,13 +191,7 @@ module.exports = {
 }
 ```
 
-```sh
-x0 build App.js --config webpack.config.js
-```
-
 See the [example](examples/webpack-config).
-
-x0 uses [webpack-merge][webpack-merge], which means that other webpack features, such as plugins, should also work.
 
 #### Related
 

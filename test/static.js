@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import test from 'ava'
-import x0Static from '../lib/static'
+import build from '../lib/build'
 
 const hello = path.join(__dirname, './components/Hello.js')
 const withprops = path.join(__dirname, './components/Props.js')
@@ -22,7 +22,7 @@ test.before(clean)
 test.after(clean)
 
 test.cb('static renders', t => {
-  x0Static(hello, {})
+  build(hello, {})
     .then(result => {
       t.is(typeof result, 'object')
       t.snapshot(result.html)
@@ -31,7 +31,7 @@ test.cb('static renders', t => {
 })
 
 test.cb('static writes', t => {
-  x0Static(hello, {
+  build(hello, {
     outDir: 'test/output'
   })
     .then(result => {
@@ -42,7 +42,7 @@ test.cb('static writes', t => {
 })
 
 test.cb('static uses getInitialProps method', t => {
-  x0Static(withprops, {})
+  build(withprops, {})
     .then(result => {
       t.is(typeof result, 'object')
       t.snapshot(result.html)
@@ -51,7 +51,7 @@ test.cb('static uses getInitialProps method', t => {
 })
 
 test.cb('static picks up routes config', t => {
-  x0Static(hello, {
+  build(hello, {
     routes: [
       '/'
     ]
@@ -68,7 +68,7 @@ test.cb('static makes a directory', t => {
     fs.rmdirSync(output)
   }
 
-  x0Static(hello, {
+  build(hello, {
     outDir: 'test/output'
   })
     .then(result => {
