@@ -22,40 +22,20 @@ const clean = () => {
 test.before(clean)
 test.after(clean)
 
-test.cb('static renders', t => {
-  build(options)
-    .then(result => {
-      const html = fs.readFileSync(htmlFile, 'utf8')
-      t.snapshot(html)
-      t.end()
-    })
+test('static renders', async t => {
+  const res = await build(options)
+  const html = fs.readFileSync(htmlFile, 'utf8')
+  t.snapshot(html)
 })
 
-/*
-test.cb('static writes', t => {
-  build(options)
-    .then(result => {
-      t.is(typeof result, 'object')
-      t.snapshot(result.html)
-      t.end()
-    })
-})
-*/
-
-test.cb('static uses getInitialProps method', t => {
-  build(options)
-    .then(result => {
-      const html = fs.readFileSync(propsFile, 'utf8')
-      t.snapshot(html)
-      t.end()
-    })
+test('static uses getInitialProps method', async t => {
+  const res = await build(options)
+  const html = fs.readFileSync(propsFile, 'utf8')
+  t.snapshot(html)
 })
 
-test.cb('static makes a directory', t => {
+test('static makes a directory', async t => {
   fs.remove(output)
-
-  build(options)
-    .then(result => {
-      t.end()
-    })
+  const res = await build(options)
+  t.pass()
 })
