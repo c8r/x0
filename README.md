@@ -299,6 +299,7 @@ See the [example](examples/webpack-config).
 
 #### Related
 
+- [Compositor JSX][jsx-loader]
 - [React Router][react-router]
 - [Mini HTML Webpack Plugin][mini-html]
 - [Styled Components][sc]
