@@ -36,6 +36,7 @@
     "emotion-server": "^9.1.3",
     "find-up": "^2.1.0",
     "fs-extra": "^6.0.1",
+    "glamor": "^2.20.40",
     "html-minifier": "^3.5.15",
     "koa-connect": "^2.0.1",
     "meow": "^5.0.0",

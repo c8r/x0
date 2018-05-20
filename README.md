@@ -162,7 +162,7 @@ x0 supports server-side rendering for [styled-components][sc] and [emotion][emot
 
 ### Styled Components
 
-To enable CSS rendering for static output, ensure that `styled-components` is installed as a dependency in your `package.json`
+To enable CSS rendering for static export, ensure that `styled-components` is installed as a dependency in your `package.json`
 
 ```json
 "dependencies": {
@@ -331,6 +331,7 @@ See the [example](examples/webpack-config).
 - [React Router][react-router]
 - [Mini HTML Webpack Plugin][mini-html]
 - [Styled Components][sc]
+- [Emotion][emotion]
 - [webpack][webpack]
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - [Next.js][nextjs]
@@ -352,7 +353,6 @@ See the [example](examples/webpack-config).
 [emotion]: https://github.com/emotion-js/emotion
 [glamorous]: https://github.com/paypal/glamorous
 [glamor]: https://github.com/threepointone/glamor
-[fela]: https://github.com/rofrischmann/fela
 [gatsby]: https://github.com/gatsbyjs/gatsby
 [react-static]: https://github.com/nozzle/react-static
 [react-loadable]: https://github.com/thejameskyle/react-loadable
