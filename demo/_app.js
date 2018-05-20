@@ -10,7 +10,7 @@ export default class App extends React.Component {
   render () {
     const { render, ...props } = this.props
     return render({
-      ...props,
+      // ...props,
       ...this.state,
       update: this.update
     })

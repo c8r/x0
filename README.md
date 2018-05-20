@@ -48,15 +48,15 @@ x0 components -op 8080
 ```
 
 
-## Static Render
+## Static Build
 
-Render static HTML and client-side bundle
+Export static HTML and client-side bundle
 
 ```sh
 x0 build components
 ```
 
-Render static HTML without bundle
+Export static HTML without bundle
 
 ```sh
 x0 build components --static
@@ -78,16 +78,78 @@ Use the async `getInitialProps` static method to fetch data for static rendering
 This method was inspired by [Next.js][nextjs].
 
 ```jsx
-const App = props => (
+const Index = props => (
   <h1>Hello {props.data}</h1>
 )
 
-App.getInitialProps = async () => {
+Index.getInitialProps = async () => {
   const fetch = require('isomorphic-fetch')
   const res = await fetch('http://example.com/data')
   const data = await res.json()
 
   return { data }
+}
+```
+
+## Custom App
+
+A custom `App` component can be provided by including an `_app.js` file.
+The `App` component uses the [render props][render-prop] pattern to provide additional state and props to its child routes.
+
+```jsx
+// example _app.js
+import React from 'react'
+
+export default class extends React.Component {
+  state = {
+    count: 0
+  }
+
+  update = fn => this.setState(fn)
+
+  render () {
+    const { render, routes } = this.props
+
+    return render({
+      ...this.state,
+      decrement: () => this.update(s => ({ count: s.count - 1 })),
+      increment: () => this.update(s => ({ count: s.count + 1 }))
+    })
+  }
+}
+```
+
+### Layouts
+
+The `App` component can also be used to provide a common layout for all routes.
+
+```jsx
+// example _app.js
+import React from 'react'
+import Nav from '../components/Nav'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+export default class extends React.Component {
+  render () {
+    const {
+      render,
+      routes
+    } = this.props
+
+    const route = routes.find(route => route.path === props.location.pathname)
+
+    return (
+      <React.Fragment>
+        <Nav />
+        <Header
+          route={route}
+        />
+        {render()}
+        <Footer />
+      </React.Fragment>
+    )
+  }
 }
 ```
 
