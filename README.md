@@ -240,6 +240,45 @@ To set the base URL for static builds, use the `basename` option.
 }
 ```
 
+#### Links
+
+To link between different components, install `react-router-dom` and use the `Link` component.
+
+```sh
+npm i react-router-dom
+```
+
+```js
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+export default () => (
+  <div>
+    <h1>Home</h1>
+    <nav>
+      <Link to='/'>Home</Link>
+      <Link to='/about'>About</Link>
+    </nav>
+  </div>
+)
+```
+
+### JSX Format
+
+x0 includes support for [Compositor JSX][jsx-loader] format files.
+
+```jsx
+---
+title: Hello
+scope: import * as scope from 'rebass'
+---
+<Box px={2} py={4}>
+  <Heading>
+    {props.title}
+  </Heading>
+</Box>
+```
+
 ### webpack
 
 Webpack configuration files named `webpack.config.js` will automatically be merged with the built-in configuration, using [webpack-merge][webpack-merge].
@@ -275,6 +314,7 @@ See the [example](examples/webpack-config).
 |
 [MIT License](LICENSE.md)
 
+[jsx-loader]: https://github.com/c8r/jsx-loader
 [nextjs]: https://github.com/zeit/next.js
 [react-router]: https://github.com/ReactTraining/react-router
 [mini-html]: https://github.com/styleguidist/mini-html-webpack-plugin
