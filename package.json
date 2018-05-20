@@ -7,8 +7,8 @@
     "x0": "cli.js"
   },
   "scripts": {
-    "start": "./cli.js demo -op 8888",
-    "demo": "./cli.js build demo -d dist",
+    "start": "./cli.js docs -op 8888",
+    "static": "./cli.js build docs -d docs",
     "build": "./cli.js build docs -d docs -c docs/webpack.config.js",
     "test": "nyc ava",
     "cover": "nyc report --reporter=html --reporter=lcov"

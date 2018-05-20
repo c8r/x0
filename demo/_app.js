@@ -8,9 +8,9 @@ export default class App extends React.Component {
   update = fn => this.setState(fn)
 
   render () {
-    const { render, ...props } = this.props
+    const { render, routes } = this.props
+
     return render({
-      // ...props,
       ...this.state,
       update: this.update
     })
