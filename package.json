@@ -17,6 +17,7 @@
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {
+    "@compositor/log": "^1.0.0-0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-macros": "^2.2.1",
