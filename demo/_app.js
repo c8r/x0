@@ -7,26 +7,12 @@ export default class App extends React.Component {
 
   update = fn => this.setState(fn)
 
-  componentDidMount () {
-    console.log('_app mount')
-  }
-  componentWillUnmount () {
-    console.log('_app unmount')
-  }
-
   render () {
-    const { Component, ...props } = this.props
-    if (!Component) {
-      return (
-        <pre>no match</pre>
-      )
-    }
-    return (
-      <Component
-        {...props}
-        {...this.state}
-        update={this.update}
-      />
-    )
+    const { render, ...props } = this.props
+    return render({
+      ...props,
+      ...this.state,
+      update: this.update
+    })
   }
 }
