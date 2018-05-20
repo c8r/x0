@@ -13,6 +13,9 @@ export default class extends React.Component {
           <li>
             <Link to='/hello'>Hello JSX</Link>
           </li>
+          <li>
+            <Link to='/mdx'>MDX</Link>
+          </li>
         </ul>
         <video
           style={{

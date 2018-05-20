@@ -279,6 +279,20 @@ scope: import * as scope from 'rebass'
 </Box>
 ```
 
+### MDX Format
+
+x0 includes support for [MDX][mdx] format files.
+
+```mdx
+import { Box } from 'rebass'
+
+# Hello MDX
+
+<Box p={4} bg='tomato'>
+  Beep Boop
+</Box>
+```
+
 ### webpack
 
 Webpack configuration files named `webpack.config.js` will automatically be merged with the built-in configuration, using [webpack-merge][webpack-merge].
@@ -300,6 +314,7 @@ See the [example](examples/webpack-config).
 #### Related
 
 - [Compositor JSX][jsx-loader]
+- [MDX][mdx]
 - [React Router][react-router]
 - [Mini HTML Webpack Plugin][mini-html]
 - [Styled Components][sc]
@@ -316,6 +331,7 @@ See the [example](examples/webpack-config).
 [MIT License](LICENSE.md)
 
 [jsx-loader]: https://github.com/c8r/jsx-loader
+[mdx]: https://github.com/mdx-js/mdx
 [nextjs]: https://github.com/zeit/next.js
 [react-router]: https://github.com/ReactTraining/react-router
 [mini-html]: https://github.com/styleguidist/mini-html-webpack-plugin
