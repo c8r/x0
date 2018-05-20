@@ -113,6 +113,11 @@ if (opts.webpack) {
   if (webpackConfig) opts.webpack = require(webpackConfig)
 }
 
+if (!opts.app) {
+  const app = findup.sync('_app.js', { cwd: dirname })
+  if (app) opts.app = app
+}
+
 if (opts.template) {
   opts.template = require(path.resolve(opts.template))
 }

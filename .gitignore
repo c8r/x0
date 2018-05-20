@@ -7,3 +7,4 @@ coverage
 .nyc_output
 test/output
 TMP
+dist
