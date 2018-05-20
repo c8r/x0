@@ -8,8 +8,8 @@
   },
   "scripts": {
     "start": "./cli.js docs -op 8888",
-    "static": "./cli.js build docs --static -d docs",
-    "build": "./cli.js build docs -d docs -c docs/webpack.config.js",
+    "static": "./cli.js build docs --static",
+    "build": "./cli.js build docs",
     "test": "nyc ava",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },

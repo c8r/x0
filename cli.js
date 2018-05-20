@@ -119,6 +119,8 @@ const handleError = err => {
   process.exit(1)
 }
 
+log('@compositor/x0')
+
 switch (cmd) {
   case 'build':
     log.start('building static site')
