@@ -94,7 +94,9 @@ Index.getInitialProps = async () => {
 ## Custom App
 
 A custom `App` component can be provided by including an `_app.js` file.
-The `App` component uses the [render props][render-prop] pattern to provide additional state and props to its child routes.
+The `App` component uses the [render props][render-props] pattern to provide additional state and props to its child routes.
+
+[render-props]: https://reactjs.org/docs/render-props.html
 
 ```jsx
 // example _app.js
