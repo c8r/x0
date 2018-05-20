@@ -23,7 +23,7 @@ npm install -g @compositor/x0
 - Automatic file system based routing
 - Exports static HTML
 - Exports JS bundles
-- Works with CSS-in-JS libraries like [styled-components][sc]
+- Works with CSS-in-JS libraries like [styled-components][sc] and [emotion][emotion]
 - Support for async data fetching
 
 \* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
@@ -158,12 +158,25 @@ export default class extends React.Component {
 
 ## CSS-in-JS
 
-x0 supports server-side rendering for [styled-components][sc] with zero configuration.
+x0 supports server-side rendering for [styled-components][sc] and [emotion][emotion] with zero configuration.
+
+### Styled Components
+
 To enable CSS rendering for static output, ensure that `styled-components` is installed as a dependency in your `package.json`
 
 ```json
 "dependencies": {
   "styled-components": "^3.2.6"
+}
+```
+
+### Emotion
+
+Ensure `emotion` is installed as a dependency in your `package.json`
+
+```json
+"dependencies": {
+  "emotion": "^9.1.3"
 }
 ```
 
@@ -336,6 +349,7 @@ See the [example](examples/webpack-config).
 [react-router]: https://github.com/ReactTraining/react-router
 [mini-html]: https://github.com/styleguidist/mini-html-webpack-plugin
 [sc]: https://github.com/styled-components/styled-components
+[emotion]: https://github.com/emotion-js/emotion
 [glamorous]: https://github.com/paypal/glamorous
 [glamor]: https://github.com/threepointone/glamor
 [fela]: https://github.com/rofrischmann/fela
