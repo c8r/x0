@@ -2,6 +2,7 @@
 # x0
 
 Zero-config React development environment and static site generator
+
 [![Build Status][build-badge]][build]
 
 ```sh
