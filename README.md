@@ -265,7 +265,7 @@ export default () => (
 
 ### JSX Format
 
-x0 includes support for [Compositor JSX][jsx-loader] format files.
+x0 includes support for the [Compositor JSX][jsx-loader] file format.
 
 ```jsx
 ---
@@ -281,7 +281,7 @@ scope: import * as scope from 'rebass'
 
 ### MDX Format
 
-x0 includes support for [MDX][mdx] format files.
+x0 includes support for the [MDX][mdx] file format.
 
 ```mdx
 import { Box } from 'rebass'
