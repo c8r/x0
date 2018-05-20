@@ -22,7 +22,7 @@ npm install -g @compositor/x0
 - Automatic file system based routing
 - Exports static HTML
 - Exports JS bundles
-- Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
+- Works with CSS-in-JS libraries like [styled-components][sc]
 - Support for async data fetching
 
 \* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
@@ -259,6 +259,10 @@ See the [example](examples/webpack-config).
 
 #### Related
 
+- [React Router][react-router]
+- [Mini HTML Webpack Plugin][mini-html]
+- [Styled Components][sc]
+- [webpack][webpack]
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - [Next.js][nextjs]
 - [Gatsby][gatsby]
@@ -272,6 +276,7 @@ See the [example](examples/webpack-config).
 
 [nextjs]: https://github.com/zeit/next.js
 [react-router]: https://github.com/ReactTraining/react-router
+[mini-html]: https://github.com/styleguidist/mini-html-webpack-plugin
 [sc]: https://github.com/styled-components/styled-components
 [glamorous]: https://github.com/paypal/glamorous
 [glamor]: https://github.com/threepointone/glamor
@@ -280,3 +285,4 @@ See the [example](examples/webpack-config).
 [react-static]: https://github.com/nozzle/react-static
 [react-loadable]: https://github.com/thejameskyle/react-loadable
 [webpack-merge]: https://github.com/survivejs/webpack-merge
+[webpack]: https://webpack.js.org
