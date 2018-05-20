@@ -5,24 +5,14 @@ const meow = require('meow')
 const findup = require('find-up')
 const readPkg = require('read-pkg-up').sync
 const openBrowser = require('react-dev-utils/openBrowser')
+const log = require('@compositor/log')
 const chalk = require('chalk')
 const clipboard = require('clipboardy')
 
 const config = require('pkg-conf').sync('x0')
 const pkg = readPkg().pkg
 
-const log = (...args) => {
-  console.log(
-    chalk.black.bgCyan(' x0 '),
-    ...args
-  )
-}
-log.error = (...args) => {
-  console.log(
-    chalk.black.bgRed(' err '),
-    chalk.red(...args)
-  )
-}
+log.name = 'x0'
 
 const cli = meow(`
   Usage
@@ -131,23 +121,23 @@ const handleError = err => {
 
 switch (cmd) {
   case 'build':
-    log('building static site')
+    log.start('building static site')
     const { build } = require('.')
     build(opts)
       .then(res => {
-        log('site saved to ' + opts.outDir)
+        log.stop('site saved to ' + opts.outDir)
       })
       .catch(handleError)
     break
   case 'dev':
   default:
-    log('starting dev server')
+    log.start('starting dev server')
     const { dev } = require('.')
     dev(opts)
       .then(res => {
         const { port } = res.options
         const url = `http://localhost:${port}`
-        log(
+        log.stop(
           'dev server listening on',
           chalk.green(url),
           chalk.gray('(copied to clipboard)')
