@@ -19,6 +19,8 @@
   "dependencies": {
     "@compositor/jsx-loader": "^1.0.0-2",
     "@compositor/log": "^1.0.0-0",
+    "@mdx-js/loader": "^0.9.0",
+    "@mdx-js/mdx": "^0.9.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-macros": "^2.2.1",
@@ -55,9 +57,10 @@
     "isomorphic-fetch": "^2.2.1",
     "nano-style": "^1.0.0",
     "nyc": "^11.8.0",
+    "rebass": "^2.0.0-2",
     "refunk": "^2.2.4",
     "styled-components": "^3.2.6",
-    "styled-system": "^1.1.7"
+    "styled-system": "^2.2.5"
   },
   "x0": {
     "title": "Compositor x0",
