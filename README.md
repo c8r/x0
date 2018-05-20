@@ -19,10 +19,10 @@ npm install -g @compositor/x0
 - Hot-loading development environment
 - Works with virtually any React component\*
 - No confusing APIs
-- Renders static HTML
-- Renders JS bundles
-- Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
 - Automatic file system based routing
+- Exports static HTML
+- Exports JS bundles
+- Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
 - Support for async data fetching
 
 \* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
