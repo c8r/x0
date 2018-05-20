@@ -2,6 +2,7 @@
 # x0
 
 Zero-config React development environment and static site generator
+
 [![Build Status][build-badge]][build]
 
 ```sh
@@ -19,10 +20,10 @@ npm install -g @compositor/x0
 - Hot-loading development environment
 - Works with virtually any React component\*
 - No confusing APIs
-- Renders static HTML
-- Renders JS bundles
-- Works with CSS-in-JS libraries like [styled-components][sc] and [glamorous][glamorous]
 - Automatic file system based routing
+- Exports static HTML
+- Exports JS bundles
+- Works with CSS-in-JS libraries like [styled-components][sc]
 - Support for async data fetching
 
 \* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
@@ -48,15 +49,15 @@ x0 components -op 8080
 ```
 
 
-## Static Render
+## Static Build
 
-Render static HTML and client-side bundle
+Export static HTML and client-side bundle
 
 ```sh
 x0 build components
 ```
 
-Render static HTML without bundle
+Export static HTML without bundle
 
 ```sh
 x0 build components --static
@@ -78,16 +79,80 @@ Use the async `getInitialProps` static method to fetch data for static rendering
 This method was inspired by [Next.js][nextjs].
 
 ```jsx
-const App = props => (
+const Index = props => (
   <h1>Hello {props.data}</h1>
 )
 
-App.getInitialProps = async () => {
+Index.getInitialProps = async () => {
   const fetch = require('isomorphic-fetch')
   const res = await fetch('http://example.com/data')
   const data = await res.json()
 
   return { data }
+}
+```
+
+## Custom App
+
+A custom `App` component can be provided by including an `_app.js` file.
+The `App` component uses the [render props][render-props] pattern to provide additional state and props to its child routes.
+
+[render-props]: https://reactjs.org/docs/render-props.html
+
+```jsx
+// example _app.js
+import React from 'react'
+
+export default class extends React.Component {
+  state = {
+    count: 0
+  }
+
+  update = fn => this.setState(fn)
+
+  render () {
+    const { render, routes } = this.props
+
+    return render({
+      ...this.state,
+      decrement: () => this.update(s => ({ count: s.count - 1 })),
+      increment: () => this.update(s => ({ count: s.count + 1 }))
+    })
+  }
+}
+```
+
+### Layouts
+
+The `App` component can also be used to provide a common layout for all routes.
+
+```jsx
+// example _app.js
+import React from 'react'
+import Nav from '../components/Nav'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+export default class extends React.Component {
+  render () {
+    const {
+      render,
+      routes
+    } = this.props
+
+    const route = routes.find(route => route.path === props.location.pathname)
+
+    return (
+      <React.Fragment>
+        <Nav />
+        <Header
+          route={route}
+        />
+        {render()}
+        <Footer />
+      </React.Fragment>
+    )
+  }
 }
 ```
 
@@ -195,6 +260,10 @@ See the [example](examples/webpack-config).
 
 #### Related
 
+- [React Router][react-router]
+- [Mini HTML Webpack Plugin][mini-html]
+- [Styled Components][sc]
+- [webpack][webpack]
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - [Next.js][nextjs]
 - [Gatsby][gatsby]
@@ -208,6 +277,7 @@ See the [example](examples/webpack-config).
 
 [nextjs]: https://github.com/zeit/next.js
 [react-router]: https://github.com/ReactTraining/react-router
+[mini-html]: https://github.com/styleguidist/mini-html-webpack-plugin
 [sc]: https://github.com/styled-components/styled-components
 [glamorous]: https://github.com/paypal/glamorous
 [glamor]: https://github.com/threepointone/glamor
@@ -216,3 +286,4 @@ See the [example](examples/webpack-config).
 [react-static]: https://github.com/nozzle/react-static
 [react-loadable]: https://github.com/thejameskyle/react-loadable
 [webpack-merge]: https://github.com/survivejs/webpack-merge
+[webpack]: https://webpack.js.org
