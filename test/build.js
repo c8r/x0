@@ -3,11 +3,13 @@ import path from 'path'
 import test from 'ava'
 import build from '../lib/build'
 
-const input = path.join(__dirname, 'components')
-const output = path.join(__dirname, './output')
-const htmlFile = path.join(__dirname, './output/index.html')
-const propsFile = path.join(__dirname, './output/props/index.html')
-const bundleFile = path.join(__dirname, './output/bundle.js')
+const input = path.resolve('test/components')
+const output = path.resolve('test/output')
+const htmlFile = path.resolve('test/output/index.html')
+const propsFile = path.resolve('test/output/props/index.html')
+const bundleFile = path.resolve('test/output/bundle.js')
+
+console.log('DEBUG', input)
 
 const options = {
   input,
