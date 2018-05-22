@@ -92,7 +92,7 @@ const opts = Object.assign({
   filename,
   stats,
   outDir: 'dist',
-  basename: '/',
+  basename: '',
   scope: {},
   pkg,
 }, config, cli.flags)
