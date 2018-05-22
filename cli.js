@@ -122,7 +122,7 @@ const handleError = err => {
   process.exit(1)
 }
 
-log('@compositor/x0')
+log(chalk.cyan('@compositor/x0'))
 
 switch (cmd) {
   case 'build':
