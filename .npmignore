@@ -1,6 +1,10 @@
 TMP
 coverage
 .nyc_output
+test
 test/output
 docs
 examples
+demo
+dist
+.travis.yml
