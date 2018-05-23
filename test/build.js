@@ -9,8 +9,6 @@ const htmlFile = path.resolve('test/output/index.html')
 const propsFile = path.resolve('test/output/props/index.html')
 const bundleFile = path.resolve('test/output/bundle.js')
 
-console.log('DEBUG', input)
-
 const options = {
   input,
   dirname: input,
