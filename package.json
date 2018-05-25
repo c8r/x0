@@ -17,7 +17,7 @@
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {
-    "@compositor/jsx-loader": "^1.0.0-2",
+    "@compositor/jsx-loader": "^1.0.0-3",
     "@compositor/log": "^1.0.0-0",
     "@mdx-js/loader": "^0.9.0",
     "@mdx-js/mdx": "^0.9.0",
