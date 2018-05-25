@@ -1,6 +1,7 @@
-import fs from 'fs-extra'
+import fs from 'fs'
 import path from 'path'
 import test from 'ava'
+import rimraf from 'rimraf'
 import build from '../lib/build'
 
 const input = path.resolve('test/components')
@@ -16,7 +17,10 @@ const options = {
 }
 
 const clean = () => {
-  fs.remove(output)
+  if (fs.existsSync(output)) {
+    rimraf.sync(output)
+  }
+  // fs.remove(output)
 }
 
 test.before(clean)
@@ -35,7 +39,8 @@ test('static uses getInitialProps method', async t => {
 })
 
 test('static makes a directory', async t => {
-  fs.remove(output)
+  // fs.remove(output)
+  clean()
   const res = await build(options)
   t.pass()
 })

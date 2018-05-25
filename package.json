@@ -61,6 +61,7 @@
     "nyc": "^11.8.0",
     "rebass": "^2.0.0-2",
     "refunk": "^2.2.4",
+    "rimraf": "^2.6.2",
     "styled-components": "^3.2.6",
     "styled-system": "^2.2.5"
   },
