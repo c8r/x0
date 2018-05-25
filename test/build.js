@@ -34,12 +34,12 @@ test('static renders', async t => {
 
 test('static uses getInitialProps method', async t => {
   const res = await build(options)
-  console.log(propsFile)
   const html = fs.readFileSync(propsFile, 'utf8')
   t.snapshot(html)
 })
 
 test.skip('static makes a directory', async t => {
+  clean()
   const res = await build(options)
   t.pass()
 })
