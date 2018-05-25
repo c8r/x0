@@ -2,8 +2,7 @@
   "name": "x0-graphql-example",
   "private": true,
   "scripts": {
-    "start": "x0 pages",
-    "build": "x0 build pages"
+    "start": "x0 pages"
   },
   "dependencies": {
     "@compositor/x0": "^5.0.0-12",
