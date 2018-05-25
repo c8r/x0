@@ -139,8 +139,8 @@ switch (cmd) {
     log.start('starting dev server')
     const { dev } = require('.')
     dev(opts)
-      .then(res => {
-        const { port } = res.options
+      .then(({ server }) => {
+        const { port } = server.options
         const url = `http://localhost:${port}`
         log.stop(
           'dev server listening on',
