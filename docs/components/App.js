@@ -1,5 +1,5 @@
 import React from 'react'
-import connect from 'refunk'
+import { connect } from 'refunk'
 
 import pkg from '../package.json'
 import Style from './Style'

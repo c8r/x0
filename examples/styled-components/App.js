@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { ServerStyleSheet } from 'styled-components'
-import connect from 'refunk'
+import { connect } from 'refunk'
 
 const css = `*{box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0}`

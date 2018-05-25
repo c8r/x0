@@ -42,9 +42,9 @@
     "meow": "^5.0.0",
     "mini-html-webpack-plugin": "^0.2.3",
     "pkg-conf": "^2.1.0",
-    "react": "^16.3.2",
+    "react": "^16.4.0",
     "react-dev-utils": "^5.0.1",
-    "react-dom": "^16.3.2",
+    "react-dom": "^16.4.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "read-pkg-up": "^3.0.0",
@@ -55,14 +55,14 @@
     "webpack-serve": "^1.0.2"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^0.25.0",
     "isomorphic-fetch": "^2.2.1",
     "nano-style": "^1.0.0",
     "nyc": "^11.8.0",
     "rebass": "^2.0.0-2",
-    "refunk": "^2.2.4",
+    "refunk": "^3.0.1",
     "rimraf": "^2.6.2",
-    "styled-components": "^3.2.6",
+    "styled-components": "^3.3.0",
     "styled-system": "^2.2.5"
   },
   "x0": {
