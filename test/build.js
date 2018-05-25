@@ -38,9 +38,7 @@ test('static uses getInitialProps method', async t => {
   t.snapshot(html)
 })
 
-test('static makes a directory', async t => {
-  // fs.remove(output)
-  clean()
+test.skip('static makes a directory', async t => {
   const res = await build(options)
   t.pass()
 })
