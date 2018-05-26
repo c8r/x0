@@ -55,10 +55,13 @@
     "webpack-serve": "^1.0.2"
   },
   "devDependencies": {
+    "@compositor/logo": "^1.3.5",
+    "@compositor/md-loader": "^1.0.27",
     "ava": "^0.25.0",
     "isomorphic-fetch": "^2.2.1",
     "nano-style": "^1.0.0",
     "nyc": "^11.8.0",
+    "raw-loader": "^0.5.1",
     "rebass": "^2.0.0-2",
     "refunk": "^3.0.1",
     "rimraf": "^2.6.2",
@@ -67,7 +70,7 @@
   },
   "x0": {
     "title": "Compositor x0",
-    "basename": "/x0"
+    "_basename": "/x0"
   },
   "ava": {
     "files": [
