@@ -12,7 +12,7 @@ npm install -g @compositor/x0
 [build-badge]: https://img.shields.io/travis/c8r/x0/master.svg?style=flat-square
 [build]: https://travis-ci.org/c8r/x0
 
-![screen-demo](docs/demo.gif)
+<img src='docs/hello-x0.gif' class='demo-image' />
 
 ## Features
 
@@ -322,7 +322,7 @@ module.exports = {
 }
 ```
 
-See the [example](examples/webpack-config).
+See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config).
 
 #### Related
 
