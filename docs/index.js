@@ -20,9 +20,6 @@ const Video = styled.video([], {
   borderRadius: '16px',
 })
 
-// <Link to='/'>Home</Link>
-// <Link to='/docs'>Documentation</Link>
-
 export default class extends React.Component {
   render () {
     return (
@@ -65,11 +62,6 @@ export default class extends React.Component {
               to='/docs'>
               Documentation
             </Button>
-          </Flex>
-          <Flex py={4} mt={5}>
-            <Text fontSize={0}>
-              © 2018 Compositor, Inc. All rights reserved
-            </Text>
           </Flex>
         </Container>
       </React.Fragment>

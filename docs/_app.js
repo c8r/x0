@@ -3,6 +3,7 @@ import {
   Provider,
   Flex,
   Box,
+  Container,
   Text,
   Caps,
   BlockLink,
@@ -36,4 +37,22 @@ export default ({ render }) =>
       </BlockLink>
     </Flex>
     {render()}
+    <Container>
+      <Flex py={4} mt={5} flexWrap='wrap'>
+        <BlockLink my={2} mr={3} href='https://github.com/c8r/x0'>
+          <Caps fontWeight='bold'>
+            GitHub
+          </Caps>
+        </BlockLink>
+        <BlockLink my={2} mr={3} href='https://compositor.io'>
+          <Caps fontWeight='bold'>
+            Compositor
+          </Caps>
+        </BlockLink>
+        <Box mx='auto' />
+        <Text my={2} fontSize={0}>
+          © 2018 Compositor, Inc. All rights reserved
+        </Text>
+      </Flex>
+    </Container>
   </Provider>
