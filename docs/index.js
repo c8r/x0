@@ -28,25 +28,14 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <Container py={5}>
-          <Flex
+          <Heading
+            is='h1'
             mb={4}
-            alignItems='center'>
-            <Logo size={32} />
-            <Caps fontWeight='bold'>
-              Compositor
-            </Caps>
-          </Flex>
-          <Heading is='h1'
-            mb={2}
-            fontSize={[ 5, 6, 7 ]}>
-            x0
-          </Heading>
-          <Text
-            mb={4}
+            lineHeight={1.125}
             fontWeight='bold'
-            fontSize={4}>
-            Zero-config React development environment & static site generator
-          </Text>
+            fontSize={[ 4, 5, 6 ]}>
+            x0: Zero-config React development environment & static site generator
+          </Heading>
           <Box mb={4}>
             <Video
               autoPlay

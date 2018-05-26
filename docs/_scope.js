@@ -22,6 +22,7 @@ export default {
       is='h2'
       fontSize={5}
       mt={3}
+      mb={2}
     />),
   h3: heading(props =>
     <Rebass.Heading
@@ -39,6 +40,7 @@ export default {
     <Pre
       {...props}
       p={3}
-      bg='#f6f6f6'
+      mb={3}
+      bg='#f6f6fc'
     />
 }

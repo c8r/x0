@@ -10,7 +10,10 @@ const Prose = styled.div([], {
   '& img': {
     display: 'block',
     maxWidth: '100%',
-    height: 'auto'
+    height: 'auto',
+  },
+  '& .demo-image, & a[href="LICENSE/"]': {
+    display: 'none'
   }
 })
 
