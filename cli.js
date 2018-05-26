@@ -15,26 +15,26 @@ const pkg = readPkg().pkg
 log.name = 'x0'
 
 const cli = meow(`
-  Usage
+  ${chalk.gray('Usage')}
 
-    Dev Server
+    ${chalk.gray('Dev Server')}
 
-      x0 pages
+      ${chalk.cyan('x0 pages')}
 
-    Build
+    ${chalk.gray('Build')}
 
-      x0 build pages
+      ${chalk.cyan('x0 build pages')}
 
-  Options
+  ${chalk.gray('Options')}
 
       --webpack       Path to webpack config file
 
-    Dev Server
+    ${chalk.gray('Dev Server')}
 
       -o --open       Open dev server in default browser
       -p --port       Port for dev server
 
-    Build
+    ${chalk.gray('Build')}
 
       -d --out-dir    Output directory (default dist)
       -s --static     Output static HTML without JS bundle
