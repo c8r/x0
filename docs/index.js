@@ -5,7 +5,7 @@ export default class extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <h1>x0</h1>
+        <h1>Hello x0</h1>
         <ul>
           <li>
             <Link to='/'>Home</Link>
