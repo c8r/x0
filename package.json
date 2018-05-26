@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "./cli.js docs -op 8888",
-    "build": "./cli.js build docs",
+    "build": "./cli.js build docs --basename '/x0'",
     "test": "nyc ava",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },
@@ -69,7 +69,15 @@
   },
   "x0": {
     "title": "Compositor x0",
-    "_basename": "/x0"
+    "_basename": "/x0",
+    "meta": [
+      { "name": "description", "content": "Zero-config React development environment and static site generator" },
+      { "name": "twitter:card", "content": "summary" },
+      { "name": "twitter:site", "content": "@getcompositor" },
+      { "name": "twitter:image", "content": "https://compositor.io/logo/dist/compositor.png" },
+      { "name": "twitter:title", "content": "Compositor x0" },
+      { "name": "twitter:description", "content": "Zero-config React development environment and static site generator" }
+    ]
   },
   "ava": {
     "files": [
