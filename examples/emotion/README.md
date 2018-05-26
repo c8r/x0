@@ -1,5 +1,5 @@
 
-# x0 CXS example
+# x0 emotion example
 
 ```sh
 npm install
@@ -16,5 +16,3 @@ npm start
 ```sh
 npm run build
 ```
-
-When building static, CSS will be added to a `<style>` tag in the head.

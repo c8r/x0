@@ -1,14 +1,11 @@
 {
   "name": "x0-graphql-example",
+  "private": true,
   "scripts": {
-    "start": "lab --pkg -wd components | x0 dev App -s"
+    "start": "x0 pages"
   },
   "dependencies": {
-    "@compositor/lab": "^1.0.0-32",
-    "@compositor/x0": "^2.0.0-8",
-    "glamor": "^2.20.40",
-    "glamorous": "^4.10.0",
-    "graphql-request": "^1.4.0",
-    "styled-system": "^1.0.8"
+    "@compositor/x0": "^5.0.0",
+    "graphql-request": "^1.4.0"
   }
 }

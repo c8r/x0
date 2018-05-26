@@ -11,7 +11,7 @@ npm install
 npm start
 ```
 
-Editing `App.js` will live update in the development server.
+Editing `pages/index.js` will live update in the development server.
 
 ## Static Build
 

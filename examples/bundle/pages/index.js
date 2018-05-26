@@ -16,4 +16,8 @@ const App = connect(props => (
   </div>
 ))
 
+App.defaultProps = {
+  count: 16
+}
+
 export default App

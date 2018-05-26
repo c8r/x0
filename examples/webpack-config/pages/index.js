@@ -1,5 +1,5 @@
 import React from 'react'
-import readme from './README.md'
+import readme from '../README.md'
 
 const App = props => (
   <div>
