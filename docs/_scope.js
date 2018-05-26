@@ -1,6 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
 import * as Rebass from 'rebass'
-import { heading } from '@compositor/md'
+import { heading, link } from '@compositor/md'
+
+const Pre = styled(Rebass.Pre)({
+  borderRadius: '8px'
+})
 
 export default {
   ...Rebass,
@@ -25,9 +30,15 @@ export default {
       fontSize={4}
       mt={2}
     />),
+  a: link(props =>
+    <Rebass.Link
+      {...props}
+    />
+  ),
   pre: props =>
-    <Rebass.Pre
+    <Pre
       {...props}
       p={3}
+      bg='#f6f6f6'
     />
 }
