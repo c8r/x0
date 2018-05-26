@@ -1,5 +1,5 @@
 import React from 'react'
-import connect from 'refunk'
+import { connect } from 'refunk'
 
 const dec = state => ({ count: state.count - 1 })
 const inc = state => ({ count: state.count + 1 })
