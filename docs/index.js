@@ -39,8 +39,8 @@ export default class extends React.Component {
               loop
               muted
               playsInline
-              poster='demo.gif'
-              src='demo.mp4'
+              poster='hello-x0.gif'
+              src='hello-x0.mp4'
             />
           </Box>
           <Pre>npm i -g @compositor/x0</Pre>

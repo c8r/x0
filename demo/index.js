@@ -1,31 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Logo } from '@compositor/logo'
+import { Box, Text, Heading } from 'rebass'
 
-export default class extends React.Component {
-  static getInitialProps = async () => {
-    return {
-      asyncProps: 'hello'
-    }
-  }
-
-  render () {
-    const {
-      count,
-      update
-    } = this.props
-
-    return (
-      <div>
-        <Link to='/'>Home</Link>
-        <Link to='/about'>About</Link>
-        <h1>Hello x0</h1>
-        <samp>{count}</samp>
-        <button onClick={e => update(dec)}>-</button>
-        <button onClick={e => update(inc)}>+</button>
-      </div>
-    )
-  }
-}
-
-const dec = s => ({ count: s.count - 1 })
-const inc = s => ({ count: s.count + 1 })
+export default props =>
+  <Box
+    px={4}
+    pt={0}
+    pb={7}
+    color='white'
+    bg='black'>
+    <Logo
+      horizontal
+      size={256}
+      color='cyan'
+      backgroundColor='black'
+    />
+    <Heading
+      is='h1'
+      px={4}
+      ml={2}
+      fontSize={7}>
+      <Text is='span' color='cyan'>Hello</Text> x0
+    </Heading>
+  </Box>
