@@ -26,6 +26,8 @@ npm install -g @compositor/x0
 - Works with CSS-in-JS libraries like [styled-components][sc] and [emotion][emotion]
 - Support for async data fetching
 
+Read more about x0 in our [blog post](https://compositor.io/blog/x0-making-react-component-development-stupid-simple/).
+
 \* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
 
 
