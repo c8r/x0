@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "./cli.js docs -op 8888",
-    "build": "./cli.js build docs --basename '/x0'",
+    "build": "./cli.js build docs",
     "test": "nyc ava",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },
@@ -69,7 +69,7 @@
   },
   "x0": {
     "title": "Compositor x0",
-    "_basename": "/x0",
+    "basename": "/x0",
     "meta": [
       { "name": "description", "content": "Zero-config React development environment and static site generator" },
       { "name": "twitter:card", "content": "summary" },
