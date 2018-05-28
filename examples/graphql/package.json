@@ -5,7 +5,7 @@
     "start": "x0 pages"
   },
   "dependencies": {
-    "@compositor/x0": "^5.0.0-12",
+    "@compositor/x0": "^5.0.0",
     "graphql-request": "^1.4.0"
   }
 }

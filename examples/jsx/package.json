@@ -6,7 +6,7 @@
     "build": "x0 build pages"
   },
   "dependencies": {
-    "@compositor/x0": "^5.0.0-12",
+    "@compositor/x0": "^5.0.0",
     "rebass": "^2.0.0-2"
   }
 }
