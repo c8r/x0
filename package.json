@@ -12,7 +12,18 @@
     "test": "nyc ava",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "webpack",
+    "zero-config",
+    "jsx",
+    "mdx",
+    "ui",
+    "prototyping",
+    "static-site-generator",
+    "isolated",
+    "design-systems"
+  ],
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {
