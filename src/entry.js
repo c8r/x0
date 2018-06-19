@@ -27,6 +27,7 @@ const { filename, basename = '', disableScroll } = OPTIONS
 const index = filename ? path.basename(filename, path.extname(filename)) : 'index'
 
 const getComponents = req => req.keys()
+  .filter(minimatch.filter('!node_modules'))
   .filter(key => !MATCH || minimatch(key.replace(/^\.\//, ''), MATCH))
   .filter(key => !/^_/.test(path.basename(key)))
   .map(key => ({

@@ -368,7 +368,8 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 **REMOVE BEFORE MERGING**
 
-- [ ] props.Component in custom apps
+- [ ] require.context `_app`
+- [ ] props.Component/children in custom apps
 - [ ] peer deps
 - [ ] Head component with react helmet
 - [ ] changelog/docs
