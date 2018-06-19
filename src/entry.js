@@ -10,10 +10,10 @@ import {
   Link,
   withRouter
 } from 'react-router-dom'
+import { Provider as RebassProvider } from 'rebass'
 import minimatch from 'minimatch'
 
 import Catch from './Catch'
-import ScopeProvider from './ScopeProvider'
 import FileList from './FileList'
 import ScrollTop from './ScrollTop'
 
@@ -23,17 +23,13 @@ const req = require.context(DIRNAME, true, /\.(js|md|mdx|jsx)$/)
 const { filename, basename = '', disableScroll } = OPTIONS
 const index = filename ? path.basename(filename, path.extname(filename)) : 'index'
 
-req.keys().forEach(key => {
-  console.log(key, minimatch(key.replace(/^\.\//, ''), MATCH) )
-})
-
 const getComponents = req => req.keys()
   .filter(key => !MATCH || minimatch(key.replace(/^\.\//, ''), MATCH))
   .map(key => ({
     key,
     name: path.basename(key, path.extname(key)),
     module: req(key),
-    Component: req(key).default || req(key)
+    Component: req(key).default || req(key),
   }))
   .filter(component => !/^(\.|_)/.test(component.name))
   .filter(component => typeof component.Component === 'function')
@@ -58,14 +54,20 @@ const App = APP ? (require(APP).default || require(APP)) : DefaultApp
 export const getRoutes = async (components = initialComponents) => {
   const routes = await components.map(async ({ key, name, module, Component }) => {
     const exact = name === index
-    let pathname = exact ? '/' : '/' + name
-    const props = Component.getInitialProps
+    name = exact ? '/' : '/' + name
+    const dirname = path.dirname(key).replace(/^\./, '')
+    let pathname = dirname + (exact ? '/' : name)
+    const href = pathname
+    const initialProps = Component.getInitialProps
       ? await Component.getInitialProps({ path: pathname })
       : {}
+    const meta = module.frontMatter || {}
+    const props = { ...meta, ...initialProps }
     pathname = props.path || pathname
     return {
       key: name,
       name,
+      href,
       path: pathname,
       exact,
       module,
@@ -98,15 +100,13 @@ export default class Root extends React.Component {
       path = '/'
     } = this.props
 
-    console.log('App', App.defaultProps)
-
     return (
       <Router
         context={{}}
         basename={basename}
         location={path}>
         <React.Fragment>
-          <ScopeProvider>
+          <RebassProvider>
             <Catch>
               <RouterState
                 routes={routes}
@@ -135,7 +135,7 @@ export default class Root extends React.Component {
               />
             </Catch>
             {!disableScroll && <ScrollTop />}
-          </ScopeProvider>
+          </RebassProvider>
         </React.Fragment>
       </Router>
     )

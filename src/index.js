@@ -1,3 +1,7 @@
 export { default as ScopeProvider } from './ScopeProvider'
 export { default as LiveEditor } from './LiveEditor'
+export { default as LivePreview } from './LivePreview'
+export { default as FileList } from './FileList'
+export { default as Catch } from './Catch'
+export { default as ScrollTop } from './ScrollTop'
 export { default as scope } from './scope'

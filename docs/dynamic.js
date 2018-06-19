@@ -26,12 +26,18 @@ export default class extends React.Component {
   }
 
   render () {
+    const { match } = this.props
+
     return <div>
       <pre>dynamic routing</pre>
       <Link to='/'>Home</Link>
       <Link to='/dynamic'>Dynamic Routes</Link>
       <Link to='/dynamic/hello'>Hello</Link>
       <Link to='/dynamic/hi'>Hi</Link>
+
+      {match.params.id && (
+        <h1>{match.params.id}</h1>
+      )}
     </div>
   }
 }

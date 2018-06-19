@@ -1,5 +1,6 @@
 import React from 'react'
 import * as scope from 'rebass'
+import { Link } from 'react-router-dom'
 import { ScopeProvider } from '../src'
 import {
   Flex,
@@ -13,15 +14,24 @@ export default class App extends React.Component {
   }
 
   render () {
-    const { render } = this.props
-    console.log('custom app', this.props.routes)
+    const { routes, route, render } = this.props
+    console.log('custom app', routes)
+    console.log('route', route)
 
     return (
       <ScopeProvider scope={scope}>
         <Flex>
-          {false && (
+          {true && (
             <Box p={2} flex='none' width={192}>
-              custom app
+              <ul>
+                {routes.map(route => (
+                  <li key={route.key}>
+                    <Link to={route.href}>
+                      {route.name} <code>({route.path})</code>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </Box>
           )}
           <Box width={1} p={3}>

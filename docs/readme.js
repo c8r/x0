@@ -4,7 +4,6 @@ import {
 } from 'rebass'
 import styled from 'styled-components'
 import Readme from '../README.md'
-import scope from './_scope'
 
 const Prose = styled.div([], {
   '& img': {
@@ -20,8 +19,6 @@ const Prose = styled.div([], {
 export default props =>
   <Container py={5}>
     <Prose>
-      <Readme
-        scope={scope}
-      />
+      <Readme />
     </Prose>
   </Container>
