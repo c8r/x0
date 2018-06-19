@@ -367,9 +367,13 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 **REMOVE BEFORE MERGING**
 
-- [ ] deep require context
-- [ ] minimatch
-- [ ] default route sorting
 - [ ] markdown scope
-- [ ] move client modules to src
-- [ ] adjust resolve
+- [ ] default route sorting
+- [x] deep require context
+- [ ] route dirname/full path
+- [ ] minimatch
+- [ ] pass front-matter as props
+- [ ] props.Component in custom apps
+- [x] move client modules to src
+- [x] adjust resolve
+

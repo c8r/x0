@@ -10,44 +10,41 @@ import {
   Link,
   withRouter
 } from 'react-router-dom'
+import minimatch from 'minimatch'
+
+import Catch from './Catch'
+import ScopeProvider from './ScopeProvider'
+import FileList from './FileList'
+import ScrollTop from './ScrollTop'
 
 const IS_CLIENT = typeof document !== 'undefined'
-const req = require.context(DIRNAME, false, /\.(js|md|mdx|jsx)$/)
+const req = require.context(DIRNAME, true, /\.(js|md|mdx|jsx)$/)
 
 const { filename, basename = '', disableScroll } = OPTIONS
 const index = filename ? path.basename(filename, path.extname(filename)) : 'index'
 
-const getComponents = req => req.keys().map(key => ({
-  key,
-  name: path.basename(key, path.extname(key)),
-  module: req(key),
-  Component: req(key).default || req(key)
-}))
+req.keys().forEach(key => {
+  console.log(key, minimatch(key.replace(/^\.\//, ''), MATCH) )
+})
+
+const getComponents = req => req.keys()
+  .filter(key => !MATCH || minimatch(key.replace(/^\.\//, ''), MATCH))
+  .map(key => ({
+    key,
+    name: path.basename(key, path.extname(key)),
+    module: req(key),
+    Component: req(key).default || req(key)
+  }))
   .filter(component => !/^(\.|_)/.test(component.name))
   .filter(component => typeof component.Component === 'function')
 
 const initialComponents = getComponents(req)
 
-const Index = ({ routes = [] }) => (
-  <React.Fragment>
-    <pre>{DIRNAME}</pre>
-    <ul>
-      {routes.map(route => (
-        <li key={route.key}>
-          <Link to={route.path}>
-            {route.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </React.Fragment>
-)
-
 const DefaultApp = ({ render, routes }) => (
   <Switch>
     {render()}
     <Route render={props => (
-      <Index
+      <FileList
         {...props}
         routes={routes}
       />
@@ -55,58 +52,8 @@ const DefaultApp = ({ render, routes }) => (
   </Switch>
 )
 
-class Catch extends React.Component {
-  static getDerivedStateFromProps (props, state) {
-    if (!state.err) return null
-    return { err: null }
-  }
-
-  state = {
-    err: null
-  }
-
-  componentDidCatch (err) {
-    this.setState({ err })
-  }
-
-  render () {
-    const { err } = this.state
-
-    if (err) {
-      return (
-        <pre
-          children={err.toString()}
-          style={{
-            color: 'white',
-            backgroundColor: 'red',
-            fontFamily: 'Menlo, monospace',
-            fontSize: '14px',
-            margin: 0,
-            padding: '16px',
-            minHeight: '128px',
-            whiteSpace: 'prewrap'
-          }}
-        />
-      )
-    }
-
-    return this.props.children
-  }
-}
-
-const ScrollTop = withRouter(class extends React.Component {
-  componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      window.scrollTo(0, 0)
-    }
-  }
-  render () {
-    return false
-  }
-})
-
 const Router = IS_CLIENT ? BrowserRouter : StaticRouter
-const App = withRouter(APP ? (require(APP).default || require(APP)) : DefaultApp)
+const App = APP ? (require(APP).default || require(APP)) : DefaultApp
 
 export const getRoutes = async (components = initialComponents) => {
   const routes = await components.map(async ({ key, name, module, Component }) => {
@@ -129,19 +76,29 @@ export const getRoutes = async (components = initialComponents) => {
   return Promise.all(routes)
 }
 
+const RouterState = withRouter(({ render, ...props }) => {
+  const route = props.routes.find(r => r.path === props.location.pathname)
+  return render({ ...props, route })
+})
+
 export default class Root extends React.Component {
   static defaultProps = {
     path: '/',
     basename
   }
-  state = this.props
+  state = {
+    ...this.props,
+    ...App.defaultProps
+  }
 
   render () {
     const {
       routes,
       basename,
       path = '/'
-    } = this.state
+    } = this.props
+
+    console.log('App', App.defaultProps)
 
     return (
       <Router
@@ -149,28 +106,36 @@ export default class Root extends React.Component {
         basename={basename}
         location={path}>
         <React.Fragment>
-          <Catch>
-            <App
-              routes={routes}
-              render={appProps => (
-                routes.map(({ Component, ...route }) => (
-                  <Route
-                    {...route}
-                    render={props => (
-                      <Catch>
-                        <Component
-                          {...props}
-                          {...appProps}
-                          {...route.props}
+          <ScopeProvider>
+            <Catch>
+              <RouterState
+                routes={routes}
+                render={(router) => (
+                  <App
+                    {...router}
+                    routes={routes}
+                    render={appProps => (
+                      routes.map(({ Component, ...route }) => (
+                        <Route
+                          {...route}
+                          render={props => (
+                            <Catch>
+                              <Component
+                                {...props}
+                                {...appProps}
+                                {...route.props}
+                              />
+                            </Catch>
+                          )}
                         />
-                      </Catch>
+                      ))
                     )}
                   />
-                ))
-              )}
-            />
-          </Catch>
-          {!disableScroll && <ScrollTop />}
+                )}
+              />
+            </Catch>
+            {!disableScroll && <ScrollTop />}
+          </ScopeProvider>
         </React.Fragment>
       </Router>
     )

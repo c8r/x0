@@ -28,6 +28,7 @@ const cli = meow(`
   ${chalk.gray('Options')}
 
       --webpack       Path to webpack config file
+      --match         String to match routes against using minimatch
 
     ${chalk.gray('Dev Server')}
 
@@ -67,6 +68,9 @@ const cli = meow(`
     config: {
       type: 'string',
       alias: 'c'
+    },
+    match: {
+      type: 'string'
     },
     scope: {
       type: 'string',

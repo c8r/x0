@@ -9,5 +9,5 @@ This is a standard markdown file.
 This is a live/editable code block:
 
 ```.jsx
-<h1>Hello</h1>
+<Box p={4} bg='tomato'>Hello</Box>
 ```
