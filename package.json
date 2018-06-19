@@ -9,7 +9,7 @@
   "scripts": {
     "start": "./cli.js docs -op 8888",
     "build": "./cli.js build docs",
-    "test": "ava -T 20s",
+    "test": "nyc ava -T 20s",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },
   "keywords": [
@@ -64,6 +64,7 @@
     "react-router-dom": "^4.3.1",
     "react-scope-provider": "^1.0.0-1",
     "read-pkg-up": "^3.0.0",
+    "rebass": "^2.0.0-6",
     "remark-autolink-headings": "^5.0.0",
     "remark-emoji": "^2.0.1",
     "remark-images": "^0.8.1",
@@ -73,20 +74,20 @@
     "update-notifier": "^2.5.0",
     "webpack": "^4.10.2",
     "webpack-merge": "^4.1.3",
-    "webpack-serve": "^1.0.4"
+    "webpack-serve": "^1.0.4",
+    "styled-system": "^2.3.1"
   },
   "devDependencies": {
     "@compositor/logo": "^1.4.0",
     "ava": "^0.25.0",
     "isomorphic-fetch": "^2.2.1",
-    "nano-style": "^1.0.0",
     "nyc": "^12.0.1",
-    "raw-loader": "^0.5.1",
-    "rebass": "^2.0.0-6",
     "refunk": "^3.0.1",
     "rimraf": "^2.6.2",
-    "styled-components": "^3.3.2",
-    "styled-system": "^2.3.1"
+    "styled-components": "^3.3.2"
+  },
+  "peerDependencies": {
+    "styled-components": "3.x"
   },
   "x0": {
     "title": "Compositor x0",

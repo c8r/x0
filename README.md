@@ -369,10 +369,11 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 **REMOVE BEFORE MERGING**
 
 - [ ] require.context `_app`
+- [ ] pass RouterState props to view
 - [ ] props.Component/children in custom apps
-- [ ] peer deps
 - [ ] Head component with react helmet
 - [ ] changelog/docs
+- [x] peer deps
 - [x] props.ignore
 - [x] default layout for mdx/md
 - [x] default route sorting
