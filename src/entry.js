@@ -18,6 +18,7 @@ import ScopeProvider from './ScopeProvider'
 import Catch from './Catch'
 import FileList from './FileList'
 import ScrollTop from './ScrollTop'
+import CenteredLayout from './CenteredLayout'
 
 const IS_CLIENT = typeof document !== 'undefined'
 const req = require.context(DIRNAME, true, /\.(js|md|mdx|jsx)$/)
@@ -27,13 +28,13 @@ const index = filename ? path.basename(filename, path.extname(filename)) : 'inde
 
 const getComponents = req => req.keys()
   .filter(key => !MATCH || minimatch(key.replace(/^\.\//, ''), MATCH))
+  .filter(key => !/^_/.test(path.basename(key)))
   .map(key => ({
     key,
     name: path.basename(key, path.extname(key)),
     module: req(key),
     Component: req(key).default || req(key),
   }))
-  .filter(component => !/^(\.|_)/.test(component.name))
   .filter(component => typeof component.Component === 'function')
 
 const initialComponents = getComponents(req)
@@ -54,10 +55,16 @@ const Router = IS_CLIENT ? BrowserRouter : StaticRouter
 const App = APP ? (require(APP).default || require(APP)) : DefaultApp
 
 export const getRoutes = async (components = initialComponents) => {
-  const promises = await components.map(async ({ key, name, module, Component }) => {
+  const promises = await components.map(async ({
+    key,
+    name,
+    module,
+    Component
+  }) => {
     const exact = name === index
     name = exact ? '/' : '/' + name
     const dirname = path.dirname(key).replace(/^\./, '')
+    const extname = path.extname(key)
     let pathname = dirname + (exact ? '/' : name)
     const href = pathname
     const initialProps = Component.getInitialProps
@@ -67,8 +74,9 @@ export const getRoutes = async (components = initialComponents) => {
     const props = { ...meta, ...initialProps }
     pathname = props.path || pathname
     return {
-      key: name,
+      key,
       name,
+      extname,
       href,
       path: pathname,
       dirname,
@@ -79,7 +87,8 @@ export const getRoutes = async (components = initialComponents) => {
     }
   })
   const routes = await Promise.all(promises)
-  let sorted = [...routes]
+  const filtered = routes.filter(r => !r.props.ignore)
+  let sorted = [...filtered]
   sorted = sortBy([...sorted], a => a.name)
   sorted = sortBy([...sorted], a => !a.exact)
   sorted = sortBy([...sorted], a => a.dirname)
@@ -107,6 +116,7 @@ export default class Root extends React.Component {
       basename,
       path = '/'
     } = this.props
+    console.log('routes', routes)
 
     return (
       <Router
@@ -129,11 +139,14 @@ export default class Root extends React.Component {
                             {...route}
                             render={props => (
                               <Catch>
-                                <Component
-                                  {...props}
-                                  {...appProps}
-                                  {...route.props}
-                                />
+                                <CenteredLayout
+                                  active={/md/.test(route.extname)}>
+                                  <Component
+                                    {...props}
+                                    {...appProps}
+                                    {...route.props}
+                                  />
+                                </CenteredLayout>
                               </Catch>
                             )}
                           />

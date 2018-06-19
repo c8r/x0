@@ -280,16 +280,17 @@ export default () => (
 
 ### JSX Format
 
-x0 includes support for the [Compositor JSX][jsx-loader] file format.
+x0 includes support for the Compositor JSX file format.
 
 ```jsx
 ---
 title: Hello
-scope: import * as scope from 'rebass'
 ---
+import { Box, Heading } from 'rebass'
+
 <Box px={2} py={4}>
   <Heading>
-    {props.title}
+    {frontMatter.title}
   </Heading>
 </Box>
 ```
@@ -371,6 +372,8 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 - [ ] peer deps
 - [ ] Head component with react helmet
 - [ ] changelog/docs
+- [x] props.ignore
+- [x] default layout for mdx/md
 - [x] default route sorting
 - [x] route dirname/full path
 - [x] pass front-matter as props
@@ -379,4 +382,9 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 - [x] minimatch
 - [x] move client modules to src
 - [x] adjust resolve
+
+### Breaking
+
+- .jsx imports/scope
+- .jsx props
 
