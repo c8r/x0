@@ -131,7 +131,7 @@ log(chalk.cyan('@compositor/x0'))
 switch (cmd) {
   case 'build':
     log.start('building static site')
-    const { build } = require('.')
+    const build = require('./lib/build')
     build(opts)
       .then(res => {
         log.stop('site saved to ' + opts.outDir)
@@ -141,7 +141,7 @@ switch (cmd) {
   case 'dev':
   default:
     log.start('starting dev server')
-    const { dev } = require('.')
+    const dev = require('./lib/dev')
     dev(opts)
       .then(({ server }) => {
         const { port } = server.options

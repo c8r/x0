@@ -1,7 +1,7 @@
 import React from 'react'
 import * as scope from 'rebass'
 import { Link } from 'react-router-dom'
-import { ScopeProvider } from '../src'
+import { ScopeProvider } from '../components'
 import {
   Flex,
   Box,
@@ -15,8 +15,6 @@ export default class App extends React.Component {
 
   render () {
     const { routes, route, render } = this.props
-    console.log('custom app', routes)
-    console.log('route', route)
 
     return (
       <ScopeProvider scope={scope}>

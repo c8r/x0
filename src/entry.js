@@ -12,7 +12,9 @@ import {
 } from 'react-router-dom'
 import { Provider as RebassProvider } from 'rebass'
 import minimatch from 'minimatch'
+import sortBy from 'lodash.sortby'
 
+import ScopeProvider from './ScopeProvider'
 import Catch from './Catch'
 import FileList from './FileList'
 import ScrollTop from './ScrollTop'
@@ -52,7 +54,7 @@ const Router = IS_CLIENT ? BrowserRouter : StaticRouter
 const App = APP ? (require(APP).default || require(APP)) : DefaultApp
 
 export const getRoutes = async (components = initialComponents) => {
-  const routes = await components.map(async ({ key, name, module, Component }) => {
+  const promises = await components.map(async ({ key, name, module, Component }) => {
     const exact = name === index
     name = exact ? '/' : '/' + name
     const dirname = path.dirname(key).replace(/^\./, '')
@@ -69,13 +71,19 @@ export const getRoutes = async (components = initialComponents) => {
       name,
       href,
       path: pathname,
+      dirname,
       exact,
       module,
       Component,
       props
     }
   })
-  return Promise.all(routes)
+  const routes = await Promise.all(promises)
+  let sorted = [...routes]
+  sorted = sortBy([...sorted], a => a.name)
+  sorted = sortBy([...sorted], a => !a.exact)
+  sorted = sortBy([...sorted], a => a.dirname)
+  return sorted
 }
 
 const RouterState = withRouter(({ render, ...props }) => {
@@ -107,35 +115,37 @@ export default class Root extends React.Component {
         location={path}>
         <React.Fragment>
           <RebassProvider>
-            <Catch>
-              <RouterState
-                routes={routes}
-                render={(router) => (
-                  <App
-                    {...router}
-                    routes={routes}
-                    render={appProps => (
-                      routes.map(({ Component, ...route }) => (
-                        <Route
-                          {...route}
-                          render={props => (
-                            <Catch>
-                              <Component
-                                {...props}
-                                {...appProps}
-                                {...route.props}
-                              />
-                            </Catch>
-                          )}
-                        />
-                      ))
-                    )}
-                  />
-                )}
-              />
-            </Catch>
-            {!disableScroll && <ScrollTop />}
+            <ScopeProvider>
+              <Catch>
+                <RouterState
+                  routes={routes}
+                  render={(router) => (
+                    <App
+                      {...router}
+                      routes={routes}
+                      render={appProps => (
+                        routes.map(({ Component, ...route }) => (
+                          <Route
+                            {...route}
+                            render={props => (
+                              <Catch>
+                                <Component
+                                  {...props}
+                                  {...appProps}
+                                  {...route.props}
+                                />
+                              </Catch>
+                            )}
+                          />
+                        ))
+                      )}
+                    />
+                  )}
+                />
+              </Catch>
+            </ScopeProvider>
           </RebassProvider>
+          {!disableScroll && <ScrollTop />}
         </React.Fragment>
       </Router>
     )
