@@ -1,6 +1,6 @@
 {
   "name": "@compositor/x0",
-  "version": "5.0.8",
+  "version": "5.0.9-0",
   "description": "Zero-config React development environment and static site generator",
   "main": "src/index.js",
   "bin": {
