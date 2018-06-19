@@ -118,7 +118,6 @@ export default class Root extends React.Component {
       basename,
       path = '/'
     } = this.props
-    console.log('routes', routes)
 
     return (
       <Router

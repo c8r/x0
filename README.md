@@ -389,5 +389,5 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 - .jsx imports/scope
 - .jsx props
-- custom app path option (must be `_app.js`)
+- custom app path option (must be `_app.js`) (undocumented)
 

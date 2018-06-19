@@ -1,7 +1,7 @@
 import React from 'react'
 import * as scope from 'rebass'
 import { Link } from 'react-router-dom'
-import { ScopeProvider } from '../components'
+import { ScopeProvider, Head } from '../components'
 import {
   Flex,
   Box,
@@ -21,6 +21,10 @@ export default class App extends React.Component {
 
     return (
       <ScopeProvider scope={scope}>
+        <Head>
+          <title>hello</title>
+          <meta name='twitter:card' content='summary' />
+        </Head>
         {false ? (
           <Layout>
             {render()}

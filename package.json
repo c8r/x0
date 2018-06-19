@@ -59,6 +59,7 @@
     "react": "^16.4.1",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.1",
+    "react-helmet": "^5.2.0",
     "react-live": "^1.10.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
