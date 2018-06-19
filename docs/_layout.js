@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 import { Logo } from '@compositor/logo'
 import theme from './theme'
 
-export default ({ render }) =>
+export default ({ children }) =>
   <Provider theme={theme}>
     <Flex alignItems='center'>
       <BlockLink
@@ -36,7 +36,7 @@ export default ({ render }) =>
         </Caps>
       </BlockLink>
     </Flex>
-    {render()}
+    {children}
     <Container>
       <Flex py={4} mt={5} flexWrap='wrap'>
         <BlockLink my={2} mr={3} href='https://github.com/c8r/x0'>

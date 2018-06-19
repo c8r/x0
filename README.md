@@ -369,6 +369,8 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 - [ ] props.Component in custom apps
 - [ ] peer deps
+- [ ] Head component with react helmet
+- [ ] changelog/docs
 - [x] default route sorting
 - [x] route dirname/full path
 - [x] pass front-matter as props

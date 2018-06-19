@@ -7,6 +7,7 @@ import {
   Box,
   Container,
 } from 'rebass'
+import Layout from './_layout'
 
 export default class App extends React.Component {
   static defaultProps = {
@@ -18,8 +19,12 @@ export default class App extends React.Component {
 
     return (
       <ScopeProvider scope={scope}>
-        <Flex>
-          {true && (
+        {false ? (
+          <Layout>
+            {render()}
+          </Layout>
+        ) : (
+          <Flex>
             <Box p={2} flex='none' width={192}>
               <ul>
                 {routes.map(route => (
@@ -31,13 +36,13 @@ export default class App extends React.Component {
                 ))}
               </ul>
             </Box>
-          )}
-          <Box width={1} p={3}>
-            <Container maxWidth={768}>
-              {render()}
-            </Container>
-          </Box>
-        </Flex>
+            <Box width={1} p={3}>
+              <Container maxWidth={768}>
+                {render()}
+              </Container>
+            </Box>
+          </Flex>
+        )}
       </ScopeProvider>
     )
   }
