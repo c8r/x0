@@ -121,8 +121,8 @@
   "ava": {
     "files": [
       "test/*",
-      "!test/components",
-      "!test/output"
+      "!**/test/components",
+      "!**/test/output"
     ],
     "require": [
       "babel-register"
