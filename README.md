@@ -368,11 +368,11 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 **REMOVE BEFORE MERGING**
 
-- [ ] require.context `_app`
 - [ ] pass RouterState props to view
 - [ ] props.Component/children in custom apps
 - [ ] Head component with react helmet
 - [ ] changelog/docs
+- [x] require.context `_app`
 - [x] peer deps
 - [x] props.ignore
 - [x] default layout for mdx/md
@@ -389,4 +389,5 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 - .jsx imports/scope
 - .jsx props
+- custom app path option (must be `_app.js`)
 

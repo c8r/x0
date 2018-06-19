@@ -17,7 +17,7 @@ export default class App extends React.Component {
   render () {
     const { routes, route, render } = this.props
 
-    return render()
+    // return render()
 
     return (
       <ScopeProvider scope={scope}>

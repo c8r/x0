@@ -53,7 +53,8 @@ const DefaultApp = ({ render, routes }) => (
 )
 
 const Router = IS_CLIENT ? BrowserRouter : StaticRouter
-const App = APP ? (require(APP).default || require(APP)) : DefaultApp
+const appPath = req.keys().find(key => key === './_app.js')
+const App = appPath ? (req(appPath).default || req(appPath)) : DefaultApp
 
 export const getRoutes = async (components = initialComponents) => {
   const promises = await components.map(async ({
@@ -166,7 +167,6 @@ export default class Root extends React.Component {
   }
 }
 
-let app
 if (IS_CLIENT) {
   const mount = DEV ? render : hydrate
   const div = window.root || document.body.appendChild(
@@ -174,7 +174,7 @@ if (IS_CLIENT) {
   )
   getRoutes()
     .then(routes => {
-      app = mount(<Root routes={routes} />, div)
+      mount(<Root routes={routes} />, div)
     })
 }
 
