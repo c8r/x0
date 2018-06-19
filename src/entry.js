@@ -1,3 +1,4 @@
+// Main application
 import path from 'path'
 import React from 'react'
 import { render, hydrate } from 'react-dom'

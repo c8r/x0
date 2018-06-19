@@ -360,3 +360,16 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 [react-loadable]: https://github.com/thejameskyle/react-loadable
 [webpack-merge]: https://github.com/survivejs/webpack-merge
 [webpack]: https://webpack.js.org
+
+---
+
+## To Do
+
+**REMOVE BEFORE MERGING**
+
+- [ ] deep require context
+- [ ] minimatch
+- [ ] default route sorting
+- [ ] markdown scope
+- [ ] move client modules to src
+- [ ] adjust resolve
