@@ -8,6 +8,10 @@ const routes = [
 ]
 
 export default class extends React.Component {
+  static defaultProps = {
+    ignore: true
+  }
+
   static getInitialProps = async ({ path }) => {
     let title = 'dynamic'
     switch (path) {
