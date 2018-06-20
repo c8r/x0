@@ -41,9 +41,6 @@ export const Sidebar = styled('div')([], {
   top: 0,
   left: 0,
   bottom: 0,
-  [breakpoint]: {
-    // transition: 'none'
-  }
 }, props => ({
   transform: props.open ? 'translateX(0)' : 'translateX(-100%)',
   [breakpoint]: {
