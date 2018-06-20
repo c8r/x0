@@ -35,26 +35,18 @@ const getComponents = req => req.keys()
     module: req(key),
     Component: req(key).default || req(key),
   }))
+  .filter(component => !/404/.test(component.name))
   .filter(component => typeof component.Component === 'function')
 
 const initialComponents = getComponents(req)
 
 const DefaultApp = props => props.children
-const xDefaultApp = ({ children, routes }) => (
-  <Switch>
-    {children}
-    <Route render={props => (
-      <FileList
-        {...props}
-        routes={routes}
-      />
-    )} />
-  </Switch>
-)
 
 const Router = IS_CLIENT ? BrowserRouter : StaticRouter
 const appPath = req.keys().find(key => key === './_app.js')
 const App = appPath ? (req(appPath).default || req(appPath)) : DefaultApp
+const notFoundPath = req.keys().find(key => /404/.test(key))
+const NotFound = notFoundPath ? (req(notFoundPath).default) : FileList
 
 export const getRoutes = async (components = initialComponents) => {
   const promises = await components.map(async ({
@@ -126,9 +118,6 @@ export default class Root extends React.Component {
       basename,
       path = '/'
     } = this.props
-
-    // add customization options
-    const NotFound = FileList
 
     const render = appProps => (
       <Switch>

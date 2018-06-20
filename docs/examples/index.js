@@ -1,4 +1,1 @@
-import React from 'react'
-import { Library } from '../../components'
-
-export default Library
+export { Library as default } from '../../components'

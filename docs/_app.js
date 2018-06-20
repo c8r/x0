@@ -26,6 +26,7 @@ export default class App extends React.Component {
 
     // built-in layout test
     if (true) {
+      // const logo = <div style={{ width: 32, height: 32, backgroundColor: 'tomato' }} />
       return (
         <ScopeProvider scope={scope}>
           <SidebarLayout {...this.props} />

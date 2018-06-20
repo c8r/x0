@@ -142,12 +142,14 @@ const format = str => upperFirst(unhyphenate(str))
 
 const NavBar = ({
   title,
+  logo,
   focus,
   update,
 }) =>
   <Toolbar
     color='inherit'
     bg='transparent'>
+    {logo}
     <Heading
       px={2}
       fontSize={1}>
@@ -211,7 +213,11 @@ export const Pagination = ({ previous, next }) =>
     )}
   </Flex>
 
-const MobileNav = ({ title, update, }) =>
+const MobileNav = ({
+  title,
+  logo,
+  update
+}) =>
   <MobileOnly>
     <Toolbar px={0} color='inherit' bg='transparent'>
       <ButtonTransparent
@@ -221,7 +227,7 @@ const MobileNav = ({ title, update, }) =>
         mr='auto'
         title='Toggle Menu'
         onClick={e => update(toggle('menu'))}>
-        <MenuIcon />
+        {logo || <MenuIcon />}
       </ButtonTransparent>
       <Heading fontSize={1}>
         {title}
@@ -253,6 +259,7 @@ export default class Layout extends React.Component {
       route,
       location,
       title = 'x0',
+      logo,
       // theme,
       // color,
     } = this.props
@@ -273,6 +280,7 @@ export default class Layout extends React.Component {
       <React.Fragment>
         <MobileNav
           title={title}
+          logo={logo}
           update={update}
         />
 
@@ -283,6 +291,7 @@ export default class Layout extends React.Component {
             onClick={e => update(close)}>
             <Nav
               title={title}
+              logo={logo}
               routes={routes}
               update={update}
             />
