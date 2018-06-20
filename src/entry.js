@@ -39,7 +39,8 @@ const getComponents = req => req.keys()
 
 const initialComponents = getComponents(req)
 
-const DefaultApp = ({ children, routes }) => (
+const DefaultApp = props => props.children
+const xDefaultApp = ({ children, routes }) => (
   <Switch>
     {children}
     <Route render={props => (
@@ -70,8 +71,9 @@ export const getRoutes = async (components = initialComponents) => {
     const initialProps = Component.getInitialProps
       ? await Component.getInitialProps({ path: pathname })
       : {}
+    const defaultProps = Component.defaultProps
     const meta = module.frontMatter || {}
-    const props = { ...meta, ...initialProps }
+    const props = { ...meta, ...initialProps, ...defaultProps }
 
     // for dynamic routing
     pathname = props.path || pathname
@@ -125,24 +127,32 @@ export default class Root extends React.Component {
       path = '/'
     } = this.props
 
+    // add customization options
+    const NotFound = FileList
+
     const render = appProps => (
-      routes.map(({ Component, ...route }) => (
+      <Switch>
+        {routes.map(({ Component, ...route }) => (
+          <Route
+            {...route}
+            render={props => (
+              <Catch>
+                <CenteredLayout
+                  active={/md/.test(route.extname)}>
+                  <Component
+                    {...props}
+                    {...appProps}
+                    {...route.props}
+                  />
+                </CenteredLayout>
+              </Catch>
+            )}
+          />
+        ))}
         <Route
-          {...route}
-          render={props => (
-            <Catch>
-              <CenteredLayout
-                active={/md/.test(route.extname)}>
-                <Component
-                  {...props}
-                  {...appProps}
-                  {...route.props}
-                />
-              </CenteredLayout>
-            </Catch>
-          )}
+          render={props => <NotFound {...props} routes={routes} />}
         />
-      ))
+      </Switch>
     )
 
     return (

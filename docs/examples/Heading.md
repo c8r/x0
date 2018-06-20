@@ -1,6 +1,3 @@
-
-# Heading
-
-```.jsx
+```!jsx
 <Heading>Hello</Heading>
 ```

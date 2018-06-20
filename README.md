@@ -370,6 +370,11 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 - [ ] changelog/docs
 
+- [ ] 404 in SidebarLayout
+- [ ] 404s generally
+- [x] Sidebar minHeight/pagination
+- [x] Sidebar hidePagination option
+- [x] bug: route.props from defaultProps
 - [x] SidebarLayout
 - [x] test getInitialProps
 - [x] double check dynamic routing

@@ -76,19 +76,6 @@ export const MenuIcon = ({ size = 24, ...props }) =>
     <path d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' />
   </svg>
 
-export const FocusButton = styled(Button)([], {
-  width: '2em',
-  height: '2em',
-})
-FocusButton.defaultProps = {
-  fontSize: 0,
-  px: '0.25em',
-  py: '0.25em',
-  m: 2,
-  color: 'black',
-  bg: 'gray'
-}
-
 export const Main = props =>
   <Box
     {...props}
@@ -106,6 +93,10 @@ export const MaxWidth = props =>
     pt={4}
     pb={6}
   />
+
+export const Content = styled(Box)([], {
+  minHeight: 'calc(100vh - 208px)'
+})
 
 export const UL = styled('ul')([], {
   listStyle: 'none',
@@ -163,13 +154,6 @@ const NavBar = ({
       {title}
     </Heading>
     <Box mx='auto' />
-    {DEV && (
-      <FocusButton
-        title='focus'
-        onClick={e => update(toggle('focus'))}>
-        F
-      </FocusButton>
-    )}
   </Toolbar>
 
 export const Nav = ({
@@ -227,6 +211,26 @@ export const Pagination = ({ previous, next }) =>
     )}
   </Flex>
 
+const MobileNav = ({ title, update, }) =>
+  <MobileOnly>
+    <Toolbar px={0} color='inherit' bg='transparent'>
+      <ButtonTransparent
+        px={2}
+        borderRadius={0}
+        m={0}
+        mr='auto'
+        title='Toggle Menu'
+        onClick={e => update(toggle('menu'))}>
+        <MenuIcon />
+      </ButtonTransparent>
+      <Heading fontSize={1}>
+        {title}
+      </Heading>
+      <Box width={48} ml='auto' />
+    </Toolbar>
+    <Divider my={0} />
+  </MobileOnly>
+
 // move to app
 const toggle = key => state => ({ [key]: !state[key] })
 const close = state => ({ menu: false })
@@ -254,7 +258,8 @@ export default class Layout extends React.Component {
     } = this.props
     const { menu, update } = this.state
 
-    const Wrapper = route && route.props && route.props.fullWidth
+    const opts = route ? route.props : {}
+    const Wrapper = opts.fullWidth
       ? React.Fragment
       : MaxWidth
 
@@ -266,24 +271,10 @@ export default class Layout extends React.Component {
 
     return (
       <React.Fragment>
-        <MobileOnly>
-          <Toolbar px={0} color='inherit' bg='transparent'>
-            <ButtonTransparent
-              px={2}
-              borderRadius={0}
-              m={0}
-              mr='auto'
-              title='Toggle Menu'
-              onClick={e => update(toggle('menu'))}>
-              <MenuIcon />
-            </ButtonTransparent>
-            <Heading fontSize={1}>
-              {title}
-            </Heading>
-            <Box width={48} ml='auto' />
-          </Toolbar>
-          <Divider my={0} />
-        </MobileOnly>
+        <MobileNav
+          title={title}
+          update={update}
+        />
 
         <Root>
           {menu && <Overlay onClick={e => update(close)} />}
@@ -298,8 +289,10 @@ export default class Layout extends React.Component {
           </Sidebar>
           <Main tabIndex={menu ? -1 : undefined}>
             <Wrapper>
-              {children}
-              <Pagination {...pagination} />
+              <Content>
+                {children}
+              </Content>
+              {!opts.hidePagination && <Pagination {...pagination} />}
             </Wrapper>
           </Main>
         </Root>

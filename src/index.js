@@ -7,5 +7,8 @@ export { default as Catch } from './Catch'
 export { default as ScrollTop } from './ScrollTop'
 export { default as scope } from './scope'
 
+// kit
+export { default as Library } from './Library'
+
 // layouts
 export { default as SidebarLayout } from './SidebarLayout'
