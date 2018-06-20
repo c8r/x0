@@ -119,6 +119,26 @@ export default class Root extends React.Component {
       path = '/'
     } = this.props
 
+    const render = appProps => (
+      routes.map(({ Component, ...route }) => (
+        <Route
+          {...route}
+          render={props => (
+            <Catch>
+              <CenteredLayout
+                active={/md/.test(route.extname)}>
+                <Component
+                  {...props}
+                  {...appProps}
+                  {...route.props}
+                />
+              </CenteredLayout>
+            </Catch>
+          )}
+        />
+      ))
+    )
+
     return (
       <Router
         context={{}}
@@ -134,25 +154,8 @@ export default class Root extends React.Component {
                     <App
                       {...router}
                       routes={routes}
-                      render={appProps => (
-                        routes.map(({ Component, ...route }) => (
-                          <Route
-                            {...route}
-                            render={props => (
-                              <Catch>
-                                <CenteredLayout
-                                  active={/md/.test(route.extname)}>
-                                  <Component
-                                    {...props}
-                                    {...appProps}
-                                    {...route.props}
-                                  />
-                                </CenteredLayout>
-                              </Catch>
-                            )}
-                          />
-                        ))
-                      )}
+                      render={render}
+                      children={render()}
                     />
                   )}
                 />

@@ -1,7 +1,7 @@
 import React from 'react'
 import * as scope from 'rebass'
 import { Link } from 'react-router-dom'
-import { ScopeProvider, Head } from '../components'
+import { ScopeProvider } from '../components'
 import {
   Flex,
   Box,
@@ -15,19 +15,19 @@ export default class App extends React.Component {
   }
 
   render () {
-    const { routes, route, render } = this.props
-
-    // return render()
+    const {
+      routes,
+      route,
+      children,
+      // alternative to props.children
+      render,
+    } = this.props
 
     return (
       <ScopeProvider scope={scope}>
-        <Head>
-          <title>hello</title>
-          <meta name='twitter:card' content='summary' />
-        </Head>
         {false ? (
           <Layout>
-            {render()}
+            {children}
           </Layout>
         ) : (
           <Flex>
@@ -44,7 +44,7 @@ export default class App extends React.Component {
             </Box>
             <Box width={1} p={3}>
               <Container maxWidth={768}>
-                {render()}
+                {children}
               </Container>
             </Box>
           </Flex>

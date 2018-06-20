@@ -1,6 +1,5 @@
 export { Link, NavLink } from 'react-router-dom'
 export { default as ScopeProvider } from './ScopeProvider'
-export { default as Head } from './Head'
 export { default as LiveEditor } from './LiveEditor'
 export { default as LivePreview } from './LivePreview'
 export { default as FileList } from './FileList'

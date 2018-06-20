@@ -370,7 +370,6 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 - [ ] pass RouterState props to view
 - [ ] props.Component/children in custom apps
-- [ ] Head component with react helmet
 - [ ] changelog/docs
 - [x] require.context `_app`
 - [x] peer deps
@@ -384,6 +383,7 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 - [x] minimatch
 - [x] move client modules to src
 - [x] adjust resolve
+- [ ] ~~Head component with react helmet~~ doesn't work
 
 ### Breaking
 
