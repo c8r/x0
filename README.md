@@ -368,9 +368,13 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 **REMOVE BEFORE MERGING**
 
-- [ ] pass RouterState props to view
-- [ ] props.Component/children in custom apps
 - [ ] changelog/docs
+
+- [x] SidebarLayout
+- [x] test getInitialProps
+- [x] double check dynamic routing
+- [x] pass RouterState props to view
+- [x] props.children in custom app
 - [x] require.context `_app`
 - [x] peer deps
 - [x] props.ignore
@@ -383,7 +387,9 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 - [x] minimatch
 - [x] move client modules to src
 - [x] adjust resolve
+- [x] props.Component in custom app?
 - [ ] ~~Head component with react helmet~~ doesn't work
+- [ ] ~~scope loader shim for jsx front matter~~
 
 ### Breaking
 

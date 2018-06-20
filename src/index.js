@@ -6,3 +6,6 @@ export { default as FileList } from './FileList'
 export { default as Catch } from './Catch'
 export { default as ScrollTop } from './ScrollTop'
 export { default as scope } from './scope'
+
+// layouts
+export { default as SidebarLayout } from './SidebarLayout'

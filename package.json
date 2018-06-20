@@ -7,7 +7,7 @@
     "x0": "cli.js"
   },
   "scripts": {
-    "start": "./cli.js docs -op 8888",
+    "start": "./cli.js docs -p 8888",
     "build": "./cli.js build docs",
     "test": "nyc ava -T 20s",
     "cover": "nyc report --reporter=html --reporter=lcov"
@@ -56,6 +56,7 @@
     "mini-html-webpack-plugin": "^0.2.3",
     "minimatch": "^3.0.4",
     "pkg-conf": "^2.1.0",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.1",

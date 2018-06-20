@@ -1,7 +1,7 @@
 import React from 'react'
 import * as scope from 'rebass'
 import { Link } from 'react-router-dom'
-import { ScopeProvider } from '../components'
+import { ScopeProvider, SidebarLayout } from '../components'
 import {
   Flex,
   Box,
@@ -20,8 +20,19 @@ export default class App extends React.Component {
       route,
       children,
       // alternative to props.children
+      Component,
       render,
     } = this.props
+
+    // built-in layout test
+    if (false) {
+      return (
+        <ScopeProvider scope={scope}>
+          <SidebarLayout {...this.props} />
+        </ScopeProvider>
+      )
+    }
+
 
     return (
       <ScopeProvider scope={scope}>

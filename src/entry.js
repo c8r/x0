@@ -40,9 +40,9 @@ const getComponents = req => req.keys()
 
 const initialComponents = getComponents(req)
 
-const DefaultApp = ({ render, routes }) => (
+const DefaultApp = ({ children, routes }) => (
   <Switch>
-    {render()}
+    {children}
     <Route render={props => (
       <FileList
         {...props}
@@ -98,7 +98,8 @@ export const getRoutes = async (components = initialComponents) => {
 }
 
 const RouterState = withRouter(({ render, ...props }) => {
-  const route = props.routes.find(r => r.path === props.location.pathname)
+  const { pathname } = props.location
+  const route = props.routes.find(r => r.path === pathname || r.href === pathname)
   return render({ ...props, route })
 })
 
@@ -155,7 +156,8 @@ export default class Root extends React.Component {
                       {...router}
                       routes={routes}
                       render={render}
-                      children={render()}
+                      Component={render}
+                      children={render(router)}
                     />
                   )}
                 />
