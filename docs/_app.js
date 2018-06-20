@@ -25,7 +25,7 @@ export default class App extends React.Component {
     } = this.props
 
     // built-in layout test
-    if (false) {
+    if (true) {
       return (
         <ScopeProvider scope={scope}>
           <SidebarLayout {...this.props} />
@@ -47,7 +47,7 @@ export default class App extends React.Component {
                 {routes.map(route => (
                   <li key={route.key}>
                     <Link to={route.href}>
-                      {route.name} <code>({route.path})</code>
+                      {route.name} <code>({route.dirname})</code>
                     </Link>
                   </li>
                 ))}

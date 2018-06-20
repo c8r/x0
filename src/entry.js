@@ -24,7 +24,6 @@ const IS_CLIENT = typeof document !== 'undefined'
 const req = require.context(DIRNAME, true, /\.(js|md|mdx|jsx)$/)
 
 const { filename, basename = '', disableScroll } = OPTIONS
-const index = filename ? path.basename(filename, path.extname(filename)) : 'index'
 
 const getComponents = req => req.keys()
   .filter(minimatch.filter('!node_modules'))
@@ -63,18 +62,24 @@ export const getRoutes = async (components = initialComponents) => {
     module,
     Component
   }) => {
-    const exact = name === index
-    name = exact ? '/' : '/' + name
+    const exact = name === 'index'
     const dirname = path.dirname(key).replace(/^\./, '')
     const extname = path.extname(key)
-    let pathname = dirname + (exact ? '/' : name)
+    let pathname = dirname + (exact ? '/' : '/' + name)
     const href = pathname
     const initialProps = Component.getInitialProps
       ? await Component.getInitialProps({ path: pathname })
       : {}
     const meta = module.frontMatter || {}
     const props = { ...meta, ...initialProps }
+
+    // for dynamic routing
     pathname = props.path || pathname
+
+    if (dirname && name === 'index') {
+      name = path.basename(dirname)
+    }
+
     return {
       key,
       name,

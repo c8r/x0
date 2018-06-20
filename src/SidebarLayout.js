@@ -183,14 +183,7 @@ export const Nav = ({
     <NavBar {...props} />
     <Divider my={0} />
     <UL>
-      {/* rename to route.type='section' */}
-      {routes.map(route => route.exact ? (
-        <LI key={route.section + '-exact'}>
-          <Link to={route.path} exact>
-            {format(route.name)} (index)
-          </Link>
-        </LI>
-      ) : (
+      {routes.map(route => (
         <LI key={route.key}>
           {/^https?:\/\//.test(route.path) ? (
             <NavLink pl={3} href={route.path}>
