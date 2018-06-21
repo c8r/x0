@@ -237,13 +237,11 @@ const MobileNav = ({
     <Divider my={0} />
   </MobileOnly>
 
-// move to app
 const toggle = key => state => ({ [key]: !state[key] })
 const close = state => ({ menu: false })
 
 export default class Layout extends React.Component {
   static propTypes = {
-    // content: PropTypes.node.isRequired,
     routes: PropTypes.array.isRequired
   }
 
@@ -260,8 +258,6 @@ export default class Layout extends React.Component {
       location,
       title = 'x0',
       logo,
-      // theme,
-      // color,
     } = this.props
     const { menu, update } = this.state
 

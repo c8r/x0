@@ -63,9 +63,6 @@ export default class extends React.Component {
       .filter(r => r.dirname === route.dirname)
       .filter(r => r !== route)
 
-    // todo: code-loader
-    // .map(route => route)
-
     return (
       <React.Fragment>
         <Grid>
