@@ -33,7 +33,7 @@ Read more about x0 in our [blog post](https://compositor.io/blog/x0-making-react
 ## Getting Started
 
 x0 renders a directory of React components, automatically handling routing based on filename.
-Create a `docs` folder and add and `index.js` file.
+Create a `docs` folder and add an `index.js` file.
 
 ```jsx
 // index.js
