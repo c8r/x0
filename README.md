@@ -370,7 +370,7 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 - [ ] changelog/docs
 
-- [ ] static 404 output
+- [x] static 404 output
 - [x] 404
 - [x] Sidebar minHeight/pagination
 - [x] Sidebar hidePagination option
@@ -401,4 +401,5 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 - .jsx imports/scope
 - .jsx props
 - custom app path option (must be `_app.js`) (undocumented)
+- Remove support for glamor and glamorous
 

@@ -35,7 +35,6 @@ const getComponents = req => req.keys()
     module: req(key),
     Component: req(key).default || req(key),
   }))
-  .filter(component => !/404/.test(component.name))
   .filter(component => typeof component.Component === 'function')
 
 const initialComponents = getComponents(req)
@@ -45,8 +44,6 @@ const DefaultApp = props => props.children
 const Router = IS_CLIENT ? BrowserRouter : StaticRouter
 const appPath = req.keys().find(key => key === './_app.js')
 const App = appPath ? (req(appPath).default || req(appPath)) : DefaultApp
-const notFoundPath = req.keys().find(key => /404/.test(key))
-const NotFound = notFoundPath ? (req(notFoundPath).default) : FileList
 
 export const getRoutes = async (components = initialComponents) => {
   const promises = await components.map(async ({
@@ -88,11 +85,14 @@ export const getRoutes = async (components = initialComponents) => {
     }
   })
   const routes = await Promise.all(promises)
-  const filtered = routes.filter(r => !r.props.ignore)
+  const filtered = routes
+    .filter(r => !r.props.ignore)
+    .filter(component => !/404/.test(component.name))
   let sorted = [...filtered]
   sorted = sortBy([...sorted], a => a.name)
   sorted = sortBy([...sorted], a => !a.exact)
   sorted = sortBy([...sorted], a => a.dirname)
+  sorted.notfound = routes.find(component => /404/.test(component.name))
   return sorted
 }
 
@@ -118,6 +118,10 @@ export default class Root extends React.Component {
       basename,
       path = '/'
     } = this.props
+
+    const NotFound = routes.notfound
+      ? routes.notfound.Component
+      : FileList
 
     const render = appProps => (
       <Switch>
