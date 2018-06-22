@@ -261,6 +261,7 @@ export default class Layout extends React.Component {
     const { menu, update } = this.state
 
     const opts = route ? route.props : {}
+    if (opts.layout === false) return children
     const Wrapper = opts.fullWidth
       ? React.Fragment
       : MaxWidth

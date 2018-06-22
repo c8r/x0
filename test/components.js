@@ -21,7 +21,7 @@ import {
 browserEnv()
 
 // make sure this doesn't conflict with webpack tests
-global.DIRNAME = __dirname
+global.DIRNAME = 'beep'
 
 const renderJSON = el => render(el).toJSON()
 
