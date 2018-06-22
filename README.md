@@ -370,6 +370,23 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 
 - [ ] changelog/docs
 
+## API Changes
+- Supports nested routes
+- Adds support for `.md` files, using MDX
+- Configurable default styles for markdown and MDX files
+- Adds LiveEditor and LivePreview capabilities to markdown
+- Adds `--match` option for filtering files
+- Adds `ignore` option for pages
+- Optional layout component
+- Optional Library component
+- Support for 404 pages
+
+## Internal Changes
+- Uses mdx loader for md/mdx/jsx files
+
+## Breaking Changes
+- Specifying scope in JSX front matter is no longer supported
+
 - [x] static 404 output
 - [x] 404
 - [x] Sidebar minHeight/pagination
