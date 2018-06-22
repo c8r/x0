@@ -21,6 +21,10 @@ const Video = styled.video([], {
 })
 
 export default class extends React.Component {
+  static defaultProps = {
+    layout: 'landing'
+  }
+
   render () {
     return (
       <React.Fragment>
