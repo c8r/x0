@@ -85,6 +85,11 @@ const cli = meow(`
 })
 
 const [ cmd, file ] = cli.input
+
+if (!cmd) {
+  cli.showHelp(0)
+}
+
 const input = path.resolve(file || cmd)
 const stats = fs.statSync(input)
 const dirname = stats.isDirectory() ? input : path.dirname(input)
