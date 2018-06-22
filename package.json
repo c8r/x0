@@ -10,6 +10,7 @@
     "start": "./cli.js docs -p 8888",
     "build": "./cli.js build docs",
     "test": "nyc ava -T 20s",
+    "test:components": "nyc ava test/components.js",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },
   "keywords": [
@@ -40,6 +41,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
+    "browser-env": "^3.2.5",
     "chalk": "^2.4.1",
     "clipboardy": "^1.2.3",
     "connect-history-api-fallback": "^1.5.0",
@@ -83,8 +85,10 @@
     "ava": "^0.25.0",
     "isomorphic-fetch": "^2.2.1",
     "nyc": "^12.0.1",
+    "react-test-renderer": "^16.4.1",
     "refunk": "^3.0.1",
     "rimraf": "^2.6.2",
+    "sinon": "^6.0.0",
     "styled-components": "^3.3.2"
   },
   "peerDependencies": {
@@ -129,16 +133,7 @@
     "require": [
       "babel-register"
     ],
-    "babel": {
-      "presets": [
-        "env",
-        "stage-0",
-        "react"
-      ],
-      "plugins": [
-        "transform-runtime"
-      ]
-    }
+    "babel": "inherit"
   },
   "engines": {
     "node": ">=8.0"

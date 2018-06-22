@@ -11,7 +11,7 @@ const cleanHREF = href => href
   .replace(/\.jsx?$/, '')
 
 export const link = withRouter(({
-  href,
+  href = '',
   match,
   location,
   children,

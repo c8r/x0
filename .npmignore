@@ -8,3 +8,4 @@ examples
 demo
 dist
 .travis.yml
+.babelrc

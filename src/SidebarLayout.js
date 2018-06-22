@@ -255,7 +255,6 @@ export default class Layout extends React.Component {
       routes = [],
       children,
       route,
-      location,
       title = 'x0',
       logo,
     } = this.props
