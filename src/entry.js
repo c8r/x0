@@ -131,7 +131,7 @@ export default class Root extends React.Component {
             render={props => (
               <Catch>
                 <CenteredLayout
-                  active={/md/.test(route.extname)}>
+                  active={!appPath && /md/.test(route.extname)}>
                   <Component
                     {...props}
                     {...appProps}
