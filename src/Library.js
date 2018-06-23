@@ -1,24 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { style, borderColor } from 'styled-system'
+import {
+  style,
+  gridGap,
+  gridAutoRows,
+  borderColor
+} from 'styled-system'
 
 const gridWidth = style({
   prop: 'width',
   cssProperty: 'gridTemplateColumns',
-  getter: n => `repeat(auto-fit, minmax(${n}, 1fr))`
-})
-
-const gridGap = style({
-  prop: 'gap',
-  cssProperty: 'gridGap',
-  numberToPx: true
-})
-
-const gridHeight = style({
-  prop: 'height',
-  cssProperty: 'gridAutoRows',
-  numberToPx: true
+  getter: n => `repeat(auto-fit, minmax(${n}px, 1fr))`
 })
 
 const Grid = styled.div([], {
@@ -26,12 +19,12 @@ const Grid = styled.div([], {
 },
   gridWidth,
   gridGap,
-  gridHeight
+  gridAutoRows
 )
 
 Grid.defaultProps = {
-  width: '256px',
-  height: 192
+  width: 256,
+  gridAutoRows: 192
 }
 
 const Card = styled(Link)([], {
