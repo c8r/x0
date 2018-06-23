@@ -20,7 +20,6 @@ const clean = () => {
   if (fs.existsSync(output)) {
     rimraf.sync(output)
   }
-  // fs.remove(output)
 }
 
 test.before(clean)
@@ -30,16 +29,4 @@ test('static renders', async t => {
   const res = await build(options)
   const html = fs.readFileSync(htmlFile, 'utf8')
   t.snapshot(html)
-})
-
-test('static uses getInitialProps method', async t => {
-  const res = await build(options)
-  const html = fs.readFileSync(propsFile, 'utf8')
-  t.snapshot(html)
-})
-
-test.skip('static makes a directory', async t => {
-  clean()
-  const res = await build(options)
-  t.pass()
 })
