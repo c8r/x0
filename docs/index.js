@@ -22,6 +22,7 @@ const Video = styled.video([], {
 
 export default class extends React.Component {
   static defaultProps = {
+    name: 'Home',
     layout: 'landing'
   }
 
@@ -58,16 +59,14 @@ export default class extends React.Component {
               GitHub
             </Button>
             <Box mx={1} />
-            {/*
             <Button
               is={Link}
               px={4}
               py={3}
               bg='black'
-              to='/docs'>
+              to='/getting-started'>
               Documentation
             </Button>
-            */}
           </Flex>
         </Container>
       </React.Fragment>

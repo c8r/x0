@@ -8,9 +8,40 @@ import {
   Box,
   Container,
 } from 'rebass'
+import sortBy from 'lodash.sortby'
 
 import LandingLayout from './_layout'
 import theme from './_theme'
+
+const navOrder = [
+  'index',
+  'getting-started',
+  'markdown',
+  'react',
+  'mdx',
+  'custom-app',
+  'routing',
+  'front-matter',
+  'fetching-data',
+  'components',
+  'customizing',
+  'cli-options',
+  'exporting',
+  'examples',
+]
+
+const sortRoutes = routes => [
+  ...sortBy([...routes], a => {
+    const i = navOrder.indexOf(a.name)
+    return i < 0 ? Infinity : i
+  })
+].map(route => {
+  if (route.name !== 'index') return route
+  return {
+    ...route,
+    name: 'Home'
+  }
+})
 
 export default class App extends React.Component {
   static defaultProps = {
@@ -29,10 +60,15 @@ export default class App extends React.Component {
       ? LandingLayout
       : SidebarLayout
 
+    const nav = sortRoutes(routes)
+
     return (
       <ScopeProvider scope={scope}>
         <RebassProvider theme={theme}>
-          <Layout {...this.props} />
+          <Layout
+            {...this.props}
+            routes={nav}
+          />
         </RebassProvider>
       </ScopeProvider>
     )
