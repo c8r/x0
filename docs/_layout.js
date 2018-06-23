@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Provider,
   Flex,
   Box,
   Container,
@@ -10,10 +9,9 @@ import {
 } from 'rebass'
 import { Link } from 'react-router-dom'
 import { Logo } from '@compositor/logo'
-import theme from './theme'
 
 export default ({ children }) =>
-  <Provider theme={theme}>
+  <React.Fragment>
     <Flex alignItems='center'>
       <BlockLink
         href='https://compositor.io'>
@@ -55,4 +53,4 @@ export default ({ children }) =>
         </Text>
       </Flex>
     </Container>
-  </Provider>
+  </React.Fragment>

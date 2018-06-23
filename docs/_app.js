@@ -3,16 +3,18 @@ import * as scope from 'rebass'
 import { Link } from 'react-router-dom'
 import { ScopeProvider, SidebarLayout } from '../components'
 import {
+  Provider as RebassProvider,
   Flex,
   Box,
   Container,
 } from 'rebass'
 
 import LandingLayout from './_layout'
+import theme from './_theme'
 
 export default class App extends React.Component {
   static defaultProps = {
-    title: 'Hello'
+    title: 'x0'
   }
 
   render () {
@@ -29,7 +31,9 @@ export default class App extends React.Component {
 
     return (
       <ScopeProvider scope={scope}>
-        <Layout {...this.props} />
+        <RebassProvider theme={theme}>
+          <Layout {...this.props} />
+        </RebassProvider>
       </ScopeProvider>
     )
   }
