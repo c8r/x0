@@ -34,6 +34,7 @@ const cli = meow(`
 
       -o --open       Open dev server in default browser
       -p --port       Port for dev server
+      --analyze       Runs with webpack-bundle-analyzer plugin
 
     ${chalk.gray('Build')}
 
@@ -52,6 +53,7 @@ const cli = meow(`
       type: 'string',
       alias: 'p'
     },
+    analyze: {},
     // build
     outDir: {
       type: 'string',
