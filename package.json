@@ -9,7 +9,7 @@
   "scripts": {
     "start": "./cli.js docs -p 8888",
     "build": "./cli.js build docs",
-    "test": "nyc ava -T 30s",
+    "test": "nyc ava --timeout=60s",
     "test:components": "nyc ava test/components.js",
     "cover": "nyc report --reporter=html --reporter=lcov"
   },
