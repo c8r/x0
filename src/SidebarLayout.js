@@ -34,6 +34,7 @@ export const Sidebar = styled('div')([], {
   height: '100vh',
   flex: 'none',
   overflowY: 'auto',
+  WebkitOverflowScrolling: 'touch',
   transition: 'transform .2s ease-out',
   backgroundColor: '#fff',
   borderRight: '1px solid',
