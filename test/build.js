@@ -25,7 +25,7 @@ const clean = () => {
 test.before(clean)
 test.after(clean)
 
-test('static renders', async t => {
+test.skip('static renders', async t => {
   const res = await build(options)
   const html = fs.readFileSync(htmlFile, 'utf8')
   t.snapshot(html)
