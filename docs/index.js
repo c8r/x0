@@ -30,15 +30,7 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <Container py={5}>
-          <Heading
-            is='h1'
-            mb={4}
-            lineHeight={1.125}
-            fontWeight='bold'
-            fontSize={[ 4, 5, 6 ]}>
-            x0: Zero-config React development environment & static site generator
-          </Heading>
-          <Box mb={4}>
+          <Box mb={3}>
             <Video
               autoPlay
               loop
@@ -48,6 +40,15 @@ export default class extends React.Component {
               src='hello-x0.mp4'
             />
           </Box>
+          <Heading
+            is='h1'
+            mb={4}
+            lineHeight={1.125}
+            fontWeight='bold'
+            fontSize={[ 4, 5, 6 ]}>
+            x0:
+            Document & develop React components without breaking a sweat
+          </Heading>
           <Pre>npm i -g @compositor/x0</Pre>
           <Flex py={4}>
             <Button

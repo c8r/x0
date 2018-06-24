@@ -21,14 +21,17 @@ const navOrder = [
   'mdx',
   'custom-app',
   'routing',
-  'front-matter',
-  'fetching-data',
   'components',
   'customizing',
   'cli-options',
   'exporting',
   'examples',
 ]
+const pageNames = {
+  index: 'Home',
+  mdx: 'MDX',
+  'cli-options': 'CLI Options'
+}
 
 const sortRoutes = routes => [
   ...sortBy([...routes], a => {
@@ -36,10 +39,10 @@ const sortRoutes = routes => [
     return i < 0 ? Infinity : i
   })
 ].map(route => {
-  if (route.name !== 'index') return route
+  if (!pageNames[route.name]) return route
   return {
     ...route,
-    name: 'Home'
+    name: pageNames[route.name]
   }
 })
 

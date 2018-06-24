@@ -62,3 +62,31 @@ Add a link to the *Getting Started* page from `index.md`.
 In addition to markdown, x0 can render any React component as a page.
 Create a `demo.js` file.
 
+```jsx
+// demo.js
+import React from 'react'
+
+export default class extends React.Component {
+  render () {
+    return (
+      <h1>Demo</h1>
+    )
+  }
+}
+```
+
+## Using MDX
+
+x0 also supports [MDX][mdx] format, which allows you to mix JSX with markdown syntax.
+
+```md
+import { Box } from 'rebass'
+
+# Hello MDX
+
+<Box p={3} bg='tomato'>
+  This will render as a React component
+</Box>
+```
+
+[mdx]: https://github.com/mdx-js/mdx

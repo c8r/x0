@@ -48,4 +48,10 @@ export default props =>
   </div>
 ```
 
+## 404 page
+
+A custom 404 page can be added with a file named `404.md`, `404.js`, `404.mdx`, or `404.jsx`.
+By default, x0 will show a link list of available routes for URLs that aren't valid routes.
+When exporting with `x0 build` the 404 page will be written to `404.html`, which works with GitHub pages.
+
 [react-router]: https://github.com/ReactTraining/react-router
