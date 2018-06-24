@@ -20,6 +20,17 @@ const Video = styled.video([], {
   borderRadius: '16px',
 })
 
+const features = [
+  'Zero-config',
+  'No plugins',
+  'Components over configuration',
+  'Use markdown, MDX, or React components',
+  'Automatic file-system based routing',
+  'Completely customizable',
+  'Static-site generator',
+  'Isolated development environment',
+]
+
 export default class extends React.Component {
   static defaultProps = {
     name: 'Home',
@@ -68,6 +79,17 @@ export default class extends React.Component {
               to='/getting-started'>
               Documentation
             </Button>
+          </Flex>
+        </Container>
+        <Container py={5}>
+          <Flex flexWrap='wrap' mx={-3}>
+            {features.map(feat => (
+              <Box key={feat} width={[ 1, 1, 1/2 ]} p={3}>
+                <Text fontWeight='bold'>
+                  {feat}
+                </Text>
+              </Box>
+            ))}
           </Flex>
         </Container>
       </React.Fragment>
