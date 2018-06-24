@@ -41,7 +41,8 @@ const cli = meow(`
       -d --out-dir    Output directory (default dist)
       -s --static     Output static HTML without JS bundle
       -t --template   Path to custom HTML template
-
+      --basename      Basename for URL paths
+      --title         Page title
 `, {
   flags: {
     // dev
