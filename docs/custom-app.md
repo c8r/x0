@@ -97,3 +97,30 @@ export default class extends React.Component {
   }
 }
 ```
+
+## Props
+
+Custom Apps receive the following props, which can expose greater control over the rendering.
+
+- `children`: rendered content of the page
+- `Component`: a component to pass props to the current route and render content
+- `routes`: an array of route objects for the entire site – can be used for rendering navigation
+- `route`: the current route object
+- The [React Router][react-router] state is also passed to the App
+
+### Route Object
+
+Routes include the following properties:
+
+- `key`: the filepath from webpack's `require.context`
+- `name`: the basename of the file
+- `path`: path used for routing
+- `extname`: file extension
+- `dirname`: file directory
+- `exact`: (boolean) added to index pages for React Router
+- `module`: the JS module for the file
+- `Component`: the default export from the file
+- `props`: default props or front-matter specified in the file
+
+[react-router]: https://github.com/ReactTraining/react-router
+

@@ -18,7 +18,8 @@ const navOrder = [
   'getting-started',
   'markdown',
   'react',
-  'mdx',
+  'MDX',
+  'JSX',
   'custom-app',
   'routing',
   'components',
@@ -32,7 +33,6 @@ const navOrder = [
 ]
 const pageNames = {
   index: 'Home',
-  mdx: 'MDX',
   'cli-options': 'CLI Options'
 }
 
