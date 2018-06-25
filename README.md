@@ -30,11 +30,46 @@ Read more about x0 in our [blog post](https://compositor.io/blog/x0-making-react
 
 \* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
 
+## Getting Started
+
+x0 renders a directory of React components, automatically handling routing based on filename.
+Create a `docs` folder and add an `index.js` file.
+
+```jsx
+// index.js
+import React from 'react'
+
+export default class extends React.Component {
+  render () {
+    return (
+      <h1>Hello</h1>
+    )
+  }
+}
+```
+
+Start a development server by running:
+
+```sh
+x0 docs --open
+```
+
+To add more pages, add a new component for each route. For example, create an about page:
+
+```jsx
+// about.js
+import React from 'react'
+
+export default props =>
+  <h1>About</h1>
+```
+
+The about page should now render when navigating to  <http://localhost:8080/about>.
 
 ## Isolated development environment
 
 ```sh
-x0 components
+x0 docs
 ```
 
 Options:
@@ -47,7 +82,7 @@ Options:
 ```
 
 ```sh
-x0 components -op 8080
+x0 docs -op 8080
 ```
 
 
@@ -56,13 +91,13 @@ x0 components -op 8080
 Export static HTML and client-side bundle
 
 ```sh
-x0 build components
+x0 build docs
 ```
 
 Export static HTML without bundle
 
 ```sh
-x0 build components --static
+x0 build docs --static
 ```
 
 Options
