@@ -28,6 +28,7 @@ const cli = meow(`
   ${chalk.gray('Options')}
 
       --webpack       Path to webpack config file
+      --match         Glob pattern to match files against
 
     ${chalk.gray('Dev Server')}
 
@@ -76,6 +77,9 @@ const cli = meow(`
     },
     debug: {
       type: 'boolean'
+    },
+    match: {
+      type: 'string',
     }
   }
 })

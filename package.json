@@ -51,6 +51,7 @@
     "koa-connect": "^2.0.1",
     "meow": "^5.0.0",
     "mini-html-webpack-plugin": "^0.2.3",
+    "minimatch": "^3.0.4",
     "pkg-conf": "^2.1.0",
     "react": "^16.4.0",
     "react-dev-utils": "^5.0.1",
