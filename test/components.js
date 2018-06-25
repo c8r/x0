@@ -20,7 +20,6 @@ import {
 
 browserEnv()
 
-// make sure this doesn't conflict with webpack tests
 global.DIRNAME = 'beep'
 
 const renderJSON = el => render(el).toJSON()
@@ -221,7 +220,6 @@ test('SidebarLayout renders', t => {
   )
   t.snapshot(json)
 })
-// console.log(require('util').inspect(json, { depth: null }))
 
 const blacklist = {
   pre: true

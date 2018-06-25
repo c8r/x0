@@ -56,6 +56,8 @@ export const code = ({
       return (
         <Pre
           p={3}
+          mt={4}
+          mb={4}
           bg='gray'
           children={children}
         />
