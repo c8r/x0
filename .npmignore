@@ -8,4 +8,5 @@ examples
 demo
 dist
 .travis.yml
+.babelrc
 create-x0

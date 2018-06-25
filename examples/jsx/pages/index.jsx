@@ -1,7 +1,8 @@
 ---
 title: Hello JSX
-scope: import scope from './_scope'
 ---
+import { Box, Heading, Text, Link } from 'rebass'
+
 <Box px={3} py={4}>
   <Heading is='h1' mb={2}>
     {props.title}

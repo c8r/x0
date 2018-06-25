@@ -28,11 +28,13 @@ const cli = meow(`
   ${chalk.gray('Options')}
 
       --webpack       Path to webpack config file
+      --match         String to match routes against using minimatch
 
     ${chalk.gray('Dev Server')}
 
       -o --open       Open dev server in default browser
       -p --port       Port for dev server
+      --analyze       Runs with webpack-bundle-analyzer plugin
 
     ${chalk.gray('Build')}
 
@@ -51,6 +53,7 @@ const cli = meow(`
       type: 'string',
       alias: 'p'
     },
+    analyze: {},
     // build
     outDir: {
       type: 'string',
@@ -68,6 +71,9 @@ const cli = meow(`
       type: 'string',
       alias: 'c'
     },
+    match: {
+      type: 'string'
+    },
     scope: {
       type: 'string',
     },
@@ -81,6 +87,11 @@ const cli = meow(`
 })
 
 const [ cmd, file ] = cli.input
+
+if (!cmd) {
+  cli.showHelp(0)
+}
+
 const input = path.resolve(file || cmd)
 const stats = fs.statSync(input)
 const dirname = stats.isDirectory() ? input : path.dirname(input)
@@ -106,13 +117,6 @@ if (opts.webpack) {
   if (webpackConfig) opts.webpack = require(webpackConfig)
 }
 
-if (opts.app) {
-  opts.app = path.resolve(opts.app)
-} else {
-  const app = findup.sync('_app.js', { cwd: dirname })
-  if (app) opts.app = app
-}
-
 if (opts.template) {
   opts.template = require(path.resolve(opts.template))
 }
@@ -127,7 +131,7 @@ log(chalk.cyan('@compositor/x0'))
 switch (cmd) {
   case 'build':
     log.start('building static site')
-    const { build } = require('.')
+    const build = require('./lib/build')
     build(opts)
       .then(res => {
         log.stop('site saved to ' + opts.outDir)
@@ -137,7 +141,7 @@ switch (cmd) {
   case 'dev':
   default:
     log.start('starting dev server')
-    const { dev } = require('.')
+    const dev = require('./lib/dev')
     dev(opts)
       .then(({ server }) => {
         const { port } = server.options

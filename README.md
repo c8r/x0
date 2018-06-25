@@ -1,7 +1,7 @@
 
 # x0
 
-Zero-config React development environment and static site generator
+Document & develop React components without breaking a sweat
 
 [![Build Status][build-badge]][build]
 
@@ -17,18 +17,15 @@ npm install -g @compositor/x0
 ## Features
 
 - Zero-config
-- Hot-loading development environment
-- Works with virtually any React component\*
-- No confusing APIs
+- No plugins
+- Components over configuration
+- Use markdown, MDX, or React components
 - Automatic file system based routing
-- Exports static HTML
-- Exports JS bundles
-- Works with CSS-in-JS libraries like [styled-components][sc] and [emotion][emotion]
-- Support for async data fetching
+- Completely customizable
+- Export static sites
+- Works as an isolated development environment
 
 Read more about x0 in our [blog post](https://compositor.io/blog/x0-making-react-component-development-stupid-simple/).
-
-\* Custom [webpack configuration](#webpack) is required for components that rely on webpack-based features
 
 ## Getting Started
 
@@ -315,16 +312,17 @@ export default () => (
 
 ### JSX Format
 
-x0 includes support for the [Compositor JSX][jsx-loader] file format.
+x0 includes support for the Compositor JSX file format.
 
 ```jsx
 ---
 title: Hello
-scope: import * as scope from 'rebass'
 ---
+import { Box, Heading } from 'rebass'
+
 <Box px={2} py={4}>
   <Heading>
-    {props.title}
+    {frontMatter.title}
   </Heading>
 </Box>
 ```
@@ -395,3 +393,4 @@ See the [example](https://github.com/c8r/x0/tree/master/examples/webpack-config)
 [react-loadable]: https://github.com/thejameskyle/react-loadable
 [webpack-merge]: https://github.com/survivejs/webpack-merge
 [webpack]: https://webpack.js.org
+
