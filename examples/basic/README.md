@@ -11,7 +11,7 @@ npm install
 npm start
 ```
 
-Editing `index.js` will live update in the development server.
+Editing `src/index.js` will live update in the development server.
 
 ## Static Build
 
