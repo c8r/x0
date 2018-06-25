@@ -12,6 +12,7 @@ import {
   Pre,
 } from 'rebass'
 import { Logo } from '@compositor/logo'
+import X0 from './_logo'
 
 const Video = styled.video([], {
   display: 'block',
@@ -41,6 +42,9 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <Container py={5}>
+          <Box>
+            <X0 />
+          </Box>
           <Box mb={3}>
             <Video
               autoPlay
