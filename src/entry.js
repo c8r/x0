@@ -98,7 +98,7 @@ export const getRoutes = async (components = initialComponents) => {
 
 const RouterState = withRouter(({ render, ...props }) => {
   const { pathname } = props.location
-  const route = props.routes.find(r => r.path === pathname || r.href === pathname)
+  const route = props.routes.find(r => r.path === pathname || r.href === pathname) || { props: {} }
   return render({ ...props, route })
 })
 

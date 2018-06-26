@@ -267,7 +267,7 @@ export default class Layout extends React.Component {
       ? React.Fragment
       : MaxWidth
 
-    const index = routes.findIndex(r => r === route)
+    const index = routes.findIndex(r => r.path === route.path)
     const pagination = {
       previous: routes[index - 1],
       next: routes[index + 1]

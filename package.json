@@ -7,7 +7,7 @@
     "x0": "cli.js"
   },
   "scripts": {
-    "start": "./cli.js docs -p 8989",
+    "start": "./cli.js docs",
     "build": "./cli.js build docs",
     "test": "nyc ava --timeout=60s",
     "test:components": "nyc ava test/components.js",
