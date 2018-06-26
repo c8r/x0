@@ -12,6 +12,7 @@ import sortBy from 'lodash.sortby'
 
 import LandingLayout from './_layout'
 import theme from './_theme'
+import X0 from './_logo'
 
 const navOrder = [
   'index',
@@ -74,6 +75,7 @@ export default class App extends React.Component {
           <Layout
             {...this.props}
             routes={nav}
+            logo={<X0 size={24} color='magenta' />}
           />
         </RebassProvider>
       </ScopeProvider>
