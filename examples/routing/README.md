@@ -1,5 +1,5 @@
 
-# x0 react-router example
+# x0 routing example
 
 ```sh
 npm install

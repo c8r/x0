@@ -2,10 +2,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.md$/,
+        test: /\.txt/,
         use: [
-          'html-loader',
-          'markdown-loader'
+          'raw-loader'
         ]
       }
     ]

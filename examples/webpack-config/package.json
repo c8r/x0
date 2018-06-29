@@ -6,8 +6,7 @@
     "build": "x0 build pages"
   },
   "dependencies": {
-    "@compositor/x0": "^5.0.0",
-    "html-loader": "^0.5.5",
-    "markdown-loader": "^2.0.2"
+    "@compositor/x0": "^6.0.0",
+    "raw-loader": "^0.5.1"
   }
 }

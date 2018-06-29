@@ -6,12 +6,12 @@ const Root = styled('div')({
   padding: '48px'
 })
 
-export default ({ render }) => (
+export default ({ children }) => (
   <Root>
     <nav>
       <Link to='/'>Home</Link>
       <Link to='/about'>About</Link>
     </nav>
-    {render()}
+    {children}
   </Root>
 )

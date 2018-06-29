@@ -1,5 +1,5 @@
 {
-  "name": "x0-react-router-example",
+  "name": "x0-routing-example",
   "private": true,
   "scripts": {
     "start": "x0 pages -o",
