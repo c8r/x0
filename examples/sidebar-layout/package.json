@@ -1,0 +1,11 @@
+{
+  "name": "x0-sidebar-layout-example",
+  "private": true,
+  "scripts": {
+    "start": "x0 pages -o",
+    "build": "x0 build pages"
+  },
+  "dependencies": {
+    "@compositor/x0": "^6.0.0"
+  }
+}
