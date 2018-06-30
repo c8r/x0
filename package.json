@@ -1,6 +1,6 @@
 {
   "name": "@compositor/x0",
-  "version": "6.0.0",
+  "version": "6.0.1-0",
   "description": "Document & develop React components without breaking a sweat",
   "main": "index.js",
   "bin": {
