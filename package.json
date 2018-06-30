@@ -11,7 +11,8 @@
     "build": "./cli.js build docs",
     "test": "nyc ava --timeout=60s",
     "test:components": "nyc ava test/components.js",
-    "cover": "nyc report --reporter=html --reporter=lcov"
+    "cover": "nyc report --reporter=html --reporter=lcov",
+    "prepare": "rm -rf dist && babel src -d dist"
   },
   "keywords": [
     "react",
@@ -85,6 +86,7 @@
   "devDependencies": {
     "@compositor/logo": "^1.4.0",
     "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
     "isomorphic-fetch": "^2.2.1",
     "nyc": "^12.0.1",
     "react-test-renderer": "^16.4.1",
