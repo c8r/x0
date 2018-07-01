@@ -17,4 +17,16 @@ import { Box } from 'rebass'
 </Box>
 ```
 
+## MDX Live Editor
+
+Code blocks declared as `.mdx` will render a live MDX editor.
+
+```.mdx
+# Hello, LiveEditor
+
+<div style={{ padding: '20px', backgroundColor: 'tomato' }}>
+  <h4>Beep</h4>
+</div>
+```
+
 [mdx]: https://github.com/mdx-js/mdx

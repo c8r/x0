@@ -49,7 +49,7 @@ export const code = ({
 
   switch (type) {
     case '.':
-      return <LiveEditor code={code} scope={scope} />
+      return <LiveEditor code={code} scope={scope} mdx={lang.includes('.mdx')} />
     case '!':
       return <LivePreview code={code} scope={scope} />
     default:
