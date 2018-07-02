@@ -9,8 +9,14 @@ import { ScopeConsumer } from 'react-scope-provider'
 import { Box } from 'rebass'
 import { color, borderColor } from 'styled-system'
 import styled from 'styled-components'
+import mdx from '@mdx-js/mdx'
+import { MDXTag } from '@mdx-js/tag'
 
 const transformCode = src => `<React.Fragment>${src}</React.Fragment>`
+const transformMdx = src => {
+  const code = mdx.sync(src)
+  return code.replace(/^(\s)*export default \({components}\) =>/, '')
+}
 
 const Preview = styled(LivePreview)([], {
   padding: '16px',
@@ -46,28 +52,33 @@ const Err = styled(LiveError)([], {
 
 export default ({
   code,
-  scope,
-  render
-}) => (
-  <Box mb={4}>
-    <ScopeConsumer defaultScope={scope}>
-      {scope => (
-        <LiveProvider
-          code={code}
-          scope={scope}
-          mountStylesheet={false}
-          transformCode={transformCode}>
-          {typeof render === 'function' ? (
-            render({ code, scope })
-          ) : (
-            <React.Fragment>
-              <Preview />
-              <Editor />
-              <Err />
-            </React.Fragment>
-          )}
-        </LiveProvider>
-      )}
-    </ScopeConsumer>
-  </Box>
-)
+  scope = {},
+  render,
+  mdx
+}) => {
+  const fullScope = { MDXTag, components: {}, ...scope }
+
+  return (
+    <Box mb={4}>
+      <ScopeConsumer defaultScope={fullScope}>
+        {scope => (
+          <LiveProvider
+            code={code}
+            scope={fullScope}
+            mountStylesheet={false}
+            transformCode={mdx ? transformMdx : transformCode}>
+            {typeof render === 'function' ? (
+              render({ code, fullScope })
+            ) : (
+              <React.Fragment>
+                <Preview />
+                <Editor />
+                <Err />
+              </React.Fragment>
+            )}
+          </LiveProvider>
+        )}
+      </ScopeConsumer>
+    </Box>
+  )
+}
