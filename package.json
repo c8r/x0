@@ -74,7 +74,7 @@
     "remark-slug": "^5.0.0",
     "semver": "^5.5.0",
     "stringify-object": "^3.2.2",
-    "styled-components": ">=3.0.0",
+    "styled-components": ">=3.3.0",
     "styled-system": "^2.3.1",
     "update-notifier": "^2.5.0",
     "webpack": "^4.10.2",
