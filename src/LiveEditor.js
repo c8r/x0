@@ -10,7 +10,6 @@ import { Box } from 'rebass'
 import { color, borderColor } from 'styled-system'
 import styled from 'styled-components'
 import mdx from '@mdx-js/mdx'
-import { MDXTag } from '@mdx-js/tag'
 
 const transformCode = src => `<React.Fragment>${src}</React.Fragment>`
 const transformMdx = src => {
@@ -55,30 +54,26 @@ export default ({
   scope = {},
   render,
   mdx
-}) => {
-  const fullScope = { MDXTag, components: {}, ...scope }
-
-  return (
-    <Box mb={4}>
-      <ScopeConsumer defaultScope={fullScope}>
-        {scope => (
-          <LiveProvider
-            code={code}
-            scope={fullScope}
-            mountStylesheet={false}
-            transformCode={mdx ? transformMdx : transformCode}>
-            {typeof render === 'function' ? (
-              render({ code, fullScope })
-            ) : (
-              <React.Fragment>
-                <Preview />
-                <Editor />
-                <Err />
-              </React.Fragment>
-            )}
-          </LiveProvider>
-        )}
-      </ScopeConsumer>
-    </Box>
-  )
-}
+}) => (
+  <Box mb={4}>
+    <ScopeConsumer defaultScope={scope}>
+      {scope => (
+        <LiveProvider
+          code={code}
+          scope={scope}
+          mountStylesheet={false}
+          transformCode={mdx ? transformMdx : transformCode}>
+          {typeof render === 'function' ? (
+            render({ code, scope })
+          ) : (
+            <React.Fragment>
+              <Preview />
+              <Editor />
+              <Err />
+            </React.Fragment>
+          )}
+        </LiveProvider>
+      )}
+    </ScopeConsumer>
+  </Box>
+)

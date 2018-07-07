@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import rebassMarkdown from '@rebass/markdown'
 import { Pre } from 'rebass'
+import { MDXTag } from '@mdx-js/tag'
 
 import LiveEditor from './LiveEditor'
 import LivePreview from './LivePreview'
@@ -67,16 +68,20 @@ export const code = ({
 
 const pre = props => props.children
 
-const scope = rebassMarkdown({
-  a: {
-    is: link
-  },
-  code: {
-    is: code
-  },
-  pre: {
-    is: pre,
-  }
-})
+const scope = {
+  MDXTag,
+  components: {}, // does mdx need this?
+  ...rebassMarkdown({
+    a: {
+      is: link
+    },
+    code: {
+      is: code
+    },
+    pre: {
+      is: pre,
+    }
+  })
+}
 
 export default scope

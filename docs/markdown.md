@@ -65,6 +65,24 @@ Using code fences means that your example code will render in any standard markd
 **Important Note**: To include custom components in scope for the live preview code fences,
 you must use the `ScopeProvider` in a [custom App component](custom-app).
 
+#### MDX
+
+The LiveEditor also supports [MDX][] format. Use the `.mdx` language attribute to use MDX.
+
+````md
+```.mdx
+# Hello MDX
+
+<Button>Hello</Button>
+```
+````
+
+```.mdx
+# Hello MDX
+
+<Button>Hello</Button>
+```
+
 
 ### Live Preview
 
@@ -105,3 +123,4 @@ Front matter will be passed to the [HTML template](customizing) to allow control
 [rr-link]: https://reacttraining.com/react-router/web/api/Link
 [site]: https://compositor.io/x0/markdown
 [fm]: https://github.com/jonschlinkert/gray-matter
+[MDX]: https://github.com/mdx-js/mdx
