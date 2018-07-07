@@ -222,8 +222,11 @@ test('SidebarLayout renders', t => {
 })
 
 const blacklist = {
-  pre: true
+  pre: true,
+  MDXTag: true,
+  components: true
 }
+
 Object.keys(scope)
   .filter(key => !blacklist[key])
   .forEach(key => {
