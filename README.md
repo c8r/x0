@@ -170,11 +170,12 @@ import Footer from '../components/Footer'
 export default class extends React.Component {
   render () {
     const {
+      location,
       render,
       routes
     } = this.props
 
-    const route = routes.find(route => route.path === props.location.pathname)
+    const route = routes.find(route => route.path === location.pathname)
 
     return (
       <React.Fragment>
