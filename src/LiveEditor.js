@@ -31,6 +31,7 @@ const Editor = styled(LiveEditor)([], {
   fontSize: '13px',
   margin: 0,
   padding: '16px',
+  overflow: 'auto',
   borderRadius: '0 0 2px 2px',
   '&:focus': {
     outline: 'none',
