@@ -3,13 +3,11 @@ import path from 'path'
 import React from 'react'
 import { render, hydrate } from 'react-dom'
 import {
-  StaticRouter,
-  BrowserRouter,
-  Switch,
-  Route,
+  ServerLocation,
+  Router,
   Link,
-  withRouter
-} from 'react-router-dom'
+  Location
+} from '@reach/router'
 import { Provider as RebassProvider } from 'rebass'
 import minimatch from 'minimatch'
 import sortBy from 'lodash.sortby'
@@ -41,7 +39,7 @@ const initialComponents = getComponents(req)
 
 const DefaultApp = props => props.children
 
-const Router = IS_CLIENT ? BrowserRouter : StaticRouter
+const Wrapper = IS_CLIENT ? React.Fragment : ServerLocation
 const appPath = req.keys().find(key => key === './_app.js')
 const App = appPath ? (req(appPath).default || req(appPath)) : DefaultApp
 
@@ -96,11 +94,17 @@ export const getRoutes = async (components = initialComponents) => {
   return sorted
 }
 
-const RouterState = withRouter(({ render, ...props }) => {
-  const { pathname } = props.location
-  const route = props.routes.find(r => r.path === pathname || r.href === pathname) || { props: {} }
-  return render({ ...props, route })
-})
+const RouterState = ({ render, routes }) => (
+  <Location>
+    {(props) => {
+      const { pathname } = props.location
+      const route = routes.find(r => r.path === pathname || r.href === pathname) || { props: {} }
+      return render({ ...props, route })
+    }}
+  </Location>
+)
+
+const Route = ({ render, ...props }) => render(props)
 
 export default class Root extends React.Component {
   static defaultProps = {
@@ -124,10 +128,10 @@ export default class Root extends React.Component {
       : FileList
 
     const render = appProps => (
-      <Switch>
+      <Router basepath={basename}>
         {routes.map(({ Component, ...route }) => (
           <Route
-            {...route}
+            path={route.path}
             render={props => (
               <Catch>
                 <CenteredLayout
@@ -143,16 +147,14 @@ export default class Root extends React.Component {
           />
         ))}
         <Route
+          default
           render={props => <NotFound {...props} routes={routes} />}
         />
-      </Switch>
+      </Router>
     )
 
     return (
-      <Router
-        context={{}}
-        basename={basename}
-        location={path}>
+      <Wrapper url={path}>
         <React.Fragment>
           <RebassProvider>
             <ScopeProvider>
@@ -174,7 +176,7 @@ export default class Root extends React.Component {
           </RebassProvider>
           {!disableScroll && <ScrollTop />}
         </React.Fragment>
-      </Router>
+      </Wrapper>
     )
   }
 }

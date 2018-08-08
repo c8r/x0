@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { Location, Link } from '@reach/router'
 import rebassMarkdown from '@rebass/markdown'
 import { Pre } from 'rebass'
 import { MDXTag } from '@mdx-js/tag'
@@ -11,9 +11,14 @@ const cleanHREF = href => href
   .replace(/\.mdx?$/, '')
   .replace(/\.jsx?$/, '')
 
-export const link = withRouter(({
+const withLocation = (Comp) => props => (
+  <Location>
+    {({ location }) => <Comp location={location} {...props} />}
+  </Location>
+)
+
+export const link = withLocation(({
   href = '',
-  match,
   location,
   children,
   className,

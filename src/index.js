@@ -1,4 +1,5 @@
-export { Link, NavLink } from 'react-router-dom'
+export { Link } from '@reach/router'
+export { Link as NavLink } from '@reach/router'
 export { default as Catch } from './Catch'
 export { default as CenteredLayout } from './CenteredLayout'
 export { default as FileList } from './FileList'

@@ -11,7 +11,7 @@ This file can be used for custom layouts, including headers, footers, and naviga
 ```jsx
 // _app.js
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '@reach/router'
 import {
   Container,
   Toolbar,

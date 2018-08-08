@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Link as RouterLink,
-  NavLink as RouterNavLink
-} from 'react-router-dom'
+import { Link as RouterLink } from '@reach/router'
 import styled from 'styled-components'
 import {
   Provider as RebassProvider,
@@ -22,6 +19,28 @@ import {
   ButtonTransparent,
 } from 'rebass'
 import { borderColor, themeGet } from 'styled-system'
+
+// const RouterNavLink = RouterLink
+const RouterNavLink = ({
+  activeClassName="active",
+  activeStyle,
+  style,
+  className,
+  exact,
+  ...props
+}) => (
+  <RouterLink getProps={({ isCurrent, isPartiallyCurrent }) => {
+    const isActive = (exact && isCurrent) || isPartiallyCurrent
+    if (isActive) {
+      return {
+        className: [ className, activeClassName ].join(' '),
+        style: { ...style, ...activeStyle }
+      }
+    } else {
+      return { className, style }
+    }
+  }} {...props}/>
+)
 
 const breakpoint = `@media screen and (min-width: 48em)`
 

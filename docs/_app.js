@@ -1,6 +1,6 @@
 import React from 'react'
 import * as scope from 'rebass'
-import { Link } from 'react-router-dom'
+import { Link } from '@reach/router'
 import { ScopeProvider, SidebarLayout } from '../components'
 import {
   Provider as RebassProvider,
