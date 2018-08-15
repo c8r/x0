@@ -29,9 +29,9 @@
   "license": "MIT",
   "dependencies": {
     "@compositor/log": "^1.0.0-0",
-    "@mdx-js/loader": "^0.11.0",
-    "@mdx-js/mdx": "^0.10.1",
-    "@mdx-js/tag": "^0.11.0",
+    "@mdx-js/loader": "^0.15.0",
+    "@mdx-js/mdx": "^0.15.0",
+    "@mdx-js/tag": "^0.15.0",
     "@rebass/markdown": "^1.0.0-1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
