@@ -16,7 +16,7 @@ test("mdx-fm-loader", async t => {
     async() {
       return (err, result) => {
         t.is(err, null, "mdx-fm-loader should not error");
-        t.throws(() => {
+        t.notThrows(() => {
           transform(mdx.sync(result), { presets: [env, react, stage0] });
         }, SyntaxError);
       };
