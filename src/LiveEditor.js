@@ -12,10 +12,7 @@ import styled from 'styled-components'
 import mdx from '@mdx-js/mdx'
 
 const transformCode = src => `<React.Fragment>${src}</React.Fragment>`
-const transformMdx = src => {
-  const code = mdx.sync(src)
-  return code.replace(/^(\s)*export default \({components}\) =>/, '')
-}
+const transformMdx = src => mdx.sync(src, { skipExport: true })
 
 const Preview = styled(LivePreview)([], {
   padding: '16px',
