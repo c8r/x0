@@ -7,7 +7,7 @@ It's best to use this component in a [Custom App](/custom-app) component.
 
 ```jsx
 import React from 'react'
-import ScopeProvider from '@compositor/x0/components'
+import { ScopeProvider } from '@compositor/x0/components'
 import * as scope from '../src'
 
 export default props =>
