@@ -235,7 +235,7 @@ Head elements such as `<title>`, `<meta>`, and `<style>` can be configured with 
 "x0": {
   "title": "My Site",
   "meta": [
-    { "name": "twitter:card", "content": "summary" }
+    { "name": "twitter:card", "content": "summary" },
     { "name": "twitter:image", "content": "kitten.png" }
   ],
   "links": [
