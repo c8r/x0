@@ -52,7 +52,13 @@ const cli = meow(`
     },
     port: {
       type: 'string',
-      alias: 'p'
+      alias: 'p',
+      default: '8080'
+    },
+    host: {
+      type: 'string',
+      alias: 'h',
+      default: '0.0.0.0'
     },
     analyze: {},
     // build
@@ -145,8 +151,7 @@ switch (cmd) {
     const dev = require('./lib/dev')
     dev(opts)
       .then(({ server }) => {
-        const { port } = server.options
-        const url = `http://localhost:${port}`
+        const url = `http://${server.host}:${server.port}`
         log.stop(
           'dev server listening on',
           chalk.green(url),

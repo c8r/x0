@@ -1,4 +1,4 @@
-# Snapshot report for `test/template.js`
+# Snapshot report for `test\template.js`
 
 The actual snapshot is saved in `template.js.snap`.
 
