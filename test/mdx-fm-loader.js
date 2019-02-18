@@ -1,9 +1,8 @@
 import test from "ava";
 import mdx from "@mdx-js/mdx";
-import { transform } from "babel-core";
-import env from "babel-preset-env";
-import react from "babel-preset-react";
-import stage0 from "babel-preset-stage-0";
+import { transform } from "@babel/core";
+import env from "@babel/preset-env";
+import react from "@babel/preset-react";
 
 import fmLoader from "../lib/mdx-fm-loader";
 
@@ -17,7 +16,7 @@ test("mdx-fm-loader", async t => {
       return (err, result) => {
         t.is(err, null, "mdx-fm-loader should not error");
         t.notThrows(() => {
-          transform(mdx.sync(result), { presets: [env, react, stage0] });
+          transform(mdx.sync(result), { presets: [env, react] });
         }, SyntaxError);
       };
     }
